@@ -92,7 +92,7 @@ In a real production system you can choose to send error records to a number of 
   * At this point the system should start reading off the origin directory and sending data into ElasticSearch.
   <img style="width:100%;" src="img/running_pipeline.png">
 
-  * You can fireup a Kibana Dashboard to view the results of the import into ElasticSearch
+  * You can fireup a [Kibana Dashboard](kibana/ApacheWebLog.json) to view the results of the import into ElasticSearch
   <img style="width:100%;" src="img/part1_kibana_dashboard.png">
   *Notice that the Browser Type graph doesn't show up in Kibana, we'll take care of that next in Part 2*
 
