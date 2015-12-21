@@ -1,15 +1,11 @@
 # StreamSets Data Collector Tutorials
 
-- Writing log files to ElasticSearch.
+The following tutorials demonstrate some of the features of the StreamSets [Data Collector](streamsets/datacollector/). Clone this repository to your machine to follow along and get familiar with using the Data Collector.
+
+- [Log Shipping to ElasticSearch](tutorials/tutorial-1/)
 Read weblog files from a local filesystem directory, decorate some of the fields (e.g. GeoIP Lookup), and write them to ElasticSearch.
 
-- Writing log rotated .gz weblogs to ElasticSearch.
-Read web server generated .gz log files, filter out erroneous records and write them to ElasticSearch.
-
-- Read log files from an S3 directory and to multiple destinations
-Read log files off an Amazon S3 directory, <clean up the logs>, and selectively write certain types of log records to ElasticSearch and others to HDFS
-
-- Trigger metric alerts and Data Rules
+- Kafka Enablement
 
 - Designing pipelines to help with System Upgrades
 Plan and test a System Upgrade by writing to 2 CDH versions simultaneously
@@ -24,5 +20,3 @@ Read from a MySQL Database and write to HDFS
 - Read from log files and write to Kafka
 
 - Read from log files and write to Kineses
-
-- Read from Kafka a
