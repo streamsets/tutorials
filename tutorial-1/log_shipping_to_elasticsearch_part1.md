@@ -1,8 +1,12 @@
 
 ## Part 1 - Basic Log preparation
 
+
 ### Creating a Pipeline
 * Open the DataCollector and create a new pipeline.
+
+* Note: *If you'd like, feel free to download a previously created [pipeline](pipelines/Directory_to_ElasticSearch_Tutorial_Part_1.json) that has been configured with the contents of this tutorial. In the DataCollector Main Screen, select Import Pipeline to begin*
+<img style="width:80%;" src="img/import_pipeline.png">
 
  #### Defining the source
 * Drag the 'Directory' origin stage into your canvas.
@@ -32,7 +36,7 @@
 * In its Configuration, select *Expressions*
 <img style="width:100%;" src="img/expression_eval.png">
 * Under Field Expressions add an output field called **/geo** and set the field expression to `${emptyMap()}`
-*This is basically creating a Map data structure to hold the value of the *geo* object we will populate later*
+*This is basically creating a Map data structure to hold the value of the geo object we will populate later*
 
     #### Converting Fields
  By default the Data Collector will read the fields in the log file as string values, this works for most fields however we know that Web Server logs contain numeric Response codes, Bytes transferred and a Date Time stamp. We will now convert these into data types that we can later use in ElasticSearch.
@@ -97,5 +101,5 @@ In a real production system you can choose to send error records to a number of 
   *Notice that the Browser Type graph doesn't show up in Kibana, we'll take care of that next in Part 2*
 
 ## Where to go from here
-* In [Part 2](log_shipping_to_elastic_part2.md) of this tutorial we will see how to write custom Python code to enhance our log data.
-* In [Part 3](log_shipping_to_elastic_part3.md) we will setup Metric Alerts and Data Rules as we prepare the pipeline for production use.
+* In [Part 2](log_shipping_to_elastic_part2.md) of this tutorial we will see how to write custom Python code to enhance our log data. We will also setup Metric Alerts and Data Rules as we prepare the pipeline for production use.
+* In [Part 3](log_shipping_to_elastic_part3.md) we will see what to do when things change. e.g. our logs suddenly contain ipv6 addresses instead of ipv4.
