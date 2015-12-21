@@ -9,7 +9,7 @@
 
 * Go to the Configuration Settings below and Select the *Files* tab
 
-<img style="width:100%;" src="directory_config.png">
+<img style="width:100%;" src="img/directory_config.png">
 
 * Enter the following settings :
 
@@ -21,16 +21,16 @@
 
 
 * In the *Post Processing* tab make sure **File Post Processing** is set to None. *This dropdown also lets you delete source files after they have been processed. You may want to use this in your production systems once you have verified your pipelines are configured correctly.*
-<img style="width:100%;" src="directory_config_postproc.png">
+<img style="width:100%;" src="img/directory_config_postproc.png">
 
 * In the **Log** Tab set the **Log Format** option to Combined Log Format.
-<img style="width:100%;" src="directory_config_log.png">
+<img style="width:100%;" src="img/directory_config_log.png">
 
    #### Defining the 'geo' field
 * Drag and drop an 'Expression Evaluator' processor into the canvas.
 
 * In its Configuration, select *Expressions*
-<img style="width:100%;" src="expression_eval.png">
+<img style="width:100%;" src="img/expression_eval.png">
 * Under Field Expressions add an output field called **/geo** and set the field expression to `${emptyMap()}`
 *This is basically creating a Map data structure to hold the value of the *geo* object we will populate later*
 
@@ -40,7 +40,7 @@
  * Drag and drop a 'Field Converter' stage into the pipeline.
 
  * Go to its Configuration and select the 'Conversions' tab.
-<img style="width:100%;" src="field_converter.png">
+<img style="width:100%;" src="img/field_converter.png">
  * In the **Fields to Convert** textbox type `/bytes` and set **Convert to Type** as LONG.
 
  * Click the `+` button to add another conversion.
@@ -51,7 +51,7 @@
 
  * In the new row, set **Fields to Convert** to `/timestamp` and set **Convert to Type** as DATETIME. Set **Date Format** to Other and in the **Other Date Format** textbox type `dd/MMM/y:H:m:s Z`
  *You can use [Java DateTime format specifiers](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html) to change the format to suit your needs*
-<img style="width:100%;" src="field_converter_timestamp.png">
+<img style="width:100%;" src="img/field_converter_timestamp.png">
 
   #### Performing a GeoIP Lookup
   * Download a copy of the MaxMind free [GeoIP2 Lite City Database](http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz). Move the downloaded file to the StreamSets Resources Folder and unzip it there.
@@ -59,7 +59,7 @@
   * Back in the Data Collector, drag and drop the 'GeoIP' Stage into the Canvas
 
   * Go to its Configuration and select the *Geolocations* tab.
-<img style="width:100%;" src="geo_ip.png">
+<img style="width:100%;" src="img/geo_ip.png">
   * In the 'GeoIP2 Database File' textbox type 'GeoLite2-City.mmdb'
 
   * Under 'Input Field Name' type `/clientip` and set its corresponding 'Output Field Name' to `/city` and select `CITY_NAME` under 'GeoIP2 Field'.
@@ -74,7 +74,7 @@
 
   * Go to its Configuration and select the 'General' Tab. In the drop down for 'Stage Library' select `ElasticSearch 1.7.1`
 
-<img style="width:100%;" src="elastic_config.png">
+<img style="width:100%;" src="img/elastic_config.png">
 
   * Go to the 'ElasticSearch' Tab and in the 'Cluster Name' textbox enter the name of your cluster as specified in elasticsearch.yml
 
@@ -84,13 +84,17 @@
 
 * Finally before we do anything with the Pipeline click on any blank spot on the canvas, go to Configuration and the 'Error Records' tab. And under 'Error Records' select 'Discard(Library:Basic)'. This effectively tells the system to discard any erroneous data.
 In a real production system you can choose to send error records to a number of different systems.
-<img style="width:100%;" src="discard_errors.png">
+<img style="width:100%;" src="img/discard_errors.png">
 
     #### Lets ship some logs
   * Once the pipeline has been setup Hit the 'Start' button to execute the pipeline.
 
   * At this point the system should start reading off the origin directory and sending data into ElasticSearch.
-  <img style="width:100%;" src="running_pipeline.png">
+  <img style="width:100%;" src="img/running_pipeline.png">
+
+  * You can fireup a Kibana Dashboard to view the results of the import into ElasticSearch
+  <img style="width:100%;" src="img/part1_kibana_dashboard.png">
+  *Notice that the Browser Type graph doesn't show up in Kibana, we'll take care of that next in Part 2*
 
 ## Where to go from here
 * In [Part 2](log_shipping_to_elastic_part2.md) of this tutorial we will see how to write custom Python code to enhance our log data.

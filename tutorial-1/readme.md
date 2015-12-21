@@ -20,7 +20,7 @@ The log files contain standard Apache Combined Log Format Data.
 
 ` host rfc931 username date:time request statuscode bytes referrer user_agent `
 
-*If you'd like to generate a larger volume of log files, you can use the [Fake Apache Log Generator](kiritbasu/Fake-Apache-Log-Generator) script*
+*If you'd like to generate a larger volume of log files, you can use the [Fake Apache Log Generator](http://github.com/kiritbasu/Fake-Apache-Log-Generator) script*
 
 ### Setting up an index on ElasticSearch
 We will need to setup an index with the right mapping before we can use ElasticSearch, here's how :
@@ -46,6 +46,6 @@ This piece of code effectively creates in index called 'logs' and defines a few 
 * *city* - this is a string type that is not analyzed thus preventing elastic from truncating the data
 
 ## Lets get started
-* [Part 1 - Basic Log preparation](log_shipping_to_elastic_part1.md)
-* [Part 2 - Enhancing Log Data](log_shipping_to_elastic_part2.md)
-* [Part 3 - Preparing for production](log_shipping_to_elastic_part3.md)
+* [Part 1 - Basic Log preparation](./log_shipping_to_elasticsearch_part1.md)
+* [Part 2 - Enhancing Log Data](log_shipping_to_elasticsearch_part2.md)
+* [Part 3 - Preparing for production](log_shipping_to_elasticsearch_part3.md)
