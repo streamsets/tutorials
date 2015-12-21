@@ -10,11 +10,11 @@ The goal of this tutorial is to gather apache log files and send them to Elastic
 ## Pre-requisites
 * A working instance of StreamSets Data Collector
 * Access to ElasticSearch and Kibana
-* A copy of this tutorials directory containing the [sample data](streamsets/tutorials/sample_data) and [pipeline](pipelines/Directory_to_ElasticSearch_Tutorial_Part_1.json)
+* A copy of this tutorials directory containing the [sample data](../sample_data) and [pipeline](pipelines/Directory_to_ElasticSearch_Tutorial_Part_1.json)
 * A copy of the MaxMind GeoLite2 free IP Geolocation Database. [GeoLite2 City](https://dev.maxmind.com/geoip/geoip2/geolite2/).
 
 ## Our Setup
-The tutorials sample data directory contains a set of apache web server log files. The Data Collector can read many file formats but for this example we will use compressed logs (.log.gz) that simulates a system that generates log rotated files.
+The tutorials [sample data directory](../sample_data) contains a set of apache web server log files. The Data Collector can read many file formats but for this example we will use compressed logs (.log.gz) that simulates a system that generates log rotated files.
 
 The log files contain standard Apache Combined Log Format Data.
 
