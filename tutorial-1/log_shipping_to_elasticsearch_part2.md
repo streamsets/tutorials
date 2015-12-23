@@ -51,3 +51,24 @@ for record in records:
     # Send record to error
     err.write(record, str(e))
 ```
+
+This piece of Python code parses the user agent field denoted by ```record.value['agent']``` and uses the user_agent parser to figure out the browser family.
+Note: The location of your pip packages may differ from this example, use
+```>>> import site; site.getsitepackages()``` to find the location on your computer.
+
+### Removing fields using the Field Remover.
+Now that we've identified the browser, we don't have any use for the user-agent string in our dataset. Let's remove that field and save space on our ElasticSearch index.
+
+* Drag and drop the Field Remover stage into the pipeline.
+
+* Go to its configuration options and click on the *Remove* tab.
+<img style="width:100%;" src="img/field_remover.png">
+* Select the ```/agent``` field, and set Action to 'Remove Listed Fields'. You may choose to add multiple fields to this text area.
+
+### Setting up for Production
+At this point you can choose to hit Start and get data flowing into ElasticSearch, however for long running pipelines you may want to configure a few alerts to let you know when the status of the pipeline changes.
+
+  #### Setting up Metric Alerts
+  Metric Alerts are a powerful mechanism of notifying users when the pipeline needs attention. To configure these alerts, click on a blank spot on the canvas and go to the *Rules* tab.
+  <img style="width:100%;" src="img/metric_alerts.png">
+  
