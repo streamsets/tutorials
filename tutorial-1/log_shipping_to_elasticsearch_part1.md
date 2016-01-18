@@ -24,22 +24,29 @@
   * **Files Compression** - Compressed File
 
 
-* In the *Post Processing* tab make sure **File Post Processing** is set to None. *This dropdown also lets you delete source files after they have been processed. You may want to use this in your production systems once you have verified your pipelines are configured correctly.*
+* In the *Post Processing* tab make sure **File Post Processing** is set to None.
+
+*Note: This dropdown also lets you delete source files after they have been processed. You may want to use this in your production systems once you have verified your pipelines are configured correctly.*
 <img style="width:100%;" src="img/directory_config_postproc.png">
 
 * In the **Log** Tab set the **Log Format** option to Combined Log Format.
+
+*Note:The Data Collector already knows the format of the Combined Log Format and a few other log types, and has built in RegEx patterns to decode them. If you are working with custom log formats choose either Regular Expression or Grok Pattern from the dropdown and define your own format. *
 <img style="width:100%;" src="img/directory_config_log.png">
 
    #### Defining the 'geo' field
 * Drag and drop an 'Expression Evaluator' processor into the canvas.
 
-* In its Configuration, select *Expressions*
-<img style="width:100%;" src="img/expression_eval.png">
+* In its Configuration, select the *Expressions* Tab
+
 * Under Field Expressions add an output field called **/geo** and set the field expression to `${emptyMap()}`
-*This is basically creating a Map data structure to hold the value of the geo object we will populate later*
+*This creates a Map data structure to hold the value of the geo object that we will populate later*
+
+<img style="width:100%;" src="img/expression_eval.png">
+
 
     #### Converting Fields
- By default the Data Collector will read the fields in the log file as string values, this works for most fields however we know that Web Server logs contain numeric Response codes, Bytes transferred and a Date Time stamp. We will now convert these into data types that we can later use in ElasticSearch.
+ By default the Data Collector will read the fields in the log file as string values, this works for most fields however we know that Web Server logs contain numeric values for Response Code, Bytes Transferred and a Date Time stamp. Let's convert these fields into the right data types.
 
  * Drag and drop a 'Field Converter' stage into the pipeline.
 
@@ -76,7 +83,7 @@
 
   * Finally lets specify a destination, drag and Drop a 'ElasticSearch' stage to the Canvas.
 
-  * Go to its Configuration and select the 'General' Tab. In the drop down for 'Stage Library' select `ElasticSearch 1.7.1`
+  * Go to its Configuration and select the 'General' Tab. In the drop down for 'Stage Library' select the version of ElasticSearch you are running.
 
 <img style="width:100%;" src="img/elastic_config.png">
 
@@ -89,8 +96,7 @@
 * Finally before we do anything with the Pipeline click on any blank spot on the canvas, go to Configuration and the 'Error Records' tab. And under 'Error Records' select 'Discard(Library:Basic)'. This effectively tells the system to discard any erroneous data.
 In a real production system you can choose to send error records to a number of different systems.
 <img style="width:100%;" src="img/discard_errors.png">
-
-  ### Preview the pipeline
+### Preview the pipeline
   After you setup the pipeline you can hit the Preview button to examine the flow of a small subset of the data.
 
   The preview mode lets you interactively debug your stage configurations.
