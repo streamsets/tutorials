@@ -14,7 +14,7 @@ The goal of this tutorial is to gather apache log files and send them to Elastic
 * A copy of the MaxMind GeoLite2 free IP Geolocation Database. [GeoLite2 City](https://dev.maxmind.com/geoip/geoip2/geolite2/).
 
 ## Our Setup
-The tutorials [sample data directory](../sample_data) contains a set of apache web server log files. The Data Collector can read many file formats but for this example we will use compressed logs (.log.gz) that simulates a system that generates log rotated files.
+The tutorial's [sample data directory](../sample_data) contains a set of apache web server log files. The Data Collector can read many file formats but for this example we will use compressed logs (.log.gz) that simulates a system that generates log rotated files.
 
 The log files contain standard Apache Combined Log Format Data.
 
