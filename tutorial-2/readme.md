@@ -31,5 +31,5 @@ The tutorial's [sample data directory](../sample_data) contains a set of '.avro'
 We create this fake data and serialize the files in Avro format using a [Fake Avro Data Generator Script](github.com/kiritbasu/Fake-Avro-Data-Generator)
 
 ## Let's Get Started
-* Part 1 - [Publishing to a Kafka Producer](directory_to_kafka_producer.md)
+* Part 1 - [Publishing to a Kafka Producer](directory_to_kafkaproducer.md)
 * Part 2 - [Reading from a Kafka Consumer](kafka_consumer_to_multipledestinations.md)
