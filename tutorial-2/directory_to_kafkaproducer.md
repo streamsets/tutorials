@@ -52,3 +52,6 @@ That's it! Your pipeline is now ready to feed messages into Kafka.
 
 #### Execute the Pipeline
 * Hit the run button and if your Kafka server is up and running the pipeline should start sending data over Kafka.
+
+#### Where to go from here
+* Part 2 - [Reading from a Kafka Consumer](kafkaconsumer_to_multipledestinations.md)
