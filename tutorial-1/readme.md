@@ -48,4 +48,4 @@ This piece of code effectively creates in index called 'logs' and defines a few 
 ## Lets get started
 * [Part 1 - Basic Log preparation](./log_shipping_to_elasticsearch_part1.md)
 * [Part 2 - Enhancing Log Data & Preparing for production](log_shipping_to_elasticsearch_part2.md)
-* [Part 3 - Dealing with changes](log_shipping_to_elasticsearch_part3.md)
+* [Part 3 - Secure Transport to Elastic Shield](secure_transport_to_elastic_shield_part3.md)

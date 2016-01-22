@@ -19,8 +19,7 @@ The tutorial's [sample data directory](../sample_data) contains a set of '.avro'
 
 ```json
 {
-  "transaction_date":"dd/mm/YYYY hh:mm:ss Z",
-  "card_provider":"VISA",
+  "transaction_date":"dd/mm/YYYY",
   "card_number":"0000-0000-0000-0000",
   "card_expiry_date":"mm/YYYY",
   "card_security_code":"0000",
@@ -28,8 +27,8 @@ The tutorial's [sample data directory](../sample_data) contains a set of '.avro'
   "description":"transaction description of the purchase"
 }
 ```
-We create this fake data and serialize the files in Avro format using a [Fake Avro Data Generator Script](github.com/kiritbasu/Fake-Avro-Data-Generator)
+
 
 ## Let's Get Started
 * Part 1 - [Publishing to a Kafka Producer](directory_to_kafkaproducer.md)
-* Part 2 - [Reading from a Kafka Consumer](kafka_consumer_to_multipledestinations.md)
+* Part 2 - [Reading from a Kafka Consumer](kafkaconsumer_to_multipledestinations.md)

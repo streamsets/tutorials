@@ -4,14 +4,14 @@
 ### Creating a Pipeline
 * Open the DataCollector and create a new pipeline.
 
-* Note: *If you'd like, feel free to download a previously created [pipeline](pipelines/Directory_to_KafkaProducer_Tutorial_Part_1.json) that has been configured with the contents of this tutorial.
+* Note: *If you'd like, feel free to download a previously created [pipeline](pipelines/Directory_to_KafkaProducer_Tutorial_Part_1.json) that has been configured with the contents of this tutorial.*
 
 #### Defining the source
 * Drag the 'Directory' origin stage into your canvas.
 
 * Go to the Configuration Settings below and Select the *Files* tab
 
-<img style="width:100%;" src="img/directory_config.png">
+<img style="width:100%;" src="img/directory_setup.png">
 
 * Enter the following settings :
 
@@ -37,6 +37,7 @@
 * Go to the 'General' Tab in its configuration and select the version of Kafka that matches your environment in the 'Stage Library' dropdown.
 
 * Go to the 'Kafka' Tab and set the 'Broker URI' to point to your kafka broker. e.g.`<hostname/ip>:<port>` Set the 'Topic' to the name of your kafka topic. And the 'Data Format' to 'SDC Record'
+<img style="width:100%;" src="img/kafka_producer_config.png">
 
 *SDC Record is the internal data format that is highly optimized for use within the StreamSets Data Collector (SDC); Since we are going to be using a SDC on the other side to read from this Kafka Topic we can use the 'SDC Record' since it knows how to decode the format. If you have a custom Kafka Consumer on the other side you may want to choose from one of the other Data Formats in this drop down and decode it accordingly.*
 
