@@ -28,6 +28,9 @@ The tutorial's [sample data directory](../sample_data) contains a set of '.avro'
 }
 ```
 
+We will read avro files from our source directory, convert them into 'SDC Record' format within the data collector and finally write them back out in avro format to S3.
+<img style="width:100%;" src="img/data_conversion.png">
+
 
 ## Let's Get Started
 * Part 1 - [Publishing to a Kafka Producer](directory_to_kafkaproducer.md)
