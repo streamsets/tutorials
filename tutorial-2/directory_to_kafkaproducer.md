@@ -17,8 +17,8 @@
 
  * **Data Format** - Avro
  * **Files Directory** - the absolute file path to the directory containing the sample .avro files
- * **File Name Pattern** - `*.avro`
- *this will pick up all .avro files in this folder, you can use any wildcard to narrow down your selection*
+ * **File Name Pattern** - `cc*`
+ *the ccdata file in the samples directory is a bzip2 compressed avro file, the data collector will automatically detect and decrypt it on the fly*
  * **Files Compression** - None
 
 
