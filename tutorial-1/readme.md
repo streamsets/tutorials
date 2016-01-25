@@ -1,6 +1,6 @@
 # Log shipping into ElasticSearch
 
-In this three part tutorial, we will learn how to read apache web server logs and send them to ElasticSearch. Along the way we will transform the data and set up alerts and data rules to let us know if any bad data is encountered. And finally we'll learn how to adapt the pipeline when data suddenly changes.
+In this two part tutorial, we will learn how to read apache web server logs and send them to ElasticSearch. Along the way we will transform the data and set up alerts and data rules to let us know if any bad data is encountered. And finally we'll learn how to adapt the pipeline when data suddenly changes.
 
 The Data Collector can read from and write to a large number of sources and destinations, but for this tutorial we will limit our scope to a File Directory Source and an ElasticSearch Destination.
 
@@ -48,4 +48,3 @@ This piece of code effectively creates in index called 'logs' and defines a few 
 ## Lets get started
 * [Part 1 - Basic Log preparation](./log_shipping_to_elasticsearch_part1.md)
 * [Part 2 - Enhancing Log Data & Preparing for production](log_shipping_to_elasticsearch_part2.md)
-* [Part 3 - Secure Transport to Elastic Shield](secure_transport_to_elastic_shield_part3.md)

@@ -101,7 +101,7 @@ In a real production system you can choose to send error records to a number of 
 
   The preview mode lets you interactively debug your stage configurations.
 
-    #### Lets ship some logs
+  #### Lets ship some logs
   * Once the pipeline has been setup Hit the 'Start' button to execute the pipeline.
 
   * At this point the system should start reading off the origin directory and sending data into ElasticSearch.

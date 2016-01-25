@@ -6,7 +6,7 @@ In this part of the tutorial we will setup a pipeline that drains data from a Ka
 
 <img style="width:100%;" src="img/kafka_consumer_pipeline.png">
 
-You may remember the data we are reading, simulates credit card information and contains the card number :
+You may remember the data we are reading simulates credit card information and contains the card number :
 ```json
 {
   "transaction_date":"dd/mm/YYYY",
@@ -40,6 +40,7 @@ We don't want to store credit card information in any of our data stores so this
 Go to the 'Jython' tab of the Jython Evaluator and enter the following piece of code.
 
 ```python
+
 for record in records:
   try:
     cc = record.value['card_number']
@@ -108,11 +109,10 @@ A common usecase is to backup data to S3, in this example we'll convert the data
 * Drag and drop the 'Amazon S3' stage to the canvas.
 
 * In its configuration enter in your 'Access Key ID' and 'Secret Access Key', select the 'Region' and enter the 'Bucket' name and 'Folder' you want to store the files in.
-<img style="width:100%;" src="img/s3_config1.png">
 
 * Pick Avro in the 'Data Format' drop down.
 
-<img style="width:100%;" src="img/s3_config2.png">
+<img style="width:100%;" src="img/s3_config1.png">
 
 * Go to the 'Avro' tab, you will need to specify the schema that you want encoded. Type in :
 ```json
@@ -130,6 +130,10 @@ A common usecase is to backup data to S3, in this example we'll convert the data
            ]
 }
 ```
+
+<img style="width:100%;" src="img/s3_config2.png">
+
+
 * To save space on the S3 buckets lets compress the data as its written. Choose BZip2 as the 'Avro Compression Codec'.
 
 #### Execute the Pipeline

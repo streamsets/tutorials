@@ -29,7 +29,7 @@
 
 * In the **Avro** Tab leave the defaults as is.
 
-*Note: If you'd like to override the avro schema that's already stored in the file, enter the custom schema in this tab*
+*Note: Avro already contains the schema that the Data Collector will pick up and decode on the fly. If you'd like to override the default schema, enter the custom schema in this tab*
 
 #### Defining the Kafka Producer
 * Drag and drop the 'Kafka Producer' to the canvas.
@@ -39,7 +39,7 @@
 * Go to the 'Kafka' Tab and set the 'Broker URI' to point to your kafka broker. e.g.`<hostname/ip>:<port>` Set the 'Topic' to the name of your kafka topic. And the 'Data Format' to 'SDC Record'
 <img style="width:100%;" src="img/kafka_producer_config.png">
 
-*SDC Record is the internal data format that is highly optimized for use within the StreamSets Data Collector (SDC); Since we are going to be using a SDC on the other side to read from this Kafka Topic we can use the 'SDC Record' since it knows how to decode the format. If you have a custom Kafka Consumer on the other side you may want to choose from one of the other Data Formats in this drop down and decode it accordingly.*
+*SDC Record is the internal data format that is highly optimized for use within the StreamSets Data Collector (SDC); Since we are going to be using a SDC on the other side to read from this Kafka Topic we can use 'SDC Record' since it knows how to decode the format. If you have a custom Kafka Consumer on the other side you may want to choose from one of the other Data Formats in this drop down and decode it accordingly.*
 
 You can use the 'Kafka Configuration' section of this tab to enter any specific Kafka settings you would like; In a future tutorial we'll see how to configure TLS, SASL or Kerberos with Kafka.
 
