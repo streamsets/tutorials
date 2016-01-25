@@ -112,5 +112,4 @@ In a real production system you can choose to send error records to a number of 
   *Notice that the Browser Type graph doesn't show up in Kibana, we'll take care of that next in Part 2*
 
 ## Where to go from here
-* In [Part 2](log_shipping_to_elasticsearch_part2.md) of this tutorial we will see how to write custom Python code to enhance our log data. We will also setup Metric Alerts and Data Rules as we prepare the pipeline for production use.
-* In [Part 3](log_shipping_to_elasticsearch_part3.md) we will see what to do when things change. e.g. our logs suddenly contain ipv6 addresses instead of ipv4.
+* In [Part 2](log_shipping_to_elasticsearch_part2.md) of this tutorial we will see how to write custom Python code to enhance our log data. We will also setup Metric Alerts as we prepare the pipeline for production use.
