@@ -4,6 +4,8 @@ In this two part tutorial, we will learn how to read apache web server logs and 
 
 The Data Collector can read from and write to a large number of sources and destinations, but for this tutorial we will limit our scope to a File Directory Source and an ElasticSearch Destination.
 
+[![Log shipping into Elastic](img/vimeo-thumbnail.png)](https://vimeo.com/152097120 "Log shipping into Elastic")
+
 ## Goals
 The goal of this tutorial is to gather apache log files and send them to ElasticSearch.
 

@@ -4,6 +4,7 @@ Creating custom Kafka producers and consumers is often a tedious process that re
 
 <img style="width:100%;" src="img/our_setup.png">
 
+[![Simple Kafka Enablement](img/vimeo-thumbnail.png)](https://vimeo.com/153061876 "Simple Kafka Enablement")
 
 ## Goals
 The goal of this tutorial is read AVRO files from a file system directory and write them to a Kafka topic using the StreamSets Kafka Producer; we'll then use a second pipeline configured with a Kafka Consumer to drain out of that topic, perform a set of transformations and send the data to two different destinations.
