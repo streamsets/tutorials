@@ -81,13 +81,13 @@ At this point you can choose to hit Start and get data flowing into ElasticSearc
   <img style="width:100%;" src="img/metric_alerts.png">
 
   For this exercise lets pick from a preconfigured alert.
-  Let's say we know that we are expecting a steady flow of data from our web server logs, and if we go 30 mins without receiving any data something might be wrong upstream and an operator will need to look into it.
+  Let's say we know that we are expecting a steady flow of data from our web server logs, and if we go 2 mins without receiving any data something might be wrong upstream and an operator will need to look into it.
 
   * Click 'Edit' on 'Pipeline is Idle' Alert and set the value to
 
-  ```${time:now() - value() > -----}```
+  ```${time:now() - value() > 120000}```
 
-  where ----- is the number of milliseconds.
+  where 120000 is the number of milliseconds.
 
   * The Data Collector will trigger alerts on the User Interface in the bowser, or if you select the 'Send Email' checkbox, via an alert email that's specified in the Email IDs tab.
 

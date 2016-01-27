@@ -11,7 +11,7 @@ The goal of this tutorial is to gather apache log files and send them to Elastic
 * A working instance of StreamSets Data Collector
 * Access to ElasticSearch and Kibana
 * A copy of this tutorials directory containing the [sample data](../sample_data) and [pipeline](pipelines/Directory_to_ElasticSearch_Tutorial_Part_1.json)
-* A copy of the MaxMind GeoLite2 free IP Geolocation Database. [GeoLite2 City](https://dev.maxmind.com/geoip/geoip2/geolite2/).
+* A copy of the MaxMind GeoLite2 free IP Geolocation Database. *Either get and unzip the binary file or use the csv file* [GeoLite2 City](https://dev.maxmind.com/geoip/geoip2/geolite2/).
 
 ## Our Setup
 The tutorial's [sample data directory](../sample_data) contains a set of apache web server log files. The Data Collector can read many file formats but for this example we will use compressed logs (.log.gz) that simulates a system that generates log rotated files.
@@ -23,7 +23,7 @@ The log files contain standard Apache Combined Log Format Data.
 *If you'd like to generate a larger volume of log files, you can use the [Fake Apache Log Generator](http://github.com/kiritbasu/Fake-Apache-Log-Generator) script*
 
 ### Setting up an index on ElasticSearch
-We will need to setup an index with the right mapping before we can use ElasticSearch, here's how :
+We will need to setup an index with the right mapping before we can use [ElasticSearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html), here's how :
 ```bash
 $ curl -XPUT 'http://localhost:9200/logs' -d '{
     "mappings": {
@@ -44,6 +44,12 @@ This piece of code effectively creates in index called 'logs' and defines a few 
 * *timestamp* - this is a date field
 * *geo* - this is a geo_point field that has lat/lon attributes
 * *city* - this is a string type that is not analyzed thus preventing elastic from truncating the data
+
+*You can use the excellent [Postman API Tool](http://www.getpostman.com/) to interact with Elastic via API*
+
+### Installing StreamSets
+* Download and install the latest [StreamSets Data Collector](https://streamsets.com/opensource) binaries.
+
 
 ## Lets get started
 * [Part 1 - Basic Log preparation](./log_shipping_to_elasticsearch_part1.md)
