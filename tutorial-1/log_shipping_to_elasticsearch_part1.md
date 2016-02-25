@@ -34,7 +34,8 @@
 *Note:The Data Collector already knows the format of the Combined Log Format and a few other log types, and has built in RegEx patterns to decode them. If you are working with custom log formats choose either Regular Expression or Grok Pattern from the dropdown and define your own format. *
 <img style="width:100%;" src="img/directory_config_log.png">
 
-    #### Defining the 'geo' field
+   #### Defining the 'geo' field
+   
 * Drag and drop an 'Expression Evaluator' processor into the canvas.
 
 * In its Configuration, select the *Expressions* Tab
