@@ -12,7 +12,7 @@ The goal of this tutorial is read Avro files from a file system directory and wr
 ## Prerequisites
 * A working instance of StreamSets Data Collector
 * A working Kafka 0.9 (or older) instance
-* A copy of this tutorials directory containing the [sample data](../sample_data), [pipeline 1](pipelines/Directory_to_KafkaProducer_Part_1.json) and [pipeline 2](pipelines/KafkaConsumer_to_MultipleDestinations_Part_1.json)
+* A copy of this tutorials directory containing the [sample data](../sample_data), [pipeline 1](pipelines/Directory_to_KafkaProducer.json) and [pipeline 2](pipelines/KafkaConsumer_to_MultipleDestinations.json)
 
 
 ## Our Setup
