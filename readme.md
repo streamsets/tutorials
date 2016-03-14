@@ -7,4 +7,6 @@ Read weblog files from a local filesystem directory, decorate some of the fields
 
 - [Simple Kafka Enablement using StreamSets Data Collector](tutorial-2/readme.md)
 
+- [What’s the Biggest Lot in the City of San Francisco?](tutorial-3/readme.md) Read city lot data from JSON, calculate lot areas in JavaScript, and write them to Hive.
+
 The Data Collector documentation also includes an [extended tutorial](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Overview.html) that walks through basic Data Collector functionality, including creating, previewing and running a pipeline, and creating alerts.
