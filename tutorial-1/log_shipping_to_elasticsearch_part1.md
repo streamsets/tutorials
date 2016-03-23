@@ -3,13 +3,14 @@
 
 
 ### Creating a Pipeline
-* Open the DataCollector and create a new pipeline.
+* Open the Data Collector and create a new pipeline.
 
-* Note: *If you'd like, feel free to download a previously created [pipeline](pipelines/Directory_to_ElasticSearch_Tutorial_Part_1.json) that has been configured with the contents of this tutorial. In the DataCollector Main Screen, select Import Pipeline to begin*
+* Note: *If you'd like, feel free to download a previously created [pipeline](pipelines/Directory_to_ElasticSearch_Tutorial_Part_1.json) that has been configured with the contents of this tutorial. In the Data Collector Main Screen, select Import Pipeline to begin*
 
-<img style="width:80%;" src="img/import_pipeline.png">
+ <img style="width:80%;" src="img/import_pipeline.png">
 
  #### Defining the source
+
  * Drag the 'Directory' origin stage into your canvas.
 
  * Go to the Configuration Settings below and Select the *Files* tab
@@ -117,6 +118,8 @@ The preview mode lets you interactively debug your stage configurations.
 * At this point the system should start reading off the origin directory and sending data into ElasticSearch.
 
  <img style="width:100%;" src="img/running_pipeline.png">
+
+ *Note - the sample access logs contain 'dummy' data with random IP addresses. You will see some errors logged in your pipeline for IP addresses that are not matched in the GeoIP2 database. StreamSets correctly detects and flags these errors for analysis.*
 
 * You can fireup a [Kibana Dashboard](kibana/ApacheWebLog.json) to view the results of the import into ElasticSearch
 
