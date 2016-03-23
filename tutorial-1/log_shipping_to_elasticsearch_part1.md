@@ -119,7 +119,9 @@ The preview mode lets you interactively debug your stage configurations.
 
  <img style="width:100%;" src="img/running_pipeline.png">
 
- *Note - the sample access logs contain 'dummy' data with random IP addresses. You will see some errors logged in your pipeline for IP addresses that are not matched in the GeoIP2 database. StreamSets correctly detects and flags these errors for analysis.*
+ *Note - the sample access logs contain 'dummy' data with random IP addresses. You will see some errors logged in your pipeline for IP addresses that are not matched in the GeoIP2 database. StreamSets correctly detects and flags these errors for analysis. You can click on the GeoIP processor, drill down into the errors and see exactly what the problem is:*
+
+ <img style="width:100%;" src="img/geoip_errors.png">
 
 * You can fireup a [Kibana Dashboard](kibana/ApacheWebLog.json) to view the results of the import into ElasticSearch
 
