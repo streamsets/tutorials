@@ -28,7 +28,7 @@ This tutorial uses version 1.2.2.0, but the instructions should apply to subsequ
 
 You will need to build both the Data Collector and its API. Since we just need the pipeline library JAR files and we already have the SDC runtime, we can skip building the GUI and running tests, saving a bit of time:
 
-```
+```sh
 $ cd datacollector-api
 $ mvn clean install -DskipTests
 ...output omitted...
@@ -39,7 +39,7 @@ $ mvn clean install -DskipTests
 
 Maven puts the library JARs in its repository, so they’re available when we build our custom destination:
 
-```
+```sh
 $ ls ~/.m2/repository/com/streamsets/streamsets-datacollector-commonlib/1.2.2.0/
 _remote.repositories
 streamsets-datacollector-commonlib-1.2.2.0-tests.jar
@@ -49,7 +49,7 @@ Streamsets-datacollector-commonlib-1.2.2.0.pom
 
 Finally, create a new custom stage project using the Maven archetype:
 
-```
+```sh
 $ mvn archetype:generate -DarchetypeGroupId=com.streamsets -DarchetypeArtifactId=streamsets-datacollector-stage-lib-tutorial -DarchetypeVersion=1.2.2.0 -DinteractiveMode=true
 [INFO] Scanning for projects...
 [INFO]                                                                         
@@ -102,7 +102,7 @@ Maven generates a template project from the archetype in a directory with the `a
 
 Now you can build the template:
 
-```
+```sh
 $ cd samplestage
 $ mvn clean package -DskipTests
 [INFO] Scanning for projects...
@@ -117,7 +117,7 @@ $ mvn clean package -DskipTests
 
 Extract the tarball to SDC’s `user-libs` directory, restart SDC, and you should see the sample stages in the stage library:
 
-```
+```sh
 $ cd ~/streamsets-datacollector-1.2.2.0/user-libs/
 $ tar xvfz /Users/pat/src/samplestage/target/samplestage-1.0-SNAPSHOT.tar.gz
 x samplestage/lib/samplestage-1.0-SNAPSHOT.jar
@@ -131,13 +131,13 @@ Let’s walk through the template code, starting with `SampleTarget.java`.
 
 As mentioned above, Destinations extend `BaseTarget`:
 
-```
+```java
 public abstract class SampleTarget extends BaseTarget {
 ```
 
 An abstract method allows the destination to get configuration data from its subclass:
 
-```
+```java
   /**
    * Gives access to the UI configuration of the stage provided by the {@link SampleDTarget} class.
    */
@@ -146,7 +146,7 @@ An abstract method allows the destination to get configuration data from its sub
 
 SDC calls the `init()` method when validating and running a pipeline. The sample shows how to report configuration errors.
 
-```
+```java
   /** {@inheritDoc} */
   @Override
   protected List<ConfigIssue> init() {
@@ -168,7 +168,7 @@ SDC calls the `init()` method when validating and running a pipeline. The sample
 
 SDC calls `destroy()` during validation, and when a pipeline is stopped:
 
-```
+```java
   /** {@inheritDoc} */
   @Override
   public void destroy() {
@@ -179,7 +179,7 @@ SDC calls `destroy()` during validation, and when a pipeline is stopped:
 
 The batch `write()` method is where the action is. SDC will call this for each batch of records. The sample shows how to handle errors when writing records, based on the current context:
 
-```
+```java
   /** {@inheritDoc} */
   @Override
   public void write(Batch batch) throws StageException {
@@ -210,7 +210,7 @@ The batch `write()` method is where the action is. SDC will call this for each b
 
 Finally, the record `write()` method can be used to write individual records. However, since it’s not part of the `BaseTarget` signature, you may structure your code differently if you don’t need to write records outside the batch  `write()` method.
 
-```
+```java
   /**
    * Writes a single record to the destination.
    *
@@ -265,7 +265,7 @@ The first step is to remove that annoying error, and instead write some diagnost
 
 Open the sample project in your IDE of choice (IntelliJ works well with Maven projects), and edit the record write method. Just comment out the three lines of code there for now:
 
-```
+```java
   private void write(Record record) throws OnRecordErrorException {
     // This is a contrived example, normally you may be performing an operation that could throw
     // an exception or produce an error condition. In that case you can throw an OnRecordErrorException
@@ -282,7 +282,7 @@ We could write to the log from the record write method, but that would result in
 
 Let’s import the log classes and get a log object as a class variable:
 
-```
+```java
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -293,7 +293,7 @@ public abstract class SampleTarget extends BaseTarget {
 
 Add a line to top of the batch write method:
 
-```
+```java
   public void write(Batch batch) throws StageException {
     LOG.info("Writing a batch of records: {}", batch);
 
@@ -302,7 +302,7 @@ Add a line to top of the batch write method:
 
 Now build the destination project again, extract the tarball to the user-libs directory as before, and restart SDC. In another terminal window, tail the SDC log file:
 
-```
+```sh
 $ tail -f ~/streamsets-datacollector-1.2.2.0/log/sdc.log
 ```
 
@@ -326,7 +326,7 @@ Now we have a ‘clean’ pipeline, let’s format the records as CSV.
 
 SDC holds each record in memory as lists or maps of fields; we want to send them to RequestBin in a more portable format. We can create a StringWriter to buffer CSV data, and a DataGenerator to generate it. Note how we pass any exceptions thrown when creating the DataGenerator back to SDC.
 
-```
+```java
   public void write(Batch batch) throws StageException {
     LOG.info("Writing a batch of records: " + batch.toString());
 
@@ -343,7 +343,7 @@ SDC holds each record in memory as lists or maps of fields; we want to send them
 
 We will need to call `gen.write(record);` to generate the CSV for each record; we could add an argument to the record write method for the generator and call gen.write from there, but it seems inefficient to call a method for the sole purpose of calling another method, so let’s just replace the call to the record write method:
 
-```
+```java
     while (batchIterator.hasNext()) {
       Record record = batchIterator.next();
       try {
@@ -353,7 +353,7 @@ We will need to call `gen.write(record);` to generate the CSV for each record; w
 
 After the while loop, at the bottom of the batch write method, we’ll close the StringWriter, get its String, and log the amount of buffered data:
 
-```
+```java
     }
 
     try {
@@ -369,7 +369,7 @@ After the while loop, at the bottom of the batch write method, we’ll close the
 
 We’ll need to add the relevant imports at the top of SampleTarget:
 
-```
+```java
 import com.streamsets.pipeline.api.Batch;
 import com.streamsets.pipeline.api.Record;
 import com.streamsets.pipeline.api.StageException;
@@ -384,7 +384,7 @@ import com.streamsets.pipeline.lib.generator.delimited.DelimitedCharDataGenerato
 
 You’ll likely notice that the IDE doesn’t know anything about the classes we just imported - we need to add a dependency to the project’s pom.xml file to make them available:
 
-```
+```xml
     <dependency>
       <groupId>com.streamsets</groupId>
       <artifactId>streamsets-datacollector-api</artifactId>
@@ -411,7 +411,7 @@ You’ll likely notice that the IDE doesn’t know anything about the classes we
 
 Now we can repeat the build/extract steps, but, before we restart SDC, we need to copy commonlib and its dependencies from user-libs/streamsets-datacollector-dev-lib/lib to user-libs/samplestage/lib to make it accessible to our destination at runtime. From the `~/streamsets-datacollector-1.2.2.0/user-libs` directory, do
 
-```
+```sh
 $ cp streamsets-datacollector-dev-lib/lib/streamsets-datacollector-commonlib-1.2.2.0.jar samplestage/lib/
 $ cp streamsets-datacollector-dev-lib/lib/commons-io-2.4.jar samplestage/lib/
 $ cp streamsets-datacollector-dev-lib/lib/commons-csv-1.1.jar samplestage/lib/
@@ -434,7 +434,7 @@ Now we can restart SDC, reset the origin, and run the pipeline again. This time,
 
 Now we are buffering CSV data we need to send it… somewhere! Let’s modify the sample configuration class, `SampleDTarget`, accordingly. While we’re doing that, we can rename the Destination to better reflect its purpose.
 
-```
+```java
 @StageDef(
     version = 1,
     label = "RequestBin Destination",
@@ -468,7 +468,7 @@ public class SampleDTarget extends SampleTarget {
 
 The Groups class holds the label for the config tab:
 
-```
+```java
 @GenerateResourceBundle
 public enum Groups implements Label {
   REQUESTBIN("RequestBin"),
@@ -490,7 +490,7 @@ public enum Groups implements Label {
 
 We’ll also need to update `SampleTarget` to match:
 
-```
+```java
   /**
    * Gives access to the UI configuration of the stage provided by the {@link SampleDTarget} class.
    */
@@ -499,7 +499,7 @@ We’ll also need to update `SampleTarget` to match:
 
 We can validate that the user has supplied a valid URL in the `init()` method:
 
-```
+```java
   @Override
   protected List<ConfigIssue> init() {
     // Validate configuration values and open any required resources.
@@ -531,7 +531,7 @@ The final piece of the puzzle is to write the CSV data to the RequestBin URL. Re
 
 Since we only need to post some text, we’ll use the [Apache Fluent API](https://hc.apache.org/httpcomponents-client-ga/tutorial/html/fluent.html) rather than the full blown HttpClient. Add the dependency to `pom.xml` after the dependencies for slf4j:
 
-```
+```xml
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
       <artifactId>fluent-hc</artifactId>
@@ -541,14 +541,14 @@ Since we only need to post some text, we’ll use the [Apache Fluent API](https:
 
 Import Request and ContentType in `SampleTarget`:
 
-```
+```java
 import org.apache.http.client.fluent.Request;
 import org.apache.http.entity.ContentType;
 ```
 
 And change the end of the batch write method:
 
-```
+```java
     try {
       gen.close();
 
