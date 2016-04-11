@@ -565,6 +565,24 @@ And change the end of the batch write method:
     }
 ```
 
+If you have StreamSets deployed behind a firewall that requires outbound connections to be made via a proxy, you can do so by adding an import for `HttpHost` and adding `viaProxy` to the Post:
+
+```java
+import org.apache.http.HttpHost
+
+...
+
+      int statusCode = Request.Post(getURL())
+              .viaProxy(new HttpHost(proxyHost, proxyPort))
+              .bodyString(writer.toString(), ContentType.TEXT_PLAIN)
+              .execute()
+              .returnResponse()
+              .getStatusLine()
+              .getStatusCode();
+```
+
+You would also need to add `proxyHost` and `proxyPort` to the destination's configuration.
+
 There is one final task to perform before we can send records to RequestBin. The default security policy for custom stages is quite restrictive. In particular, if you try to run this code, you will see the error:
 
 ```
@@ -578,6 +596,8 @@ grant codebase "file://${sdc.dist.dir}/user-libs/samplestage/-" {
   permission java.net.SocketPermission "requestb.in", "connect, resolve";
 };
 ```
+
+If you're connecting via a proxy, you should add your proxy's hostname in place of `requestb.in`.
 
 Now go to [RequestBin](http://requestb.in/) and create a new bin, if you have not already done so. After a build/extract/restart, paste your bin URL into the destination config:
 
