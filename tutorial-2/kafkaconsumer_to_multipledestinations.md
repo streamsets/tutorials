@@ -2,8 +2,6 @@
 
 In this part of the tutorial we will setup a pipeline that drains data from a Kafka Consumer, makes a couple of transformations and writes to multiple destinations.
 
-* Note: *If you'd like, feel free to download a previously created [pipeline](pipelines/KafkaConsumer_to_MultipleDestinations.json) that has been configured with the contents of this tutorial.*
-
 <img style="width:100%;" src="img/kafka_consumer_pipeline.png">
 
 You may remember the data we are reading simulates credit card information and contains the card number :
