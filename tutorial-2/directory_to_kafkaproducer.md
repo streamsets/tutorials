@@ -4,7 +4,6 @@
 ### Creating a Pipeline
 * Launch the Data Collector console and create a new pipeline.
 
-* Note: *If you like, you can download a [pipeline](pipelines/Directory_to_KafkaProducer_Tutorial_Part_1.json) that has already been configured with the contents of this tutorial.*
 
 #### Defining the Source
 * Drag the Directory origin stage into your canvas.
