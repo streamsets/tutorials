@@ -1,6 +1,6 @@
-# Tutorial: Ingesting Data into Hive/Impala
+# Ingesting Drifting Data into Hive and Impala
 
-[Data drift](https://streamsets.com/blog/start-with-why-data-drift/), the constant unplanned morphing of metadata, is a perennial problem for data engineers. Schema changes can break integrations and, in the worst case, silently propagate bad data through the system and lead to decisions being made based on faulty analysis.
+[Data drift](https://streamsets.com/blog/start-with-why-data-drift/), the constant unplanned morphing of data structure and semantics, is a perennial problem for data engineers. Schema changes can break integrations and, in the worst case, silently propagate bad data through the system and lead to decisions being made based on faulty analysis.
 
 In the past, data engineers would have to react to drift manually - looking for changes in the incoming schema, altering Hive tables by hand, and re-submitting broken ingest jobs. The [StreamSets Data Collector](https://streamsets.com/product/) [Hive Drift Solution](https://streamsets.com/documentation/datacollector/latest/help/#Hive_Metadata/HiveDriftSolution_title.html) addresses schema drift by automatically creating and altering tables in near real-time, making data immediately ready for consumption by end users. This tutorial walks you through setting up Hive Drift Solution for a simple use case.
 
@@ -78,7 +78,7 @@ Note - in this, and all other tabs, leave unlisted properties with their default
 
 In real-life we might use a longer query interval than the default 10 seconds, balancing resource utilization with data freshness, but we want to be able to see the data flowing in this tutorial! Be careful not to miss the **Create JDBC Namespace Headers** property on the **Advanced** tab - the Hive Metadata processor will not be able to work with the Decimal type without it!
 
-> You may be wondering if other origins will work with the Hive Drift Solution. The answer is yes, but some origins work better than others. The solution uses field type information in the incoming records to create corresponding schema in Hive. Database records read from JDBC contain this information, as do records read from files or message queues in the Avro or SDC data formats, but delimited data formats do not. Ingesting a delimited data file, the solution would still create a Hive table, but all columns would have STRING type.
+> You may be wondering if other origins will work with the Hive Drift Solution. The answer is yes, but some origins work better than others. The solution uses field type information in the incoming records to create corresponding schema in Hive. Database records read from JDBC contain this information, as do records read from files or message queues in the Avro or SDC data formats, but delimited data formats do not. Ingesting a delimited data file, the solution would still create a Hive table, but, by default, all columns would have STRING type.
 
 
 Configure the pipeline's **Error Records** property according to your preference. Since this is a tutorial, you could discard error records, but in a production system you would write them to a file or queue for later analysis.
@@ -95,7 +95,9 @@ Add the Hive Metadata processor, with its input linked to the JDBC Consumer’s 
 
 **Hive tab**:
 
-* **JDBC URL**: this has the form `jdbc:hive2://localhost:10000/default` but might vary depending on your environment. In particular, if you are using MapR with the default configuration, you will need to specify a username and password in the URL, thus: `jdbc:hive2://localhost:10000/default;user=<username>;password=<password>`
+* **JDBC URL**: this has the form `jdbc:hive2://localhost:10000/default` but might vary depending on your environment. In particular:
+    * If you are using MapR with the default configuration, you will need to specify a username and password in the URL, thus: `jdbc:hive2://localhost:10000/default;user=<username>;password=<password>`.
+    * If you are using Kerberos, you may need to add a principal parameter to specify the Hive Kerberos user.
 
 * **JDBC Driver Name**: for an Apache Hadoop environment, this will be `org.apache.hive.jdbc.HiveDriver`, otherwise you should specify the specific driver class for your distribution.
 
@@ -143,7 +145,7 @@ Configure the destination like this:
 
 * **Roll Attribute Name**: `roll`
 
-Note - the destination will continue writing to a file until the first of these four conditions is satisfied:
+Note - the destination will continue writing to a file until the first of these five conditions is satisfied:
 
 * The number of records specified in ‘Max Records in File’ has been written (zero means there is no maximum)
 
@@ -151,9 +153,13 @@ Note - the destination will continue writing to a file until the first of these 
 
 * No records have been written for the specified ‘Idle Timeout’
 
+* A record with the specified roll header attribute is processed
+
 * The pipeline is stopped
 
-We set **Max Records in File** set to 1 so the destination closes the file immediately after writing a single record, since we want to see data immediately. If we left the defaults in place, we wouldn’t see any data in Hive until an hour after it was written. This might be appropriate for a production deployment, but would make a very time-consuming tutorial!
+When the Hive Metadata processor detects a schema change, it sets the roll header attribute to signal to the destination that the data file should be ‘rolled’ - that is, the current file closed and a new file opened.
+
+We set **Max Records in File** set to 1 so the destination closes the file immediately after writing every record, since we want to see data immediately. If we left the defaults in place, we might not see some data in Hive until an hour after it was written. This might be appropriate for a production deployment, but would make a very time-consuming tutorial!
 
 To complete the pipeline, add a Hive Metastore destination, its input connected to the Hive Metadata processor’s #2 output, like this:
 
