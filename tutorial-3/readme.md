@@ -199,7 +199,7 @@ Now that our pipeline is successfully reading in JSON data, we need to calculate
             records[i].value.AREA = area * 6378137.0 * 6378137.0 / 2.0;
 
             // Write record to processor output
-            out.write(records[i]);
+            output.write(records[i]);
           } catch (e) {
             // Send record to error
             err.write(records[i], e);
