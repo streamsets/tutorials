@@ -202,7 +202,7 @@ Now that our pipeline is successfully reading in JSON data, we need to calculate
             output.write(records[i]);
           } catch (e) {
             // Send record to error
-            err.write(records[i], e);
+            error.write(records[i], e);
           }
         }
 
