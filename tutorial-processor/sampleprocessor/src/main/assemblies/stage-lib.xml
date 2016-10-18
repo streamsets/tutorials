@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright 2015 StreamSets Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+<!--
+  Common assembly used by stage library modules
+-->
+<assembly>
+  <id>stage-lib</id>
+  <formats>
+    <format>tar.gz</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+
+  <fileSets>
+  </fileSets>
+
+  <dependencySets>
+    <dependencySet>
+      <useProjectArtifact>true</useProjectArtifact>
+      <useTransitiveDependencies>true</useTransitiveDependencies>
+      <useTransitiveFiltering>true</useTransitiveFiltering>
+      <outputDirectory>/${project.artifactId}/lib</outputDirectory>
+      <unpack>false</unpack>
+      <scope>runtime</scope>
+      <excludes>
+        <!-- Jython must be packaged differently. -->
+        <exclude>org.python:jython-standalone</exclude>
+
+        <!--
+             Excluding Snappy from all stage libs as it must be in the root ClassLoader,
+             avail in SDC distro at SDC/root-lib/
+        -->
+        <exclude>org.xerial.snappy:snappy-java</exclude>
+      </excludes>
+    </dependencySet>
+  </dependencySets>
+
+</assembly>
