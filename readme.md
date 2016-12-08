@@ -19,3 +19,11 @@ The following tutorials demonstrate some StreamSets [Data Collector](http://gith
 - [Creating a StreamSets Spark Transformer](tutorial-spark-transformer/readme.md) - Build a simple Spark Transformer that computes a credit card's issuing network from its number.
 
 The Data Collector documentation also includes an [extended tutorial](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Overview.html) that walks through basic Data Collector functionality, including creating, previewing and running a pipeline, and creating alerts.
+
+# License
+
+StreamSets Data Collector and its tutorials are built on open source technologies; the tutorials and accompanying code are licensed with the [Apache License 2.0](LICENSE.txt).
+
+# Contributing Tutorials
+
+We welcome contributors! Please check out our [guidelines](CONTRIBUTING.md) to get started.
