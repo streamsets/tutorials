@@ -22,8 +22,8 @@ You can help in several different ways :
 
 To begin you first need to sign our [Contributor License Agreement](http://streamsets.com/contributing/).
 
-- To submit a pull request, fork [this repository](http://github.com/streamsets/datacollector) and clone your fork:
+- To submit a pull request, fork [this repository](http://github.com/streamsets/tutorials) and clone your fork:
 
-    `git clone git@github.com:<<your name>>/datacollector.git`
+    `git clone git@github.com:<<your name>>/tutorials.git`
 
 - Make your suggested changes, do a `git push` and submit a pull request.
