@@ -30,7 +30,7 @@ Before an application can send data to ADLS, it must be added to your Azure conf
 
    ![What do you want to do?](image_1.png)
 
-4. On the **Tell us about your application** screen, enter the application name, **StreamSets Data Collector**. Leave the default **Web Application and/or Web API** option selected and click the arrow to proceed.
+4. On the **Tell us about your application** screen, enter the application name, `StreamSets Data Collector`. Leave the default **Web Application and/or Web API** option selected and click the arrow to proceed.
 
    ![Tell us about your application](image_2.png)
 
@@ -42,7 +42,7 @@ Before an application can send data to ADLS, it must be added to your Azure conf
 
    ![Configure app](image_16.png)
 
-7. Scroll down to the **Keya** section, select a key duration and click **Save** (at the bottom of the page). Copy the resulting key value and keep it in a safe place for future use, as you will **NOT** be able to access it after you leave the page!
+7. Scroll down to the **Keys** section, select a key duration and click **Save** (at the bottom of the page). Copy the resulting key value and keep it in a safe place for future use, as you will **NOT** be able to access it after you leave the page!
 
 	![Keys](image_17.png)
 
@@ -93,11 +93,11 @@ Leave the Data Lake Store window open as we will need to copy some of its config
 
 Now that you've added StreamSets Data Collector as an Azure application, you can create a pipeline to write data to Azure Data Lake Store. We'll create a very simple pipeline here, reading records from a CSV-formatted file of New York City taxi transactions, masking out credit card numbers, and writing records in JSON format to a file in ADLS.
 
-1. Download the sample CSV data from https://www.streamsets.com/documentation/datacollector/sample_data/tutorial/nyc_taxi_data.csv and save it in a convenient location accessible to SDC.
+1. Download the [sample CSV data](https://www.streamsets.com/documentation/datacollector/sample_data/tutorial/nyc_taxi_data.csv) and save it in a convenient location accessible to SDC.
 
 2. In your browser, login to SDC and create a new pipeline. Click the **Error Records** tab in the configuration panel and set the pipeline's **Error Records** property according to your preference. Since this is a tutorial, you could discard error records, but in a production system you would write them to a file or queue for later analysis.
 
-3. Add a Directory origin and configure it as follows. Leave unmentioned fields with their default values.
+3. Add a **Directory** origin and configure it as follows. Leave unmentioned fields with their default values.
 
    **General** tab
 
@@ -115,7 +115,7 @@ Now that you've added StreamSets Data Collector as an Azure application, you can
 
    ![Directory origin](image_4.png)
 
-4. Add a Field Masker processor, with its input linked to the Directory’s output and configure it thus:
+4. Add a **Field Masker** processor, with its input linked to the Directory’s output and configure it thus:
 
    **General** tab
 
@@ -125,14 +125,14 @@ Now that you've added StreamSets Data Collector as an Azure application, you can
 
    * **Fields to Mask**: `/credit_card`
    * **Mask Type**: Regular Expression
-   * **Regular Expression**: (.*)([0-9]{4})
-   * **Groups To Show**: 2
+   * **Regular Expression**: `(.*)([0-9]{4})`
+   * **Groups To Show**: `2`
 
 5. Hit the **Preview** icon on the toolbar, and click **Run Preview**. Click the **Mask Card Number** stage, open the first record in the preview panel, and you should see the taxi transaction fields, including the credit card number before and after the masking process:
 
     ![Preview](image_5.png)
 
-7. Add an Azure Data Lake Store destination, with its input linked to the Field Masker's output and configuration:
+7. Add an **Azure Data Lake Store** destination, with its input linked to the Field Masker's output and configuration:
 
 	**General** tab
 
@@ -148,7 +148,7 @@ Now that you've added StreamSets Data Collector as an Azure application, you can
 
    	  ![Preview](image_18.png)
 
-   	* **Account FQDN**: copy the **URL** from the Data Lake Store overview. **IMPORTANT** paste only the fully-qualified domain name, for example, `sdctutorial.azuredatalakestore.net`, into this field. **DO NOT** paste the `https://` prefix!
+   	* **Account FQDN**: copy the **URL** from the Data Lake Store overview. **IMPORTANT**: paste only the fully-qualified domain name, for example, `sdctutorial.azuredatalakestore.net`, into this field. **DO NOT** paste the `https://` prefix!
 
       ![Data Lake Store](image_14.png)
 
