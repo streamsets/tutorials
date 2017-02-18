@@ -7,7 +7,7 @@ The tutorial has two components: adding SDC as an Azure application, which you n
 ## Prerequisites
 
 * [Download](https://streamsets.com/opensource/) and [install](https://streamsets.com/documentation/datacollector/latest/help/#Installation/InstallationAndConfig.html#concept_gbn_4lv_1r) StreamSets Data Collector (SDC). This tutorial uses SDC 2.3.0.1, but the instructions should apply to subsequent versions. Please [file an issue](https://github.com/streamsets/tutorials/issues/new) if this is not the case!
-* I highly recommend you complete the [taxi data tutorial](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Overview.html) included in the SDC documentation. It provides a great introduction to building data pipelines with SDC. In fact, if you have already done the taxi tutorial, you can duplicate the pipeline and use it here by just replacing the destination.
+* I highly recommend you complete the [taxi data tutorial](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Overview.html) included in the SDC documentation. It provides a great introduction to building data pipelines with SDC. In fact, if you have already done the taxi tutorial, you can duplicate the pipeline and use it here by just skipping the origin and processor steps and replacing the destination.
 * You will need a Microsoft Azure account. At the time of writing, you can [create a free Azure account](https://azure.microsoft.com/en-us/free/), including $200 free credit and 30 days of Azure services - more than enough to complete this tutorial!
 
 ## Azure Data Lake Store
