@@ -1,0 +1,1408 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><title>readme</title></head><body><article class="markdown-body"><h1 id="creating-a-streamsets-spark-transformer-in-scala"><a name="user-content-creating-a-streamsets-spark-transformer-in-scala" href="#creating-a-streamsets-spark-transformer-in-scala" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Creating a StreamSets Spark Transformer in Scala</h1>
+<p>Introduced in <a href="https://streamsets.com/blog/announcing-data-collector-ver-2-2-0-0/">StreamSets Data Collector version 2.2.0.0</a>, the <a href="https://streamsets.com/documentation/datacollector/latest/help/#Processors/Spark.html#concept_cpx_1lm_zx">Spark Evaluator</a> stage allows you to implement custom processing in an <a href="http://spark.apache.org/">Apache Spark</a> application. The Spark Application runs for the lifetime of the pipeline, processing batches of records as they arrive. You can configure the number of threads to run in the Spark Application, allowing you to take advantage of parallel processing. Your application can use the Spark libraries, manipulate data via RDDs, and call existing Java library code.</p>
+<p>This tutorial explains how to create a simple Apache Spark application, using Scala, that will compute the type of a credit card from its number, and configure the Spark Evaluator to use it.</p>
+<p>Many thanks to <a href="https://twitter.com/maurinlenglart">Maurin Lenglart</a> of <a href="http://cuberonlabs.com/">Cuberon Labs</a> for providing the skeleton Scala transformer.</p>
+<h2 id="prerequisites"><a name="user-content-prerequisites" href="#prerequisites" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Prerequisites</h2>
+<ul>
+<li><a href="https://streamsets.com/opensource/">Download</a> and <a href="https://streamsets.com/documentation/datacollector/latest/help/#Install_Config/InstallationAndConfig.html#concept_gbn_4lv_1r">install</a> StreamSets Data Collector (SDC). This tutorial uses SDC 2.2.0.0, but the instructions should apply to subsequent versions. Please <a href="https://github.com/streamsets/tutorials/issues/new">file an issue</a> if this is not the case!</li>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java Development Kit</a> (JDK) 1.7 or later is needed to work with Scala.</li>
+<li><a href="https://www.scala-lang.org/download/">Scala</a> version 2.10 or later and <a href="http://www.scala-sbt.org/download.html">sbt</a> version 0.13.</li>
+</ul>
+<p>The stage libraries that include the Spark Evaluator also include all necessary Spark dependencies. You do <em>not</em> need to download or install a Spark distribution.</p>
+<h2 id="implementing-a-skeleton-transformer"><a name="user-content-implementing-a-skeleton-transformer" href="#implementing-a-skeleton-transformer" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Implementing a Skeleton Transformer</h2>
+<p>The main class of the Spark Application must extend the <a href="https://github.com/streamsets/datacollector-plugin-api/blob/master/streamsets-datacollector-spark-api/src/main/java/com/streamsets/pipeline/spark/api/SparkTransformer.java"><code>com.streamsets.pipeline.spark.api.SparkTransformer</code></a> abstract class, implementing the <code>transform(JavaRDD&lt;Record&gt; recordRDD)</code> and, optionally, <code>init(JavaSparkContext context, List&lt;String&gt; parameters)</code> and <code>destroy()</code> methods.</p>
+<p>Here&rsquo;s a minimal implementation that simply returns its input as its output:</p>
+<pre><code>package com.streamsets.spark
+
+import com.streamsets.pipeline.api.Record
+import com.streamsets.pipeline.spark.api.SparkTransformer
+import com.streamsets.pipeline.spark.api.TransformResult
+import org.apache.spark.api.java.JavaPairRDD
+import org.apache.spark.api.java.JavaRDD
+import org.apache.spark.api.java.JavaSparkContext
+
+import java.io.Serializable
+import java.util
+
+class CustomTransformer extends SparkTransformer with Serializable {
+  var javaSparkContext: JavaSparkContext = _
+
+  override def init(javaSparkContextInstance: JavaSparkContext, params: util.List[String]): Unit = {
+    this.javaSparkContext = javaSparkContextInstance
+  }
+
+
+  override def transform(recordRDD: JavaRDD[Record]): TransformResult = {
+    // Create an empty errors JavaPairRDD
+    val emptyRDD: JavaRDD[(Record, String)] = javaSparkContext.emptyRDD
+    val errors = JavaPairRDD.fromJavaRDD(emptyRDD)
+
+    // Apply a map to the incoming records
+    val result: JavaRDD[Record] = recordRDD.rdd.map((record)=&gt; record)
+
+    // return result
+    new TransformResult(result, errors)
+  }
+
+}
+</code></pre>
+<p>Create a new directory for your Spark Transformer project, and save the above code there as <code>src/main/scala/CustomTransformer.scala</code>. You will also need a <code>build.sbt</code> file in the project directory itself:</p>
+<pre><code>name := "spark_transformer"
+
+version := "1.0"
+
+scalaVersion := "2.10.6"
+
+resolvers ++= Seq(
+  "cloudera" at "https://repository.cloudera.com/artifactory/cloudera-repos/"
+)
+
+libraryDependencies ++= Seq(
+  "com.streamsets" % "streamsets-datacollector-spark-api" % "2.2.0.0",
+  "org.apache.spark" % "spark-core_2.10" % "1.6.0-cdh5.9.1"
+)
+</code></pre>
+<p>Now build the project with <code>sbt clean package</code>:</p>
+<pre><code>$ sbt clean package
+[info] Loading project definition from /Users/pat/Downloads/spark_transformer/project
+[info] Set current project to spark_transformer (in build file:/Users/pat/Downloads/spark_transformer/)
+[success] Total time: 1 s, completed Feb 20, 2017 10:03:48 AM
+[info] Updating {file:/Users/pat/Downloads/spark_transformer/}spark_transformer...
+[info] Resolving org.fusesource.jansi#jansi;1.4 ...
+[info] Done updating.
+[info] Compiling 1 Scala source to /Users/pat/Downloads/spark_transformer/target/scala-2.10/classes...
+[info] Packaging /Users/pat/Downloads/spark_transformer/target/scala-2.10/spark_transformer_2.10-1.0.jar ...
+[info] Done packaging.
+[success] Total time: 16 s, completed Feb 20, 2017 10:04:04 AM
+</code></pre>
+<p>You should see a jar file in the <code>target/scala-2.10</code> directory:</p>
+<pre><code>$ ls target/scala-2.10
+classes       spark_transformer_2.10-1.0.jar
+</code></pre>
+<h2 id="installing-a-spark-transformer"><a name="user-content-installing-a-spark-transformer" href="#installing-a-spark-transformer" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Installing a Spark Transformer</h2>
+<p>Now that you have your JAR file, you need to make it available for SDC to load. In common with third party external libraries such as JDBC drivers, Spark Transformer JAR files must be located in a directory outside the SDC deployment.</p>
+<p>Create a directory for external library files - for example <code>/opt/extras</code> - if you have not already done so. Create a subdirectory there corresponding to the stage library you will be using. For example, if you plan to use the Spark Evaluator in the CDH 5.9 stage library, create a <code>streamsets-datacollector-cdh_5_9-lib</code> directory in <code>/opt/extras</code>. Now create a <code>lib</code> subdirectory there, so you end up with something like <code>/opt/extras/streamsets-datacollector-cdh_5_9-lib/lib</code>. Copy <code>spark_transformer_2.10-1.0.jar</code> from your project&rsquo;s <code>target/scala-2.10</code> directory to this <code>lib</code> directory.</p>
+<p>If you have not already configured SDC for the external library directory, you will need to edit the <code>sdc-env.sh</code> or <code>sdcd-env.sh</code> (depending whether you are starting SDC interactively or as a service) in SDC&rsquo;s <code>libexec</code> directory and set the <code>STREAMSETS_LIBRARIES_EXTRA_DIR</code> environment variable, like this:</p>
+<pre><code>export STREAMSETS_LIBRARIES_EXTRA_DIR="/opt/sdc-extras/"
+</code></pre>
+<p>You will also need to edit <code>$SDC_CONF/sdc-security.policy</code> and add a permission for external code:</p>
+<pre><code>// user-defined external directory
+grant codebase "file:///opt/sdc-extras/-" {
+  permission java.security.AllPermission;
+};
+</code></pre>
+<p>Restart SDC for the changes to take effect.</p>
+<h2 id="creating-a-pipeline-using-a-spark-transformer"><a name="user-content-creating-a-pipeline-using-a-spark-transformer" href="#creating-a-pipeline-using-a-spark-transformer" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Creating a Pipeline Using a Spark Transformer</h2>
+<p>Since the skeleton Spark Transformer simply passes records through unchanged, you could drop it into any pipeline to test it. Since we&rsquo;ll be extending the skeleton to operate on credit card data, we&rsquo;ll build a simple pipeline to read in a CSV file based on the New York City taxi transaction dataset.</p>
+<ol>
+<li>
+<p>Download the sample CSV file from <a href="https://www.streamsets.com/documentation/datacollector/sample_data/tutorial/nyc_taxi_data.csv">here</a>.</p>
+</li>
+<li>
+<p>In the SDC home screen, click the <strong>Create New Pipeline</strong> button, enter a suitable name and description and click <strong>Save</strong>. </p>
+</li>
+<li>
+<p>In the Properties panel, click the <strong>Error Records</strong> tab; for the <strong>Error Records</strong> property, select <strong>Write to File</strong>.<br />
+This writes error records to a file so you can deal with error records without having to stop the pipeline.</p>
+</li>
+<li>
+<p>Click the <strong>Error Records - Write to File</strong> tab and set <strong>Directory</strong> to an appropriate location on your machine. Note - this directory must exist for the pipeline to be started.</p>
+</li>
+<li>
+<p>Click <strong>Select Origin &gt; Directory</strong>, or, in the stage library, click the <strong>Directory</strong> origin to add a Directory origin to the pipeline.</p>
+</li>
+<li>
+<p>In the Properties panel, click the <strong>Files</strong> tab and configure the following properties.<br />
+Use the defaults for properties that aren&rsquo;t listed:</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Files Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Files Directory</td>
+<td>Directory where you saved the sample CSV file.</td>
+</tr>
+<tr>
+<td>File Name Pattern</td>
+<td><code>nyc_taxi_data.csv</code></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Click the <strong>Data Format</strong> tab and configure the following. <br />
+Use the defaults for properties that aren&rsquo;t listed:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Data Format Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data Format</td>
+<td><strong>Delimited</strong></td>
+</tr>
+<tr>
+<td>Header Line</td>
+<td><strong>With Header Line</strong></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<p>Click <strong>Select Processor &gt; Spark Evaluator - CDH 5.9.0</strong>, or, in the stage library, click the <strong>Spark Evaluator</strong> processor, then set the stage library to <strong>CDH 5.9.0</strong>.</p>
+</li>
+<li>
+<p>Click the <strong>Spark</strong> tab and configure the following. <br />
+Use the defaults for properties that aren&rsquo;t listed:</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Data Format Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parallelism</td>
+<td>For best performance, set this to the number of CPU cores in your machine</td>
+</tr>
+<tr>
+<td>Spark Transformer Class</td>
+<td><code>com.streamsets.spark.CustomTransformer</code></td>
+</tr>
+</tbody>
+</table>
+<p>Your pipeline should look like this:</p>
+<p><img alt="pipeline spark configuration" src="/Users/pat/src/tutorials/tutorial-spark-transformer-scala/image_0.png" /></p>
+<p>Don&rsquo;t worry about the fact that the Spark Evaluator has an open output stream; you can still preview the pipeline interactively to check that the Spark Transformer is correctly loaded. Click the preview icon above the pipeline canvas, click <strong>Run Preview</strong>, and then click the Spark Evaluator stage. Open up the first record in the preview panel and you will see the unmodified data:</p>
+<p><img alt="preview pipeline" src="/Users/pat/src/tutorials/tutorial-spark-transformer-scala/image_1.png" /></p>
+<h3 id="troubleshooting"><a name="user-content-troubleshooting" href="#troubleshooting" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Troubleshooting</h3>
+<pre><code>SPARK_01 - Specified class: 'com.streamsets.spark.CustomTransformer' was not found in classpath
+</code></pre>
+<p>If you see the above error message, check all the steps in <a href="#installing-a-spark-transformer">Installing a Spark Transformer</a> above. If it still doesn&rsquo;t work, feel free to reach out for help on the <a href="https://groups.google.com/a/streamsets.com/d/forum/sdc-user">sdc-user Google Group</a> or <a href="https://groups.google.com/a/streamsets.com/d/forum/sdc-user">our community Slack team</a>.</p>
+<pre><code>SPARK_07 - Spark job failed with error: null
+
+java.lang.InterruptedException
+</code></pre>
+<p>If you see either of the above error messages, the most likely problem is that Spark is taking too long to start. Increase <strong>Preview Timeout</strong> and try again.</p>
+<h2 id="extending-the-spark-transformer"><a name="user-content-extending-the-spark-transformer" href="#extending-the-spark-transformer" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Extending the Spark Transformer</h2>
+<p>Now that we have a very basic &lsquo;do nothing&rsquo; sample working, we can extend it. We&rsquo;ll reimplement the Jython script from the <a href="https://streamsets.com/documentation/datacollector/2.2.0.0/help/#Tutorial/Overview.html">&lsquo;Taxi Transactions&rsquo; tutorial</a> as a Spark Transformer in Scala. The script examines the value in the <code>credit_card</code> field and sets a <code>credit_card_type</code> field according to a set of <a href="https://en.wikipedia.org/wiki/Payment_card_number#Issuer_identification_number_.28IIN.29">credit card issuer prefixes</a> - &lsquo;4&rsquo; for Visa, &lsquo;51&rsquo;, &lsquo;52&rsquo;, &lsquo;53&rsquo;, &lsquo;54&rsquo; or &lsquo;55&rsquo; for Mastercard etc.</p>
+<p>Let&rsquo;s start with a basic implementation. Add this import near the top of <code>CustomTransformer.scala</code>:</p>
+<pre><code>import com.streamsets.pipeline.api.Field
+</code></pre>
+<p>Add a &lsquo;companion object&rsquo; above the class:</p>
+<p>Add the following code at the top of the <code>CustomTransformer</code> class, just before the <code>javaSparkContext</code> member variable:</p>
+<pre><code>private static final String VALUE_PATH = "/credit_card";
+private static final String RESULT_PATH = "/credit_card_type";
+var ccTypes = collection.immutable.ListMap(
+  "Visa" -&gt; Array("4"),
+  "Mastercard" -&gt; Array("51","52","53","54","55"),
+  "AMEX" -&gt; Array("34","37"),
+  "Diners Club" -&gt; Array("300","301","302","303","304","305","36","38"),
+  "Discover" -&gt; Array("6011","65"),
+  "JCB" -&gt; Array("2131","1800","35"),
+  "Other" -&gt; Array("")
+)
+</code></pre>
+<p>Now replace the <code>transform()</code> method with the following:</p>
+<pre><code>@Override
+public TransformResult transform(JavaRDD&lt;Record&gt; records) {
+  // Create an empty errors JavaPairRDD
+  JavaRDD&lt;Tuple2&lt;Record,String&gt;&gt; emptyRDD = javaSparkContext.emptyRDD();
+  JavaPairRDD&lt;Record, String&gt; errors = JavaPairRDD.fromJavaRDD(emptyRDD);
+
+  // Apply a map to the incoming records
+  JavaRDD&lt;Record&gt; result = records.map(new Function&lt;Record, Record&gt;() {
+    public Record call(Record record) throws Exception {
+      // Get the credit card number from the record
+      String creditCard = record.get(VALUE_PATH).getValueAsString();
+
+      // Look through the map of credit card types
+      for (Map.Entry&lt;String, String[]&gt; entry : ccTypes.entrySet()) {
+        // Find the first matching prefix
+        for (String prefix : entry.getValue()) {
+          if (creditCard.startsWith(prefix)) {
+            // Set the credit card type
+            record.set(RESULT_PATH, Field.create(entry.getKey()));
+            return record;
+          }
+        }
+      }
+
+      return record;
+    }
+  });
+  return new TransformResult(result, errors);
+}
+</code></pre>
+<p>Finally, repeat the process of building the project, copying <code>target/spark-transformer-example-1.0-SNAPSHOT.jar</code> to <code>/opt/extras/streamsets-datacollector-cdh_5_9-lib/lib</code> (or the appropriate location on your machine) and restart SDC.</p>
+<p>Preview the pipeline again and you will see that, this time, a new field has been added to each record, containing the credit card type:</p>
+<p><img alt="preview pipeline" src="/Users/pat/src/tutorials/tutorial-spark-transformer-scala/image_2.png" /></p>
+<h2 id="validating-input-records-and-reporting-errors"><a name="user-content-validating-input-records-and-reporting-errors" href="#validating-input-records-and-reporting-errors" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Validating Input Records and Reporting Errors</h2>
+<p>If you look at each of the first ten records, you will notice that some are cash transactions (<code>payment_type</code> is <code>CSH</code>) and do not contain credit card numbers. Since the non-existent number doesn&rsquo;t match any of the defined prefixes, the credit card type is set to <code>Other</code>. This isn&rsquo;t quite right. Let&rsquo;s stipulate that the transformer should only be called on records with a credit card number, and flag the record as an error if the credit card number is not present.</p>
+<p>Add the following imports to the top of CustomTransformer.java</p>
+<pre><code>import org.apache.spark.api.java.function.PairFlatMapFunction;
+import java.util.Iterator;
+import java.util.LinkedList;
+</code></pre>
+<p>Add the following method to the CustomTransformer class:</p>
+<pre><code>private static Boolean validateRecord(Record record) {
+  // We need a field to operate on!
+  Field field = record.get(VALUE_PATH);
+  if (field == null) {
+    return false;
+  }
+
+  // The field must contain a value!
+  String val = field.getValueAsString();
+  return val != null &amp;&amp; val.length() &gt; 0;
+}
+</code></pre>
+<p>Now replace the two lines of code that create the empty RDD of error records, at the top of <code>transform()</code>, with the following:</p>
+<pre><code>// Validate incoming records
+JavaPairRDD&lt;Record, String&gt; errors = records.mapPartitionsToPair(
+  new PairFlatMapFunction&lt;Iterator&lt;Record&gt;, Record, String&gt;() {
+    public Iterable&lt;Tuple2&lt;Record, String&gt;&gt; call(Iterator&lt;Record&gt; recordIterator) throws Exception {
+      List&lt;Tuple2&lt;Record, String&gt;&gt; errors = new LinkedList&lt;&gt;();
+      // Iterate through incoming records
+      while (recordIterator.hasNext()) {
+        Record record = recordIterator.next();
+        // Validate each record
+        if (!validateRecord(record)) {
+          // We have a problem - flag the record as an error
+          errors.add(new Tuple2&lt;&gt;(record, "Credit card number is missing"));
+        }
+      }
+      return errors;
+    }
+  });
+</code></pre>
+<p>This code creates an RDD of records and error messages. The <code>validateRecord</code> method is called on each record and, if it returns false, the record is flagged as an error, with an appropriate message.</p>
+<p>We&rsquo;ll also need to filter the invalid records out of the RDD on which transform is operating (unfortunately, there is no way of creating an RDD of errors and operating on the records in one shot). Replace these two lines of code:</p>
+<pre><code>// Apply a map to the incoming records
+JavaRDD&lt;Record&gt; result = records.map(new Function&lt;Record, Record&gt;() {
+</code></pre>
+<p>With these lines:</p>
+<pre><code>// Filter out invalid records before applying the map
+JavaRDD&lt;Record&gt; result = records.filter(new Function&lt;Record, Boolean&gt;() {
+  // Only operate on valid records
+  public Boolean call(Record record) throws Exception {
+    return validateRecord(record);
+  }
+}).map(new Function&lt;Record, Record&gt;() {
+</code></pre>
+<p>The <code>transform()</code> method should now look like this:</p>
+<pre><code>@Override
+public TransformResult transform(JavaRDD&lt;Record&gt; records) {
+  // Validate incoming records
+  JavaPairRDD&lt;Record, String&gt; errors = records.mapPartitionsToPair(
+    new PairFlatMapFunction&lt;Iterator&lt;Record&gt;, Record, String&gt;() {
+      public Iterable&lt;Tuple2&lt;Record, String&gt;&gt; call(Iterator&lt;Record&gt; recordIterator) throws Exception {
+        List&lt;Tuple2&lt;Record, String&gt;&gt; errors = new LinkedList&lt;&gt;();
+        // Iterate through incoming records
+        while (recordIterator.hasNext()) {
+          Record record = recordIterator.next();
+          // Validate each record
+          if (!validateRecord(record)) {
+            // We have a problem - flag the record as an error
+            errors.add(new Tuple2&lt;&gt;(record, "Credit card number is missing"));
+          }
+        }
+        return errors;
+      }
+    });
+
+  // Filter out invalid records before applying the map
+  JavaRDD&lt;Record&gt; result = records.filter(new Function&lt;Record, Boolean&gt;() {
+    // Only operate on valid records
+    public Boolean call(Record record) throws Exception {
+      return validateRecord(record);
+    }
+  }).map(new Function&lt;Record, Record&gt;() {
+    public Record call(Record record) throws Exception {
+      // Get the credit card number from the record
+      String creditCard = record.get(VALUE_PATH).getValueAsString();
+
+      // Look through the map of credit card types
+      for (Map.Entry&lt;String, String[]&gt; entry : ccTypes.entrySet()) {
+        // Find the first matching prefix
+        for (String prefix : entry.getValue()) {
+          if (creditCard.startsWith(prefix)) {
+            // Set the credit card type
+            record.set(RESULT_PATH, Field.create(entry.getKey()));
+            return record;
+          }
+        }
+      }
+
+      return record;
+    }
+  });
+  return new TransformResult(result, errors);
+}
+</code></pre>
+<p>Repeat the build, copy, restart cycle, and preview the pipeline. This time, you should see 7 errors reported by the Spark Evaluator stage. Click on the Spark Evaluator and you will see the error message reported against records with missing credit card numbers:</p>
+<p><img alt="error records" src="/Users/pat/src/tutorials/tutorial-spark-transformer-scala/image_3.png" /></p>
+<h2 id="configuring-the-spark-transformer"><a name="user-content-configuring-the-spark-transformer" href="#configuring-the-spark-transformer" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Configuring the Spark Transformer</h2>
+<p>Now that our transformer is validating its input, there&rsquo;s one final enhancement we can make. Right now, the mapping of credit card type to prefix is stored in the Java code. This means that, if we want to add another prefix or type, we have to recompile the transformer jar and copy it to all SDC instances that use it. It would be much better to have the list of prefixes in the pipeline configuration.</p>
+<p>If you look at the Spark tab for the Spark Evaluator stage, you&rsquo;ll see the <strong>Init Method Arguments</strong> property. This is a list of strings that is passed to the transformer&rsquo;s <code>init()</code> method when the pipeline starts. We can populate this list with our mappings, and parse it in <code>init()</code>.</p>
+<p>Remove the definition of <code>ccTypes</code>, and the static initializer block, and replace it with the following:</p>
+<pre><code>private HashMap&lt;String, String[]&gt; ccTypes = new HashMap&lt;&gt;();
+</code></pre>
+<p>Also remove the definition of <code>javaSparkContext</code> (we don&rsquo;t need it any more), and then replace <code>init()</code> with:</p>
+<pre><code>@Override
+public void init(JavaSparkContext javaSparkContext, List&lt;String&gt; params) {
+  // Params are in form "MasterCard=51,52,53,54,55"
+  for (String param : params) {
+    // Parse the credit card type and list of prefixes
+    String key = param.substring(0, param.indexOf('='));
+    String prefixes[] = param.substring(param.indexOf('=') + 1, param.length()).split(",");
+    ccTypes.put(key, prefixes);
+  }
+}
+</code></pre>
+<p>Since <code>ccTypes</code> is still a map of strings to arrays of strings, we don&rsquo;t need to modify the <code>transform()</code> method at all. Repeat the build, copy, restart process but, before you preview the pipeline, click the Spark Evaluator, and select the <strong>Spark</strong> tab in the configuration panel. Under <strong>Init Method Arguments</strong>, click <strong>Switch to bulk edit mode</strong> then paste in the following JSON:</p>
+<pre><code>[
+  "Visa=4",
+  "Mastercard=51,52,53,54,55",
+  "AMEX=34,37",
+  "Diners Club=300,301,302,303,304,305,36,38",
+  "Discover=6011,65",
+  "JCB=2131,1800,35",
+  "Other="
+]
+</code></pre>
+<p><img alt="credit card type configuration" src="/Users/pat/src/tutorials/tutorial-spark-transformer-scala/image_4.png" /></p>
+<p>This is the data that will be passed to the transformer&rsquo;s <code>init()</code> method at pipeline startup.</p>
+<p>Preview the pipeline and you should see that the credit card type is correctly computed, as before. Cancel the preview, click into the Spark Evaluator&rsquo;s Spark tab, and change <code>Mastercard</code> to <code>MC</code>. Preview again, and you should see that the credit card type for the second record is now <code>MC</code>:</p>
+<p><img alt="modified credit card type" src="/Users/pat/src/tutorials/tutorial-spark-transformer-scala/image_5.png" /></p>
+<h2 id="going-further"><a name="user-content-going-further" href="#going-further" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Going Further</h2>
+<p>If you&rsquo;ve done the <a href="https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Overview.html">NYC Taxi Transactions tutorial</a> in the SDC documentation, you might have realized that this transformer is a drop-in replacement for the Jython script in that pipeline. Try duplicating that pipeline and replacing the Jython Evaluator with a Spark Evaluator, configuring it as above. Since this pipeline uses Stream Selector to split card from cash transactions, you should not see any errors when previewing the first 10 records. If you run the pipeline on the entire input data set, however, you will see that some records have the &lsquo;CRD&rsquo; payment type but no credit card number. The transformer is correctly flagging erroneous records.</p>
+<p><img alt="modified credit card type" src="/Users/pat/src/tutorials/tutorial-spark-transformer-scala/image_6.png" /></p></article></body></html>
