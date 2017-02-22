@@ -210,7 +210,7 @@ Now replace the `transform()` method with the following:
       val errors = JavaPairRDD.fromJavaRDD(emptyRDD)
 
       // Apply a map to the incoming records
-      val result: JavaRDD[Record] = recordRDD.rdd.map((record: Record) => {
+      val result: JavaRDD[Record] = recordRDD.rdd.map(record => {
         val creditCard: String = record.get(CustomTransformer.VALUE_PATH).getValueAsString()
         val matches = ccTypes.filterNot(_._2.filter(creditCard.startsWith(_)).isEmpty)
         record.set(CustomTransformer.RESULT_PATH, Field.create(matches.head._1))
@@ -241,14 +241,7 @@ Add the following method to the CustomTransformer companion object, after the co
 
     def validateRecord(record: Record) : Boolean = {
       // We need a field to operate on!
-      val field = record.get(VALUE_PATH)
-      if (field == null) {
-        return false
-      }
-
-      // The field must contain a value!
-      val value = field.getValueAsString()
-      value != null && value.length() > 0
+      Option(record.get(VALUE_PATH)).exists(_.getValueAsString.length > 0)
     }
 
 Now replace the line of code that sets the `errors` value, near the top of `transform()`, with the following:
@@ -262,7 +255,7 @@ This code creates an RDD of records and error messages. The `validateRecord` met
 
 We'll also need to filter the invalid records out of the RDD on which transform is operating (unfortunately, there is no way of creating an RDD of errors and operating on the records in one shot). Replace these lines of code:
 
-    val result: JavaRDD[Record] = recordRDD.rdd.map((record: Record) => {
+    val result: JavaRDD[Record] = recordRDD.rdd.map(record => {
       val creditCard: String = record.get(CustomTransformer.VALUE_PATH).getValueAsString()
       val matches = ccTypes.filterNot(_._2.filter(creditCard.startsWith(_)).isEmpty)
       record.set(CustomTransformer.RESULT_PATH, Field.create(matches.head._1))
@@ -272,7 +265,7 @@ We'll also need to filter the invalid records out of the RDD on which transform 
 With these lines:
 
     val result = rdd.mapPartitions(iterator => {
-      iterator.filter(CustomTransformer.validateRecord(_)).map((record: Record) => {
+      iterator.filter(CustomTransformer.validateRecord(_)).map(record => {
         val creditCard: String = record.get(CustomTransformer.VALUE_PATH).getValueAsString()
         val matches = ccTypes.filterNot(_._2.filter(creditCard.startsWith(_)).isEmpty)
         record.set(CustomTransformer.RESULT_PATH, Field.create(matches.head._1))
@@ -292,7 +285,7 @@ The `transform()` method should now look like this:
 
       // Apply a map to the incoming records
       val result = rdd.mapPartitions(iterator => {
-        iterator.filter(CustomTransformer.validateRecord(_)).map((record: Record) => {
+        iterator.filter(CustomTransformer.validateRecord(_)).map(record => {
           val creditCard: String = record.get(CustomTransformer.VALUE_PATH).getValueAsString()
           val matches = ccTypes.filterNot(_._2.filter(creditCard.startsWith(_)).isEmpty)
           record.set(CustomTransformer.RESULT_PATH, Field.create(matches.head._1))
