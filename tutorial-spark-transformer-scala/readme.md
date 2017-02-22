@@ -206,20 +206,20 @@ Then add the following code at the top of the `CustomTransformer` class, just be
 
 Now replace the `transform()` method with the following:
 
-  override def transform(recordRDD: JavaRDD[Record]): TransformResult = {
-    val errors = JavaPairRDD.fromJavaRDD(emptyRDD)
+    override def transform(recordRDD: JavaRDD[Record]): TransformResult = {
+      val errors = JavaPairRDD.fromJavaRDD(emptyRDD)
 
-    // Apply a map to the incoming records
-    val result: JavaRDD[Record] = recordRDD.rdd.map((record: Record) => {
-      val creditCard: String = record.get(CustomTransformer.VALUE_PATH).getValueAsString()
-      val matches = ccTypes.filterNot(_._2.filter(creditCard.startsWith(_)).isEmpty)
-      record.set(CustomTransformer.RESULT_PATH, Field.create(matches.head._1))
-      record
-    })
+      // Apply a map to the incoming records
+      val result: JavaRDD[Record] = recordRDD.rdd.map((record: Record) => {
+        val creditCard: String = record.get(CustomTransformer.VALUE_PATH).getValueAsString()
+        val matches = ccTypes.filterNot(_._2.filter(creditCard.startsWith(_)).isEmpty)
+        record.set(CustomTransformer.RESULT_PATH, Field.create(matches.head._1))
+        record
+      })
 
-    // return result
-    new TransformResult(result, errors)
-  }
+      // return result
+      new TransformResult(result, errors)
+    }
 
 Finally, repeat the process of building the project, copying `target/scala-2.10/spark_transformer_2.10-1.0.jar` to `/opt/extras/streamsets-datacollector-cdh_5_9-lib/lib` (or the appropriate location on your machine) and restart SDC.
 
