@@ -24,7 +24,9 @@ The following tutorials demonstrate some StreamSets [Data Collector](http://gith
 
 - [Ingesting Drifting Data into Hive and Impala](tutorial-hivedrift/readme.md) - Build a pipeline that handles schema changes in MySQL, creating and altering Hive tables accordingly.
 
-- [Creating a StreamSets Spark Transformer](tutorial-spark-transformer/readme.md) - Build a simple Spark Transformer that computes a credit card's issuing network from its number.
+- [Creating a StreamSets Spark Transformer in Java](tutorial-spark-transformer/readme.md) - Build a simple Java Spark Transformer that computes a credit card's issuing network from its number.
+
+- [Creating a StreamSets Spark Transformer in Scala](tutorial-spark-transformer-scala/readme.md) - Build a simple Scala Spark Transformer that computes a credit card's issuing network from its number.
 
 The Data Collector documentation also includes an [extended tutorial](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Overview.html) that walks through basic Data Collector functionality, including creating, previewing and running a pipeline, and creating alerts.
 
