@@ -3,7 +3,7 @@ Creating a StreamSets Spark Transformer in Scala
 
 Introduced in [StreamSets Data Collector version 2.2.0.0](https://streamsets.com/blog/announcing-data-collector-ver-2-2-0-0/), the [Spark Evaluator](https://streamsets.com/documentation/datacollector/latest/help/#Processors/Spark.html#concept_cpx_1lm_zx) stage allows you to implement custom processing in an [Apache Spark](http://spark.apache.org/) application. The Spark Application runs for the lifetime of the pipeline, processing batches of records as they arrive. You can configure the number of threads to run in the Spark Application, allowing you to take advantage of parallel processing. Your application can use the Spark libraries, manipulate data via RDDs, and call existing Scala and Java library code.
 
-This tutorial explains how to create a simple Apache Spark application, using Scala, that will compute the type of a credit card from its number, and configure the Spark Evaluator to use it.
+This tutorial explains how to create a simple Apache Spark application, using Scala, that will compute the type of a credit card from its number, and configure the Spark Evaluator to use it. A [companion tutorial](../tutorial-spark-transformer/readme.md) explains how to implement the same functionality in Java.
 
 Many thanks to [Maurin Lenglart](https://twitter.com/maurinlenglart) of [Cuberon Labs](http://cuberonlabs.com/) for providing the skeleton Scala transformer.
 
