@@ -39,13 +39,12 @@ Here's a minimal implementation that simply returns its input as its output:
       var emptyRDD: JavaRDD[(Record, String)] = _
 
       override def init(javaSparkContextInstance: JavaSparkContext, params: util.List[String]): Unit = {
-        // Create an empty errors JavaPairRDD
+        // Create an empty JavaPairRDD to return as 'errors'
         emptyRDD = javaSparkContextInstance.emptyRDD
       }
 
-
       override def transform(recordRDD: JavaRDD[Record]): TransformResult = {
-        var rdd = recordRDD.rdd
+        val rdd = recordRDD.rdd
 
         val errors = emptyRDD
 
@@ -53,9 +52,8 @@ Here's a minimal implementation that simply returns its input as its output:
         val result = rdd.map((record)=> record)
 
         // return result
-        TransformResult(result.toJavaRDD(), new JavaPairRDD[Record, String](errors))
+        new TransformResult(result.toJavaRDD(), new JavaPairRDD[Record, String](errors))
       }
-
     }
 
 Create a new directory for your Spark Transformer project, and save the above code there as `src/main/scala/CustomTransformer.scala`. You will also need a `build.sbt` file in the project directory itself:
@@ -192,9 +190,9 @@ Add a 'companion object' above the class definition:
       val RESULT_PATH = "/credit_card_type"
     }
 
-Then add the following code at the top of the `CustomTransformer` class, just before the `javaSparkContext` member variable:
+Then add the following code at the top of the `CustomTransformer` class, just before the `emptyRDD` member variable:
 
-    var ccTypes = collection.immutable.ListMap(
+    val ccTypes = collection.immutable.ListMap(
       "Visa" -> Array("4"),
       "Mastercard" -> Array("51","52","53","54","55"),
       "AMEX" -> Array("34","37"),
@@ -218,7 +216,7 @@ Now replace the `transform()` method with the following:
       })
 
       // return result
-      new TransformResult(result, errors)
+      new TransformResult(result.toJavaRDD(), new JavaPairRDD[Record, String](errors))
     }
 
 Finally, repeat the process of building the project, copying `target/scala-2.10/spark_transformer_2.10-1.0.jar` to `/opt/extras/streamsets-datacollector-cdh_5_9-lib/lib` (or the appropriate location on your machine) and restart SDC.
