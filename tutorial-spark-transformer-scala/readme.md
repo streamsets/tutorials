@@ -188,6 +188,11 @@ Add a 'companion object' above the class definition:
     object CustomTransformer {
       val VALUE_PATH = "/credit_card"
       val RESULT_PATH = "/credit_card_type"
+
+      // Return true if creditCard starts with one of prefixList
+      def ccPrefixMatches(creditCard: String, prefixList: Array[String]) : Boolean = {
+        return !(prefixList.filter(creditCard.startsWith(_)).isEmpty)
+      }
     }
 
 Then add the following code at the top of the `CustomTransformer` class, just before the `emptyRDD` member variable:
@@ -210,7 +215,7 @@ Now replace the `transform()` method with the following:
       // Apply a map to the incoming records
       val result: JavaRDD[Record] = recordRDD.rdd.map(record => {
         val creditCard: String = record.get(CustomTransformer.VALUE_PATH).getValueAsString
-        val matches = ccTypes.filterNot(_._2.filter(creditCard.startsWith(_)).isEmpty)
+        val matches = ccTypes.filter((ccType) => CustomTransformer.ccPrefixMatches(creditCard, ccType._2))
         record.set(CustomTransformer.RESULT_PATH, Field.create(matches.head._1))
         record
       })
@@ -255,7 +260,7 @@ We'll also need to filter the invalid records out of the RDD on which transform 
 
     val result: JavaRDD[Record] = recordRDD.rdd.map(record => {
       val creditCard: String = record.get(CustomTransformer.VALUE_PATH).getValueAsString
-      val matches = ccTypes.filterNot(_._2.filter(creditCard.startsWith(_)).isEmpty)
+      val matches = ccTypes.filter((ccType) => CustomTransformer.ccPrefixMatches(creditCard, ccType._2))
       record.set(CustomTransformer.RESULT_PATH, Field.create(matches.head._1))
       record
     })
@@ -265,7 +270,7 @@ With these lines:
     val result = rdd.mapPartitions(iterator => {
       iterator.filter(CustomTransformer.validateRecord(_)).map(record => {
         val creditCard: String = record.get(CustomTransformer.VALUE_PATH).getValueAsString
-        val matches = ccTypes.filterNot(_._2.filter(creditCard.startsWith(_)).isEmpty)
+        val matches = ccTypes.filter((ccType) => CustomTransformer.ccPrefixMatches(creditCard, ccType._2))
         record.set(CustomTransformer.RESULT_PATH, Field.create(matches.head._1))
         record
       })
@@ -285,7 +290,7 @@ The `transform()` method should now look like this:
       val result = rdd.mapPartitions(iterator => {
         iterator.filter(CustomTransformer.validateRecord(_)).map(record => {
           val creditCard: String = record.get(CustomTransformer.VALUE_PATH).getValueAsString
-          val matches = ccTypes.filterNot(_._2.filter(creditCard.startsWith(_)).isEmpty)
+          val matches = ccTypes.filter((ccType) => CustomTransformer.ccPrefixMatches(creditCard, ccType._2))
           record.set(CustomTransformer.RESULT_PATH, Field.create(matches.head._1))
           record
         })
