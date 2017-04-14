@@ -48,7 +48,7 @@ Here's a minimal implementation that simply returns its input as its output:
 
         val errors = emptyRDD
 
-        // Apply a map to the incoming records
+        // Apply a function to the incoming records
         val result = rdd.map((record)=> record)
 
         // return result
@@ -212,7 +212,7 @@ Now replace the `transform()` method with the following:
     override def transform(recordRDD: JavaRDD[Record]): TransformResult = {
       val errors = JavaPairRDD.fromJavaRDD(emptyRDD)
 
-      // Apply a map to the incoming records
+      // Apply a function to the incoming records
       val result: JavaRDD[Record] = recordRDD.rdd.map(record => {
         val creditCard: String = record.get(CustomTransformer.VALUE_PATH).getValueAsString
         val matches = ccTypes.filter((ccType) => CustomTransformer.ccPrefixMatches(creditCard, ccType._2))
@@ -286,7 +286,7 @@ The `transform()` method should now look like this:
         iterator.filterNot(CustomTransformer.validateRecord(_)).map((_, "Credit card number is missing"))
       })
 
-      // Apply a map to the incoming records
+      // Apply a function to the incoming records
       val result = rdd.mapPartitions(iterator => {
         iterator.filter(CustomTransformer.validateRecord(_)).map(record => {
           val creditCard: String = record.get(CustomTransformer.VALUE_PATH).getValueAsString
