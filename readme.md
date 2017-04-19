@@ -16,6 +16,8 @@ The following tutorials demonstrate some StreamSets [Data Collector](http://gith
 
 - [Creating a Custom StreamSets Origin](tutorial-origin/readme.md) - Build a simple custom origin that reads a Git repository's commit log and produces the corresponding records.
 
+- [Creating a Custom Multithreaded StreamSets Origin](tutorial-origin/readme.md) - A more advanced tutorial focusing on building an origin that supports parallel execution, so the pipeline can run in multiple threads.
+
 - [Creating a Custom StreamSets Processor](tutorial-processor/readme.md) - Build a simple custom processor that reads metadata tags from image files and writes them to the records as fields.
 
 - [Creating a Custom StreamSets Destination](tutorial-destination/readme.md) - Build a simple custom destination that writes batches of records to a webhook.
