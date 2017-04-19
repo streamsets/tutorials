@@ -1,13 +1,17 @@
-Creating a Custom StreamSets Origin which Supports Parallel Execution
+Creating a Custom Multithreaded StreamSets Origin
 ===================================
 
 In [SDC](https://streamsets.com/products/sdc/) a multithreaded pipeline is a pipeline having an origin that supports parallel execution, so the pipeline can run in multiple threads. This tutorial explains how to get started writing your own custom Streamsets origin that supports parallel execution.  
-This tutorial completes the excellent [one](https://github.com/streamsets/tutorials/tree/master/tutorial-origin) by Pat Patterson available in the official SDC GitHub repository, which covers the creation process for a single threaded origin only. I highly recommend to follow that tutorial before starting with this one.  
-This tutorial refers to the SDC version 2.4.0.0, but the process should apply to newer versions as well.  
+
+This tutorial complements the [basic custom origin tutorial](https://github.com/streamsets/tutorials/tree/master/tutorial-origin), which covers the creation of a single threaded origin. You should complete that tutorial before starting on this one.
+This tutorial refers to SDC version 2.4.0.0, but the process should apply to newer versions as well.
+
+_Many thanks to Guglielmo Iozzia for contributing this tutorial!_
 ### What is a Streamsets Origin?
 In SDC an origin stage represents the source of data for a pipeline. An origin reads data from some source, producing records to be consumed by the remainder of the pipeline. Several origins are currently available in the SDC libraries and they cover the most popular data sources, but it is possible any way to implement custom origins through the Data Collector APIs.  
 ### Creating and Building an Origin Template  
-The process to create an origin template is the same described in Pat's tutorial. It requires [Apache Maven](https://maven.apache.org/).  
+The process to create an origin template is the same as described in the basic custom origin tutorial. It requires [Apache Maven](https://maven.apache.org/).  
+
 The first step to do is to create a new custom stage project. From a command shell execute:  
   
 ```    
@@ -18,7 +22,9 @@ $MAVEN_HOME/bin/mvn archetype:generate -DarchetypeGroupId=com.streamsets \
   
 During the execution of this command you will be asked for the groupId, artifactId and version for the project.  
 Maven generates a template project starting from the archetype in a directory which name is the provided artifactId. This is the structure for a newly created project:  
-[Origin project structure](https://github.com/streamsets/tutorials/blob/master/tutorial-origin/image_1.png)  
+
+![Origin project structure](../tutorial-origin/image_1.png)
+
 Through Maven you can then add the files for the project to be imported in your favourite IDE. For Eclipse, move to the root folder of the project and then execute:  
   
 ```  
@@ -27,7 +33,7 @@ $MAVEN_HOME/bin/mvn eclipse:eclipse
 Maven creates the template files also to implement a custom destination, a custom processor and a custom executor in the *destination*, *executor* and *processor* packages: you can delete them all because the goal here is to implement a new origin only.  
 ### Modifying the Origin Template Code
 #### Extending the Proper Parent Class
-The template code contains a class called ```SampleSource.java``` which extends the SDC ```BaseSource``` abstract class. The first change to do is to make the SampleSource class to extend ```com.streamsets.pipeline.api.base.BasePushSource```:  
+The template code contains a class called ```SampleSource.java``` which extends the SDC ```BaseSource``` abstract class. The first change to do is to make the SampleSource class extend ```com.streamsets.pipeline.api.base.BasePushSource```:  
 
 ```java  
 public abstract class SampleSource extends BasePushSource   
@@ -37,19 +43,19 @@ You have then to override the *produce* method for the new parent class
 ```java
 public void produce(Map<String, String> offsets, int maxBatchSize) throws StageException  
 ```  
-As you can see from its signature, this time there is of course no single offset, but a Map of offsets and no ```BatchMaker``` argument (because any thread has to start and manage its own ```BatchContext```).  
+As you can see from its signature, this time there is no single offset, but a Map of offsets and no ```BatchMaker``` argument (because any thread has to start and manage its own ```BatchContext```).  
 #### Implementing the Thread Class
 You need to add the code for the class (it could be an inner one) that implements the ```java.lang.Runnable``` interface:  
 
 ```java  
 public class RecordGeneratorThread implements Runnable
 ```  
-Implement a constructor for it. In this example we are going to implement just one expecting a single argument, an integer to identify  at runtime any single thread instance:  
+Implement a constructor for it. In this example we are going to implement just one constructor, expecting a single argument: an integer to identify at runtime any single thread instance:  
 
 ```java
 RecordGeneratorThread(int threadId)
 ```
-The action is in the overriden *run* method. There you need to start a  ```com.streamsets.pipeline.api.BatchContext```:  
+The action is in the overridden *run* method. There you need to start a  ```com.streamsets.pipeline.api.BatchContext```:  
 
 ```java
 BatchContext batchContext = getContext().startBatch();
@@ -72,7 +78,7 @@ and finally processed by the remainder of the pipeline:
 getContext().processBatch(batchContext);
 ```
 #### Thread Configuration
-In order to allow the set up of the number of threads to issue at each pipeline run, you can add a configuration parameter to the ```SampleDSource.java``` class:  
+In order to allow setup of the number of threads to start at each pipeline run, you can add a configuration parameter to the ```SampleDSource.java``` class:  
 
 ```java
 @ConfigDef(
