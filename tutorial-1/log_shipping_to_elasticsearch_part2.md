@@ -49,11 +49,11 @@ for record in records:
     user_agent = parse(record.value['agent'])
     record.value['browser'] = user_agent.browser.family
     # Write record to processor output
-    out.write(record)
+    output.write(record)
 
   except Exception as e:
     # Send record to error
-    err.write(record, str(e))
+    error.write(record, str(e))
 ```
 
 This piece of Python code parses the User Agent field denoted by ```record.value['agent']``` and uses the user_agent parser to figure out the browser family.
