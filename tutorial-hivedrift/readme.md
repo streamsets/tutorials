@@ -93,7 +93,21 @@ Now hit the preview button to check that you can read records from the database.
 
 Now that the pipeline is reading data from the database, you can configure the Hive Metadata processor. This processor analyzes the structure of incoming data, comparing it to the Hive Metastore schema and creates metadata records capturing the changes that are required in the Hive table structure.
 
-Add the Hive Metadata processor, with its input linked to the JDBC Consumer’s output and configure it thus:
+Note: SDC requires the configuration files for Hadoop and Hive to be accessible in a single directory. Before you add the Hive and Hadoop pipeline stages, create a directory named `hadoop-conf` under SDC's `resources` directory, and link the `core-site.xml`, `hdfs-site.xml` and `hive-site.xml` configuration files from your distribution into the `hadoop-conf` directory.
+
+For example:
+
+    cd <your SDC resources directory>
+    mkdir hadoop-conf
+    cd hadoop-conf
+    ln -s /path/to/hadoop/config/core-site.xml
+    ln -s /path/to/hadoop/config/hdfs-site.xml
+    ln -s /path/to/hive/config/hive-site.xml
+    cd ..
+    # Omit the following step if you did not create an sdc system user and group
+    chown -R sdc:sdc hadoop-conf
+
+Now you can add the Hive Metadata processor, with its input linked to the JDBC Consumer’s output and configure it thus:
 
 **Hive tab**:
 
@@ -109,7 +123,7 @@ Add the Hive Metadata processor, with its input linked to the JDBC Consumer’s 
 
 * **Partition Configuration**: hit the ‘-’ button to remove the dt entry. We will not be partitioning data in this tutorial.
 
-* **Hadoop Configuration Directory**: you may need to change this to suit your environment. This directory **must** contain the `core-site.xml`, `hdfs-site.xml` and `hive-site.xml` configuration files.
+* **Hadoop Configuration Directory**: `hadoop-conf`
 
 Note the use of `${record:attribute('jdbc.tables')}` as the table name - this will pass the MySQL table name through the pipeline to Hive.
 
@@ -177,7 +191,7 @@ Configure the Hive Metastore destination:
 
 * **Data Format**: Avro
 
-* **Hadoop Configuration Directory**: set this to the same value as it is in the Hive Metadata processor.
+* **Hadoop Configuration Directory**: `hadoop-conf`
 
 Now your pipeline is fully configured and ready for action! Hit the validate button to check for any typos, then hit ‘preview’. You should be able to click the different stages and see the input and output records. Note - you will not currently see metadata records on the Hive Metadata processor’s #2 output, but you can see them on the Hive Metastore’s input.
 
