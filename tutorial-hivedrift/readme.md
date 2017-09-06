@@ -2,15 +2,17 @@
 
 [Data drift](https://streamsets.com/blog/start-with-why-data-drift/), the constant unplanned morphing of data structure and semantics, is a perennial problem for data engineers. Schema changes can break integrations and, in the worst case, silently propagate bad data through the system and lead to decisions being made based on faulty analysis.
 
-In the past, data engineers would have to react to drift manually - looking for changes in the incoming schema, altering Hive tables by hand, and re-submitting broken ingest jobs. The [StreamSets Data Collector](https://streamsets.com/product/) [Hive Drift Solution](https://streamsets.com/documentation/datacollector/latest/help/#Hive_Metadata/HiveDriftSolution_title.html) addresses schema drift by automatically creating and altering tables in near real-time, making data immediately ready for consumption by end users. This tutorial walks you through setting up Hive Drift Solution for a simple use case.
+In the past, data engineers would have to react to drift manually - looking for changes in the incoming schema, altering Hive tables by hand, and re-submitting broken ingest jobs. The [StreamSets Data Collector](https://streamsets.com/product/) [Drift Synchronization](https://streamsets.com/documentation/datacollector/latest/help/#Hive_Drift_Solution/HiveDriftSolution_title.html#concept_fjj_zcf_2w) feature addresses schema drift by automatically creating and altering tables in near real-time, making data immediately ready for consumption by end users. This tutorial walks you through setting up Drift Synchronization for a simple use case.
 
-Here's the scenario: we want to ingest shipment records from a table in a relational database to a Hadoop environment where they can be queried with Apache Hive or Apache Impala. We'll create the source table, populate it with some initial data, create a pipeline using the Hive Drift Solution, and see data flowing into an automatically created Hive table from the Impala shell. Then we'll inject some data drift by adding a few columns to our table to support a new business requirement, and see how this change is propagated through the system, resulting in an updated table structure on the Hadoop side.
+Here's the scenario: we want to ingest shipment records from a table in a relational database to a Hadoop environment where they can be queried with Apache Hive or Apache Impala. We'll create the source table, populate it with some initial data, create a pipeline using Drift Synchronization, and see data flowing into an automatically created Hive table from the Impala shell. Then we'll inject some data drift by adding a few columns to our table to support a new business requirement, and see how this change is propagated through the system, resulting in an updated table structure on the Hadoop side.
 
 ![image alt text](RDBMS-SDC-Hive.png)
 
+This tutorial writes data using the [Avro](http://avro.apache.org/) data format. It is also possible to configure Drift Synchronization with [Parquet](http://parquet.apache.org/) - see the [Parquet Case Study](https://streamsets.com/documentation/datacollector/latest/help/index.html#Hive_Drift_Solution/HiveDriftSolution_title.html#concept_vl3_v2f_zz) for more details.
+
 ## Prerequisites
 
-The Hive Drift Solution is an advanced feature, so this tutorial skips the basics of installing StreamSets Data Collector (SDC), configuring a JDBC driver etc. If you're new to SDC, you should work through the [basic tutorial](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Tutorial-title.html) first.
+Drift Synchronization is an advanced feature, so this tutorial skips the basics of installing StreamSets Data Collector (SDC), configuring a JDBC driver etc. If you're new to SDC, you should work through the [basic tutorial](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Tutorial-title.html) first.
 
 You will need access to a Hive installation - you can use any of the [Cloudera](https://www.cloudera.com/), [MapR](https://www.mapr.com/) or [Hortonworks](http://hortonworks.com/) distributions, or a plain [Apache distribution](http://hadoop.apache.org/releases.html).
 
@@ -18,9 +20,9 @@ SDC will need to write to Hive and HDFS, so you should [configure a proxy user](
 
 You will also need a relational database, and you must have configured SDC to use your database's JDBC driver. This tutorial uses [MySQL](https://www.mysql.com/) as the source database; you should be able to use any database accessible via a JDBC driver.
 
-## Introducing the StreamSets Hive Drift Solution
+## Introducing StreamSets Drift Synchronization
 
-The Hive Drift Solution comprises three SDC stages: the [Hive Metadata](https://streamsets.com/documentation/datacollector/latest/help/Processors/HiveMetadata.html#concept_rz5_nft_zv) processor, the [Hive Metastore](https://streamsets.com/documentation/datacollector/latest/help/Destinations/HiveMetastore.html#concept_gcr_z2t_zv) destination and either of the [Hadoop FS](https://streamsets.com/documentation/datacollector/latest/help/Destinations/HadoopFS-destination.html#concept_awl_4km_zq) or [MapR FS](https://streamsets.com/documentation/datacollector/latest/help/Destinations/MapRFS.html#concept_spv_xlc_fv) destinations.
+Drift Synchronization comprises three SDC stages: the [Hive Metadata](https://streamsets.com/documentation/datacollector/latest/help/Processors/HiveMetadata.html#concept_rz5_nft_zv) processor, the [Hive Metastore](https://streamsets.com/documentation/datacollector/latest/help/Destinations/HiveMetastore.html#concept_gcr_z2t_zv) destination and either of the [Hadoop FS](https://streamsets.com/documentation/datacollector/latest/help/Destinations/HadoopFS-destination.html#concept_awl_4km_zq) or [MapR FS](https://streamsets.com/documentation/datacollector/latest/help/Destinations/MapRFS.html#concept_spv_xlc_fv) destinations.
 
 ![image alt text](image_0.png)
 
@@ -78,7 +80,7 @@ Note - in this, and all other tabs, leave unlisted properties with their default
 
 In real-life we might use a longer query interval than the default 10 seconds, balancing resource utilization with data freshness, but we want to be able to see the data flowing in this tutorial! Be careful not to miss the **Create JDBC Namespace Headers** property on the **Advanced** tab - the Hive Metadata processor will not be able to work with the Decimal type without it!
 
-> You may be wondering if other origins will work with the Hive Drift Solution. The answer is yes, but some origins work better than others. The solution uses field type information in the incoming records to create corresponding schema in Hive. Database records read from JDBC contain this information, as do records read from files or message queues in the Avro or SDC data formats, but delimited data formats do not. Ingesting a delimited data file, the solution would still create a Hive table, but, by default, all columns would have STRING type.
+> You may be wondering if other origins will work with the Drift Synchronization. The answer is yes, but some origins work better than others. The solution uses field type information in the incoming records to create corresponding schema in Hive. Database records read from JDBC contain this information, as do records read from files or message queues in the Avro or SDC data formats, but delimited data formats do not. Ingesting a delimited data file, the solution would still create a Hive table, but, by default, all columns would have STRING type.
 
 
 Configure the pipeline's **Error Records** property according to your preference. Since this is a tutorial, you could discard error records, but in a production system you would write them to a file or queue for later analysis.
@@ -135,7 +137,7 @@ Configure the destination like this:
 
 **Output Files tab**:
 
-* **Data Format**: Avro - note - this is currently the only output format supported by the Hive Drift Solution
+* **Data Format**: Avro
 
 * **Directory in Header**: Enabled
 
@@ -173,7 +175,7 @@ Configure the Hive Metastore destination:
 
 * **JDBC Driver Name**: set this also to the same value as it is in the Hive Metadata processor.
 
-* **Data Format**: Avro (currently the only option)
+* **Data Format**: Avro
 
 * **Hadoop Configuration Directory**: set this to the same value as it is in the Hive Metadata processor.
 
@@ -300,7 +302,7 @@ The Hive table is mirroring the changes to the MySQL table, and data continues t
 
 ## Conclusion
 
-This tutorial showed how the StreamSets Hive Drift Solution comprises the Hive Metadata processor, the Hive Metastore and either the Hadoop FS or MapR FS destination. You learned how the solution analyzes incoming record structure, reconciling it against the Hive schema and creating and altering Hive tables accordingly while sending data to HDFS or MapR FS.
+This tutorial showed how StreamSets Drift Synchronization comprises the Hive Metadata processor, the Hive Metastore and either the Hadoop FS or MapR FS destination. You learned how the solution analyzes incoming record structure, reconciling it against the Hive schema and creating and altering Hive tables accordingly while sending data to HDFS or MapR FS.
 
-This tutorial focused on the Hive Drift Solution and its component stages, but it’s worth noting that the Hive Drift Solution can be used in combination with any number of other SDC stages. For example, we could perform a lookup on the order_id field to obtain customer data, or call a web service to get city, state and country data for the latitude and longitude.
+This tutorial focused on Drift Synchronization and its component stages, but it’s worth noting that Drift Synchronization can be used in combination with any number of other SDC stages. For example, we could perform a lookup on the order_id field to obtain customer data, or call a web service to get city, state and country data for the latitude and longitude.
 
