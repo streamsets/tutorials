@@ -43,7 +43,7 @@ for record in records:
   try:
     cc = record.value['card_number']
     if cc == '':
-      err.write(record, "Credit Card Number was null")
+      error.write(record, "Credit Card Number was null")
       continue
 
     cc_type = ''
@@ -63,11 +63,11 @@ for record in records:
       cc_type = 'Other'
 
     record.value['credit_card_type'] = cc_type
-    out.write(record)
+    output.write(record)
 
   except Exception as e:
     # Send record to error
-    err.write(record, str(e))
+    error.write(record, str(e))
 
 ```
 
