@@ -5,7 +5,7 @@ Introduced in [StreamSets Data Collector version 2.2.0.0](https://streamsets.com
 
 This tutorial explains how to create a simple Apache Spark application, using Scala, that will compute the type of a credit card from its number, and configure the Spark Evaluator to use it. A [companion tutorial](../tutorial-spark-transformer/readme.md) explains how to implement the same functionality in Java.
 
-Many thanks to [Maurin Lenglart](https://twitter.com/maurinlenglart) of [Cuberon Labs](http://cuberonlabs.com/) for providing the skeleton Scala transformer.
+Many thanks to [Maurin Lenglart](https://twitter.com/maurinlenglart) of [Lore IO](http://getlore.io/) for providing the skeleton Scala transformer.
 
 Prerequisites
 -------------
