@@ -5,16 +5,25 @@ Introduced in [StreamSets Data Collector version 2.2.0.0](https://streamsets.com
 
 This tutorial explains how to create a simple Apache Spark application, using Scala, that will compute the type of a credit card from its number, and configure the Spark Evaluator to use it. A [companion tutorial](../tutorial-spark-transformer/readme.md) explains how to implement the same functionality in Java.
 
+If you have not yet completed the [NYC Taxi Transactions tutorial](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Overview.html) in the SDC documentation, I highly recommend that you do so. You must understand the basics of StreamSets Data Collector before moving on to advanced topics such as building a custom Spark Transformer.
+
 Many thanks to [Maurin Lenglart](https://twitter.com/maurinlenglart) of [Lore IO](http://getlore.io/) for providing the skeleton Scala transformer.
 
 Prerequisites
 -------------
 
-* [Download](https://streamsets.com/opensource/) and [install](https://streamsets.com/documentation/datacollector/latest/help/#Install_Config/InstallationAndConfig.html#concept_gbn_4lv_1r) StreamSets Data Collector (SDC). This tutorial uses SDC 2.2.0.0, but the instructions should apply to subsequent versions. Please [file an issue](https://github.com/streamsets/tutorials/issues/new) if this is not the case!
+* [Download](https://streamsets.com/opensource/) and [install](https://streamsets.com/documentation/datacollector/latest/help/#datacollector/UserGuide/Installation/InstallationAndConfig.html#concept_gbn_4lv_1r) StreamSets Data Collector (SDC). This tutorial uses SDC 3.1.0.0, but the instructions should apply to any version since 2.2.0.0. Please [file an issue](https://github.com/streamsets/tutorials/issues/new) if this is not the case!
 * [Java Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) 1.7 or later is needed to work with Scala.
-* [Scala](https://www.scala-lang.org/download/) version 2.10 or later and [sbt](http://www.scala-sbt.org/download.html) version 0.13.
+* [Scala](https://www.scala-lang.org/download/) version 2.10 or later and [sbt](http://www.scala-sbt.org/download.html) version 0.13 or later.
 
-The stage libraries that include the Spark Evaluator also include all necessary Spark dependencies. You do *not* need to download or install a Spark distribution.
+The stage libraries that include the Spark Evaluator also include all necessary Spark dependencies. You must [install one of the following stage libraries](https://streamsets.com/documentation/datacollector/latest/help/index.html#datacollector/UserGuide/Installation/AddtionalStageLibs.html#concept_fb2_qmn_bz) if you have not already done so:
+
+* CDH 5.8 or higher
+* CDH Spark 2.1
+* MapR 5.2 or higher
+* MapR Spark 2.1
+
+You do *not* need to download or install a Spark distribution.
 
 Implementing a Skeleton Transformer
 -----------------------------------
@@ -56,7 +65,7 @@ Here's a minimal implementation that simply returns its input as its output:
       }
     }
 
-Create a new directory for your Spark Transformer project, and save the above code there as `src/main/scala/CustomTransformer.scala`. You will also need a `build.sbt` file in the project directory itself:
+Create a new directory for your Spark Transformer project, and save the above code there as `src/main/scala/CustomTransformer.scala`. You will also need a `build.sbt` file in the project directory itself. Change the version of `streamsets-datacollector-spark-api` to match your SDC version, and change the version of org.apache.spark to match the stage library you will be using:
 
     name := "spark_transformer"
 
@@ -69,7 +78,7 @@ Create a new directory for your Spark Transformer project, and save the above co
     )
 
     libraryDependencies ++= Seq(
-      "com.streamsets" % "streamsets-datacollector-spark-api" % "2.2.0.0",
+      "com.streamsets" % "streamsets-datacollector-spark-api" % "3.1.0.0",
       "org.apache.spark" % "spark-core_2.10" % "1.6.0-cdh5.9.1"
     )
 
@@ -87,6 +96,8 @@ Now build the project with `sbt clean package`:
     [info] Done packaging.
     [success] Total time: 16 s, completed Feb 20, 2017 10:04:04 AM
 
+*Note* - you may see some warnings of version conflicts as the JAR is built. These are due to the 
+
 You should see a jar file in the `target/scala-2.10` directory:
 
     $ ls target/scala-2.10
@@ -95,18 +106,34 @@ You should see a jar file in the `target/scala-2.10` directory:
 Installing a Spark Transformer
 ------------------------------
 
-Now that you have your JAR file, you need to make it available for SDC to load. In common with third party external libraries such as JDBC drivers, Spark Transformer JAR files must be located in a directory outside the SDC deployment.
+Now that you have your JAR file, you need to make it available for SDC to load. In common with third party external libraries such as JDBC drivers, Spark Transformer JAR files must be manually installed into an 'external libraries' directory.
 
-Create a directory for external library files - for example `/opt/extras` - if you have not already done so. Create a subdirectory there corresponding to the stage library you will be using. For example, if you plan to use the Spark Evaluator in the CDH 5.9 stage library, create a `streamsets-datacollector-cdh_5_9-lib` directory in `/opt/extras`. Now create a `lib` subdirectory there, so you end up with something like `/opt/extras/streamsets-datacollector-cdh_5_9-lib/lib`. Copy `spark_transformer_2.10-1.0.jar` from your project's `target/scala-2.10` directory to this `lib` directory.
+Use the SDC Package Manager to install your JAR file. In SDC, click the **Package Manager** icon (top right):
 
-If you have not already configured SDC for the external library directory, you will need to edit the `sdc-env.sh` or `sdcd-env.sh` (depending whether you are starting SDC interactively or as a service) in SDC's `libexec` directory and set the `STREAMSETS_LIBRARIES_EXTRA_DIR` environment variable, like this:
+![package manager icon](image_7.png)
 
-    export STREAMSETS_LIBRARIES_EXTRA_DIR="/opt/sdc-extras/"
+In the navigation panel, click **External Libraries**:
 
-You will also need to edit `$SDC_CONF/sdc-security.policy` and add a permission for external code:
+![click external libraries](image_8.png)
+
+Immediately under the top right toolbar, click the **Install External Libraries** icon:
+
+![install external libraries](image_9.png)
+
+Select the stage library you will be using, for example **CDH 5.13.1**:
+
+![select stage library](image_10.png)
+
+Browse to select your JAR file and click **Open**, then click **Upload**.
+
+You will also need to edit `$SDC_CONF/sdc-security.policy` and add a permission for external code. To find the directory for external libraries, click **Administration** > **SDC Directories**:
+
+![SDC Directories](image_11.png)
+
+Copy the entry for **SDC Libraries Extra Directory** and create a new policy in the security policy file. For example, if your external library directory were `/opt/extras`, you would add a policy:
 
     // user-defined external directory
-    grant codebase "file:///opt/sdc-extras/-" {
+    grant codebase "file:///opt/extras/-" {
       permission java.security.AllPermission;
     };
 
@@ -224,7 +251,9 @@ Now replace the `transform()` method with the following:
       new TransformResult(result.toJavaRDD(), new JavaPairRDD[Record, String](errors))
     }
 
-Finally, repeat the process of building the project, copying `target/scala-2.10/spark_transformer_2.10-1.0.jar` to `/opt/extras/streamsets-datacollector-cdh_5_9-lib/lib` (or the appropriate location on your machine) and restart SDC.
+Your code should look like [this](https://gist.github.com/metadaddy/e793c2fc09109616b2af673c10cdadd6) when you're done.
+
+Finally, copy `target/scala-2.10/spark_transformer_2.10-1.0.jar` to `/opt/extras/streamsets-datacollector-cdh_5_9-lib/lib` (or the appropriate location on your machine) and restart SDC.
 
 Preview the pipeline again and you will see that, this time, a new field has been added to each record, containing the credit card type:
 
@@ -235,9 +264,8 @@ Validating Input Records and Reporting Errors
 
 If you look at each of the first ten records, you will notice that some are cash transactions (`payment_type` is `CSH`) and do not contain credit card numbers. Since the non-existent number doesn't match any of the defined prefixes, the credit card type is set to `Other`. This isn't quite right. Let's stipulate that the transformer should only be called on records with a credit card number, and flag the record as an error if the credit card number is not present.
 
-Add the following imports to the top of CustomTransformer.scala
+Add the following import to the top of CustomTransformer.scala
 
-    import com.streamsets.pipeline.api.Field
     import org.apache.spark.rdd.RDD
 
 Add the following method to the CustomTransformer companion object, after the constant definitions:
@@ -248,6 +276,8 @@ Add the following method to the CustomTransformer companion object, after the co
     }
 
 Now replace the line of code that sets the `errors` value, near the top of `transform()`, with the following:
+
+    var rdd = recordRDD.rdd
 
     // Validate incoming records
     val errors: RDD[(Record, String)] = rdd.mapPartitions(iterator => {
@@ -299,6 +329,7 @@ The `transform()` method should now look like this:
       new TransformResult(result.toJavaRDD(), new JavaPairRDD[Record, String](errors))
     }
 
+The file as a whole should now look like [this](https://gist.github.com/metadaddy/01834a79b65284902cbb84c5541eac4f).
 
 Repeat the build, copy, restart cycle, and preview the pipeline. This time, you should see 7 errors reported by the Spark Evaluator stage. Click on the Spark Evaluator and you will see the error message reported against records with missing credit card numbers:
 
@@ -319,7 +350,7 @@ Remove the definition of `ccTypes`, and the static initializer block, and replac
 
     val ccTypes = collection.mutable.LinkedHashMap[String, Array[String]]()
 
-Also remove the definition of `javaSparkContext` (we don't need it any more), and then replace `init()` with:
+Now replace `init()` with:
 
     override def init(javaSparkContextInstance: JavaSparkContext, params: util.List[String]): Unit = {
       for (param <- params) {
@@ -327,6 +358,8 @@ Also remove the definition of `javaSparkContext` (we don't need it any more), an
         ccTypes += (keyValue(0) -> (if (keyValue.size > 1) keyValue(1).split(",") else Array("")))
       }
     }
+
+The CustomTransformer.scala file should now look like [this](https://gist.github.com/metadaddy/6014a013f8cf3d638ba3a2984eb31113).
 
 Since `ccTypes` is still a map of strings to arrays of strings, we don't need to modify the `transform()` method at all. Repeat the build, copy, restart process but, before you preview the pipeline, click the Spark Evaluator, and select the **Spark** tab in the configuration panel. Under **Init Method Arguments**, click **Switch to bulk edit mode** then paste in the following JSON:
 
