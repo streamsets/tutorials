@@ -23,13 +23,17 @@ Next, download the source for the Data Collector and its API. You will want to e
 
 * [https://github.com/streamsets/datacollector/releases](https://github.com/streamsets/datacollector/releases)
 * [https://github.com/streamsets/datacollector-api/releases](https://github.com/streamsets/datacollector-api/releases)
+* [https://github.com/streamsets/datacollector-plugin-api/releases](https://github.com/streamsets/datacollector-plugin-api/releases)
 
 This tutorial uses version 1.2.2.0, but the instructions should apply to subsequent versions. Please [file an issue](https://github.com/streamsets/tutorials/issues/new) if this is not the case!
 
-You will need to build both the Data Collector and its API. Since we just need the pipeline library JAR files and we already have the SDC runtime, we can skip building the GUI and running tests, saving a bit of time:
+You will need to build both the Data Collector and its APIs. Since we just need the pipeline library JAR files and we already have the SDC runtime, we can skip building the GUI and running tests, saving a bit of time:
 
 ```sh
 $ cd datacollector-api
+$ mvn clean install -DskipTests
+...output omitted...
+$ cd ../datacollector-plugin-api
 $ mvn clean install -DskipTests
 ...output omitted...
 $ cd ../datacollector
