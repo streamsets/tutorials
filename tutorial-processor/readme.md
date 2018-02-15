@@ -21,37 +21,7 @@ A destination is implemented as one or more Java classes. Typically, one class e
 
 Follow the documentation to download, install and run StreamSets Data Collector. The [taxi data tutorial](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Overview.html) gives an excellent grounding in how SDC works, and also provides a handy supply of test data for your destination. I highly recommend you follow it, if you haven’t already done so.
 
-Next, download the source for the Data Collector and its API and plugin API. You will want to ensure that you have matching versions for the runtime and source, so you might find it easiest to download tarballs from the relevant GitHub release pages rather than using `git clone`:
-
-* [https://github.com/streamsets/datacollector/releases](https://github.com/streamsets/datacollector/releases)
-* [https://github.com/streamsets/datacollector-api/releases](https://github.com/streamsets/datacollector-api/releases)
-* [https://github.com/streamsets/datacollector-plugin-api/releases](https://github.com/streamsets/datacollector-plugin-api/releases)
-
 This tutorial uses version 2.1.0.0, but the instructions should apply to subsequent versions. Please [file an issue](https://github.com/streamsets/tutorials/issues/new) if this is not the case!
-
-You will need to build both the Data Collector and its API. Since we just need the pipeline library JAR files and we already have the SDC runtime, we can skip building the GUI and running tests, saving a bit of time:
-
-```sh
-$ cd datacollector-api
-$ mvn clean install -DskipTests
-...output omitted...
-$ cd ../datacollector-plugin-api
-$ mvn clean install -DskipTests
-...output omitted...
-$ cd ../datacollector
-$ mvn clean install -DskipTests
-...output omitted...
-```
-
-Maven puts the library JARs in its repository, so they’re available when we build our custom processor:
-
-```sh
-$ ls ~/.m2/repository/com/streamsets/streamsets-datacollector-commonlib/2.1.0.0/
-_remote.repositories
-streamsets-datacollector-commonlib-2.1.0.0-tests.jar
-streamsets-datacollector-commonlib-2.1.0.0.jar
-Streamsets-datacollector-commonlib-2.1.0.0.pom
-```
 
 Finally, create a new custom stage project using the Maven archetype:
 
