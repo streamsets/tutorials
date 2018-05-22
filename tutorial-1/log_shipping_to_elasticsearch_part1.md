@@ -100,28 +100,6 @@
 
  <img style="width:100%;" src="img/discard_errors.png">
 
-### Create a Mapping in Elasticsearch
-
-Use `curl` (or the Kibana Dev Tools console) to create a mapping to allow Elasticsearch to correctly interpret the `timestamp` and `geo` fields:
-
-```bash
-$ curl http://localhost:9200/logs -X PUT -H 'Content-Type: application/json' -d '{
-  "mappings": {
-    "logs": { 
-      "properties": { 
-        "geo": {
-          "type": "geo_point"
-        },
-        "timestamp":  {
-          "type": "date",
-          "format": "epoch_millis"
-        }
-      }
-    }
-  }
-}'
-```
-
 ### Preview the pipeline
 
 After you setup the pipeline you can hit the Preview button to examine the flow of a small subset of the data.
@@ -145,6 +123,8 @@ The preview mode lets you interactively debug your stage configurations.
  <img style="width:100%;" src="img/part1_kibana_dashboard.png">
 
   *Notice that the Browser Type graph doesn't show up in Kibana, we'll take care of that next in Part 2*
+
+  *If you don't see any data in Kibana, check that you created the mappings as mentioned in the [introduction](../readme.md)*
 
 ## Where to go from here
 
