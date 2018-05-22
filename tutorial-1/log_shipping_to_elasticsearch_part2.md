@@ -4,26 +4,31 @@ Now that we've examined the basics of how use Data Collector, let's see how to c
 
 ### Before We Begin
 * Clean up Elasticsearch - *delete any previous test data by running the following command.*
+
 ```bash
 $ curl -XDELETE 'http://localhost:9200/logs'
 ```
 
 * Recreate the Elasticsearch index:
+
 ```bash
-$ curl http://localhost:9200/logs -X PUT -H 'Content-Type: application/json' -d '{
-  "mappings": {
-    "logs": { 
-      "properties": { 
-        "geo": {
-          "type": "geo_point"
-        },
-        "timestamp":  {
-          "type": "date",
-          "format": "epoch_millis"
+$ curl -X PUT 'http://localhost:9200/logs' -d '{
+    "mappings": {
+        "logs" : {
+            "properties" : {
+                "timestamp": {
+                  "type": "date"
+                },
+                "geo": {
+                  "type": "geo_point"
+                },
+                "city": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                }
+            }
         }
-      }
     }
-  }
 }'
 ```
 

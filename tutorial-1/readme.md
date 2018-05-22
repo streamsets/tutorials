@@ -26,33 +26,38 @@ The log files contain standard Apache Combined Log Format Data.
 
 ### Setting up an index on Elasticsearch
 We will need to setup an index with the right mapping before we can use [Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html), here's how:
+
 ```bash
-$ curl -XPUT 'http://localhost:9200/logs' -d '{
+$ curl -X PUT 'http://localhost:9200/logs' -d '{
     "mappings": {
         "logs" : {
             "properties" : {
-                "timestamp": {"type": "date"},
-                "geo": {"type": "geo_point"},
+                "timestamp": {
+                  "type": "date"
+                },
+                "geo": {
+                  "type": "geo_point"
+                },
                 "city": {
-                    "type": "string",
-                "index": "not_analyzed"
+                  "type": "string",
+                  "index": "not_analyzed"
                 }
             }
         }
     }
-}
+}'
 ```
-This piece of code effectively creates in index called "logs" and defines a few field types:
-* *timestamp* - this is a date field
-* *geo* - this is a geo_point field that has lat/lon attributes
-* *city* - this is a string type that is not analyzed thus preventing Elasticsearch from truncating the data
+This piece of code creates an index called "logs" and defines a few field types:
 
-*You can use the excellent [Postman API Tool](http://www.getpostman.com/) to interact with Elasticsearch via API*.
+* `timestamp` - this is a date field
+* `geo` - this is a geo_point field that has lat/lon attributes
+* `city` - this is a string type that is not analyzed thus preventing Elasticsearch from truncating the data
+
+*You can use the [Kibana Dev Tools Console](https://www.elastic.co/guide/en/kibana/current/console-kibana.html) or the [Postman API Tool](http://www.getpostman.com/) to interact with Elasticsearch via API*.
 
 ### Installing StreamSets
 * Download and install the latest [StreamSets Data Collector](https://streamsets.com/opensource) binaries.
 
-
 ## Let's Get Started
-* [Part 1 - Basic Log Preparation](./log_shipping_to_elasticsearch_part1.md)
+* [Part 1 - Basic Log Preparation](log_shipping_to_elasticsearch_part1.md)
 * [Part 2 - Enhancing Log Data & Preparing for Production](log_shipping_to_elasticsearch_part2.md)
