@@ -5,10 +5,6 @@
 ### Creating a Pipeline
 * Open the Data Collector and create a new pipeline.
 
-* Note: *If you'd like, feel free to download a previously created [pipeline](pipelines/Directory_to_ElasticSearch_Tutorial_Part_1.json) that has been configured with the contents of this tutorial. In the Data Collector Main Screen, select Import Pipeline to begin*
-
- <img style="width:80%;" src="img/import_pipeline.png">
-
  #### Defining the source
 
  * Drag the 'Directory' origin stage into your canvas.
@@ -19,12 +15,9 @@
 
  * Enter the following settings :
 
-   * **Data Format** - Log
    * **Files Directory** - the absolute file path to the directory containing the sample .log.gz files
    * **File Name Pattern** - `*.gz`
    *this will pick up all .gz files in this folder, you can use any wildcard to narrow down your selection*
-   * **Files Compression** - Compressed File
-
 
  * In the *Post Processing* tab make sure **File Post Processing** is set to None.
 
@@ -32,7 +25,11 @@
 
     <img style="width:100%;" src="img/directory_config_postproc.png">
 
-  * In the **Log** Tab set the **Log Format** option to Combined Log Format.
+  * In the **Data Format** Tab, configure the following settings :
+
+    * **Data Format** - Log
+    * **Compression Format** - Compressed File
+    * **Log Format** - Combined Log Format.
 
     *Note:The Data Collector already knows the format of the Combined Log Format and a few other log types, and has built in RegEx patterns to decode them. If you are working with custom log formats choose either Regular Expression or Grok Pattern from the dropdown and define your own format.*
 
@@ -51,7 +48,7 @@
  #### Converting Fields
  By default the Data Collector will read the fields in the log file as string values, this works for most fields however we know that Web Server logs contain numeric values for Response Code, Bytes Transferred and a Date Time stamp. Let's convert these fields into the right data types.
 
- * Drag and drop a 'Field Converter' stage into the pipeline.
+ * Drag and drop a 'Field Type Converter' stage into the pipeline.
 
  * Go to its Configuration and select the 'Conversions' tab.
 
@@ -79,7 +76,9 @@
 
  <img style="width:100%;" src="img/geo_ip.png">
 
- * In the 'GeoIP2 Database File' textbox type 'GeoLite2-City.mmdb'
+ * In the 'GeoIP2 Database File' textbox type `GeoLite2-City.mmdb`
+
+ * Set 'GeoIP2 Database Type' to 'CITY'
 
  * Under 'Input Field Name' type `/clientip` and set its corresponding 'Output Field Name' to `/city` and select `CITY_NAME` under 'GeoIP2 Field'.
 
@@ -91,19 +90,37 @@
 
  * Finally let's specify a destination, and drag and drop an 'ElasticSearch' stage to the Canvas.
 
- * Go to its Configuration and select the 'General' Tab. In the drop down for 'Stage Library' select the version of ElasticSearch you are running.
-
  <img style="width:100%;" src="img/elastic_config.png">
 
- * Go to the 'ElasticSearch' Tab and in the 'Cluster Name' textbox enter the name of your cluster as specified in elasticsearch.yml
-
- * In the 'Cluster URI' field specify the host:port where your ElasticSearch service is running
+ * Go to the 'ElasticSearch' Tab and in the 'Cluster HTTP URIs' field specify the host:port where your ElasticSearch RESTful API is running.
 
  * In 'Index' and 'Mapping' textboxes write `logs`. This is the index and mapping we setup earlier in this tutorial.
 
  * Finally before we do anything with the Pipeline click on any blank spot on the canvas, go to Configuration and the 'Error Records' tab. And under 'Error Records' select 'Discard(Library:Basic)'. This effectively tells the system to discard any erroneous data. In a real production system you can choose to send error records to a number of different systems.
 
  <img style="width:100%;" src="img/discard_errors.png">
+
+### Create a Mapping in Elasticsearch
+
+Use `curl` (or the Kibana Dev Tools console) to create a mapping to allow Elasticsearch to correctly interpret the `timestamp` and `geo` fields:
+
+```bash
+$ curl http://localhost:9200/logs -X PUT -H 'Content-Type: application/json' -d '{
+  "mappings": {
+    "logs": { 
+      "properties": { 
+        "geo": {
+          "type": "geo_point"
+        },
+        "timestamp":  {
+          "type": "date",
+          "format": "epoch_millis"
+        }
+      }
+    }
+  }
+}'
+```
 
 ### Preview the pipeline
 
@@ -123,7 +140,7 @@ The preview mode lets you interactively debug your stage configurations.
 
  <img style="width:100%;" src="img/geoip_errors.png">
 
-* You can fireup a [Kibana Dashboard](kibana/ApacheWebLog.json) to view the results of the import into ElasticSearch
+* You can fireup a [Kibana Dashboard](kibana/ApacheWebLog.json) to view the results of the import into ElasticSearch. Note - when you create the Index Pattern in Kibana, do NOT select `timestamp` as the time filter field; you must select 'I don't want to use the Time Filter' for Kibana to correctly visualize the data.
 
  <img style="width:100%;" src="img/part1_kibana_dashboard.png">
 
