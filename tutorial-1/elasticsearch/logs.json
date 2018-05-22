@@ -7,10 +7,6 @@
                 },
                 "geo": {
                   "type": "geo_point"
-                },
-                "city": {
-                  "type": "string",
-                  "index": "not_analyzed"
                 }
             }
         }
