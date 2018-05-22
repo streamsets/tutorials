@@ -13,22 +13,18 @@ $ curl -XDELETE 'http://localhost:9200/logs'
 
 ```bash
 $ curl -X PUT 'http://localhost:9200/logs' -d '{
-    "mappings": {
-        "logs" : {
-            "properties" : {
-                "timestamp": {
-                  "type": "date"
-                },
-                "geo": {
-                  "type": "geo_point"
-                },
-                "city": {
-                  "type": "string",
-                  "index": "not_analyzed"
-                }
-            }
+  "mappings": {
+    "logs" : {
+      "properties" : {
+        "timestamp": {
+          "type": "date"
+        },
+        "geo": {
+          "type": "geo_point"
         }
+      }
     }
+  }
 }'
 ```
 

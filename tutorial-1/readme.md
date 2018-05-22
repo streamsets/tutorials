@@ -29,29 +29,24 @@ We will need to setup an index with the right mapping before we can use [Elastic
 
 ```bash
 $ curl -X PUT 'http://localhost:9200/logs' -d '{
-    "mappings": {
-        "logs" : {
-            "properties" : {
-                "timestamp": {
-                  "type": "date"
-                },
-                "geo": {
-                  "type": "geo_point"
-                },
-                "city": {
-                  "type": "string",
-                  "index": "not_analyzed"
-                }
-            }
+  "mappings": {
+    "logs" : {
+      "properties" : {
+        "timestamp": {
+          "type": "date"
+        },
+        "geo": {
+          "type": "geo_point"
         }
+      }
     }
+  }
 }'
 ```
 This piece of code creates an index called "logs" and defines a few field types:
 
 * `timestamp` - this is a date field
 * `geo` - this is a geo_point field that has lat/lon attributes
-* `city` - this is a string type that is not analyzed thus preventing Elasticsearch from truncating the data
 
 *You can use the [Kibana Dev Tools Console](https://www.elastic.co/guide/en/kibana/current/console-kibana.html) or the [Postman API Tool](http://www.getpostman.com/) to interact with Elasticsearch via API*.
 
