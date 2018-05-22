@@ -1,15 +1,18 @@
 {
-  "mappings": {
-    "logs": { 
-      "properties": { 
-        "geo": {
-          "type": "geo_point"
-        },
-        "timestamp":  {
-          "type": "date",
-          "format": "epoch_millis"
+    "mappings": {
+        "logs" : {
+            "properties" : {
+                "timestamp": {
+                  "type": "date"
+                },
+                "geo": {
+                  "type": "geo_point"
+                },
+                "city": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                }
+            }
         }
-      }
     }
-  }
 }
