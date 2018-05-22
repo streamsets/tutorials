@@ -1,0 +1,15 @@
+{
+  "mappings": {
+    "logs": { 
+      "properties": { 
+        "geo": {
+          "type": "geo_point"
+        },
+        "timestamp":  {
+          "type": "date",
+          "format": "epoch_millis"
+        }
+      }
+    }
+  }
+}
