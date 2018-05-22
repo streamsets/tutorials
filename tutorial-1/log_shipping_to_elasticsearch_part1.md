@@ -124,7 +124,7 @@ The preview mode lets you interactively debug your stage configurations.
 
   *Notice that the Browser Type graph doesn't show up in Kibana, we'll take care of that next in Part 2*
 
-  *If you don't see any data in Kibana, check that you created the mappings as mentioned in the [introduction](../readme.md)*
+  *If you don't see any data in Kibana, check that you created the mappings as mentioned in the [introduction](readme.md)*
 
 ## Where to go from here
 
