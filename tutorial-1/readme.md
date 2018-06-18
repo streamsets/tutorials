@@ -28,7 +28,7 @@ The log files contain standard Apache Combined Log Format Data.
 We will need to setup an index with the right mapping before we can use [Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html), here's how:
 
 ```bash
-$ curl -X PUT 'http://localhost:9200/logs' -d '{
+$ curl -X PUT -H "Content-Type: application/json" 'http://localhost:9200/logs' -d '{
   "mappings": {
     "logs" : {
       "properties" : {

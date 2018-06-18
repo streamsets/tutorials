@@ -12,7 +12,7 @@ $ curl -XDELETE 'http://localhost:9200/logs'
 * Recreate the Elasticsearch index:
 
 ```bash
-$ curl -X PUT 'http://localhost:9200/logs' -d '{
+$ curl -X PUT -H "Content-Type: application/json" 'http://localhost:9200/logs' -d '{
   "mappings": {
     "logs" : {
       "properties" : {
