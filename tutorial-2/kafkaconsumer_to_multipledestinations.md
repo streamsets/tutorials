@@ -28,10 +28,6 @@ We don't want to store credit card information in any of our data stores so this
 
 * Set the Broker URI, Zookeeper URI and topic name to match the settings in your environment.
 
-#### Field Converter
-* It so happens that the card number field is defined as an integer in Avro. We will want to convert this to a string value. So type '/card_number' in the 'Fields to Convert' text box and set it to type String in 'Convert to String'
-<img style="width:100%;" src="img/field_converter_config.png">
-
 #### Jython Evaluator
 * In this stage we'll use a small piece of python code to look at the first few digits of the card number and figure out what type of card it is. We'll add that card type to a new field called 'credit_card_type'.
 
