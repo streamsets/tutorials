@@ -11,7 +11,7 @@ The goal of this tutorial is read Avro files from a file system directory and wr
 
 ## Prerequisites
 * A working instance of StreamSets Data Collector
-* A working Kafka 0.9 (or older) instance
+* A working Kafka instance (see the [Quickstart](http://kafka.apache.org/quickstart) for easy local setup. Last tested on version 1.1.0 but older and newer versions should work too.)
 * A copy of this tutorials directory containing the [sample data](../sample_data)
 
 ## Our Setup

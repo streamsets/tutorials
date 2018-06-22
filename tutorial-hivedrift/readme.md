@@ -54,7 +54,7 @@ Open a terminal and run the MySQL shell, logging in to your database. Paste the 
 
 ## Creating a Pipeline
 
-Now let's get some data flowing! In your browser, login to SDC and create a new pipeline. Add a JDBC Consumer origin and configure it:
+Now let's get some data flowing! In your browser, login to SDC and create a new pipeline. Add a JDBC Query Consumer origin and configure it:
 
 **JDBC tab**
 
