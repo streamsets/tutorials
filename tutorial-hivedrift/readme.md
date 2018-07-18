@@ -100,9 +100,9 @@ For example:
     cd <your SDC resources directory>
     mkdir hadoop-conf
     cd hadoop-conf
-    ln -s /path/to/hadoop/config/core-site.xml
-    ln -s /path/to/hadoop/config/hdfs-site.xml
-    ln -s /path/to/hive/config/hive-site.xml
+    ln -s <path to hadoop config>/core-site.xml
+    ln -s <path to hadoop config>/hdfs-site.xml
+    ln -s <path to hive config>/hive-site.xml
     cd ..
     # Omit the following step if you did not create an sdc system user and group
     chown -R sdc:sdc hadoop-conf
