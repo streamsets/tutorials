@@ -6,7 +6,7 @@ This tutorial explains how to create a simple microservice pipeline, implementin
 
 ## Prerequisites
 
-* StreamSets Data Collector 3.4.0 or higher
+* [StreamSets Data Collector 3.4.0 or higher](https://streamsets.com/opensource/)
 * A relational database. This tutorial uses [MySQL](https://www.mysql.com/) as the source database. You should be able to use any database accessible via a JDBC driver, though you may need to tweak the SQL statements used to create a table and insert data.
 
 You must configure SDC to use your database's JDBC driver. See the [documentation on installing external libraries](https://streamsets.com/documentation/datacollector/latest/help/index.html#datacollector/UserGuide/Configuration/ExternalLibs.html#concept_pdv_qlw_ft). Note in particular for MySQL that you must use the version of the JDBC driver corresponding to your MySQL server. We have seen problems using a version 8 driver with the version 5.x database.
