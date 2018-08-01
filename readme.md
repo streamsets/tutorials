@@ -30,6 +30,8 @@ The following tutorials demonstrate some StreamSets [Data Collector](http://gith
 
 - [Creating a StreamSets Spark Transformer in Scala](tutorial-spark-transformer-scala/readme.md) - Build a simple Scala Spark Transformer that computes a credit card's issuing network from its number.
 
+- [Creating a CRUD Microservice Pipeline](tutorial-crud-microservice/readme.md) - Build a microservice pipeline to implement a RESTful web service that reads from and writes to a database via JDBC.
+
 The Data Collector documentation also includes an [extended tutorial](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Overview.html) that walks through basic Data Collector functionality, including creating, previewing and running a pipeline, and creating alerts.
 
 # License

@@ -1,6 +1,6 @@
-# Building a CRUD Microservice Pipeline
+# Creating a CRUD Microservice Pipeline
 
-StreamSets Data Collector version 3.4.0 introduced microservice pipelines - a new type of dataflow pipeline for implementing RESTful web services natively in Data Collector. Microservice pipelines use a REST Service origin, similar to the HTTP Server origin, to listen for JSON-formatted requests. Where the HTTP Server origin was limited in the response it could return to the HTTP client, the REST Service origin works with the new Send to Origin Response destination to allow you to control the HTTP response code and payload.
+StreamSets Data Collector version 3.4.0 introduced microservice pipelines - a new type of dataflow pipeline for implementing RESTful web services natively in Data Collector. Microservice pipelines use a REST Service origin, similar to the HTTP Server origin, to listen for JSON-formatted requests. Where the HTTP Server origin was limited in the response it could return to the HTTP client, the REST Service origin works with the new Send Response to Origin destination to allow you to control the HTTP response code and payload.
 
 This tutorial explains how to create a simple microservice pipeline, implementing create, read, update and delete (CRUD) operations against a MySQL database. Some pre-existing knowledge of Data Collector, MySQL, and RESTful web services is assumed. You should complete the [basic Data Collector tutorial](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Overview.html) if you have not already done so.
 
@@ -19,7 +19,7 @@ From the Data Collector home page, click the 'Create New Pipeline' button. Enter
 
 If you do not see the 'Microservice Pipeline' option, check your Data Collector version - you need version 3.4.0 or higher.
 
-The pipeline is initialized with a template containing the REST Service origin, a Stream Selector, some Expression Evaluators and some Send to Origin Response destinations:
+The pipeline is initialized with a template containing the REST Service origin, a Stream Selector, some Expression Evaluators and some Send Response to Origin destinations:
 
 ![Template microservice pipeline](template_microservice.png)
 
@@ -212,7 +212,7 @@ The result is as we might expect: success, but no data; but a RESTful web servic
 
       ${record:exists('/name')}
 
-Remove the existing output link from the new Stream Selector, if there is one, and connect stream #1 to the 'HTTP Request Router'. Add a new Send to Origin Response destination, name it `Not Found 404` and set its **Status Code** to `404`. The pipeline should now look like this:
+Remove the existing output link from the new Stream Selector, if there is one, and connect stream #1 to the 'HTTP Request Router'. Add a new Send Response to Origin destination, name it `Not Found 404` and set its **Status Code** to `404`. The pipeline should now look like this:
 
 ![Add Record Found Stream Selector](add-record-found.png)
 
@@ -376,7 +376,7 @@ Now edit the new JDBC Tee processor's configuration as follows:
 
 * **Default Operation**: UPDATE
 
-Finally, connect a new Send to Origin Response destination to the 'UPDATE record' processor's output. Your pipeline should look like this:
+Finally, connect a new Send Response to Origin destination to the 'UPDATE record' processor's output. Your pipeline should look like this:
 
 ![Ready for update](ready-for-update.png)
 
@@ -467,7 +467,7 @@ Copy the 'CREATE record' JDBC Tee processor and paste a new copy. Connect the RE
 
 * **Default Operation**: DELETE
 
-Finally, connect a new Send to Origin Response destination to the 'UPDATE record' processor's output. Your pipeline should look like this:
+Finally, connect a new Send Response to Origin destination to the 'UPDATE record' processor's output. Your pipeline should look like this:
 
 ![Ready for delete](ready-for-delete.png)
 
@@ -513,6 +513,6 @@ We've implemented the basic four CRUD operations here, but it is possible to go 
 
 ## Conclusion
 
-This tutorial showed how to create a simple microservice using [StreamSets Data Collector](https://streamsets.com/products/sdc) and its new Microservice Pipeline feature. You learned how to use the REST Service origin and Send to Origin Response destination to implement different operations, returning data or error code as appropriate.
+This tutorial showed how to create a simple microservice using [StreamSets Data Collector](https://streamsets.com/products/sdc) and its new Microservice Pipeline feature. You learned how to use the REST Service origin and Send Response to Origin destination to implement different operations, returning data or error code as appropriate.
 
 If you want to ask questions about any aspect of Data Collector, or you want to share an interesting microservice pipeline that you have written, feel free to get in touch via our [user community](https://streamsets.com/community/).
