@@ -82,9 +82,9 @@
 
  * Under 'Input Field Name' type `/clientip` and set its corresponding 'Output Field Name' to `/city` and select `CITY_NAME` under 'GeoIP2 Field'.
 
- * Hit `+` to add another field, set 'Input Field Name' to `/clientip` and set 'Output Field Name' to `/lat` and 'GeoIP2 Field' to `LATITUDE`
+ * Hit `+` to add another field, set 'Input Field Name' to `/clientip` and set 'Output Field Name' to `/geo/lat` and 'GeoIP2 Field' to `LATITUDE`
 
- * Hit `+` again to add the last field, set 'Input Field Name' to `/clientip` and set 'Output Field Name' to `/lon` and 'GeoIP2 Field' to `LONGITUDE`
+ * Hit `+` again to add the last field, set 'Input Field Name' to `/clientip` and set 'Output Field Name' to `/geo/lon` and 'GeoIP2 Field' to `LONGITUDE`
 
  #### Setting up ElasticSearch
 
