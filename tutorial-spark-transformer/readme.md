@@ -262,6 +262,8 @@ Now replace the `transform()` method with the following:
       return new TransformResult(result, errors);
     }
 
+Your code should look like [this](https://gist.github.com/metadaddy/0447075d0bfe5345ffedbd8d6c870ca0) when you're done.
+
 Finally, repeat the process of building the project, installing the new JAR file with Package Manager, and restarting SDC.
 
 Preview the pipeline again and you will see that, this time, a new field has been added to each record, containing the credit card type:
@@ -381,6 +383,8 @@ The `transform()` method should now look like this:
       return new TransformResult(result, errors);
     }
 
+The file as a whole should now look like [this](https://gist.github.com/metadaddy/5d6056e99f26a3b730e516df3cc66950).
+
 Repeat the build, install, restart cycle, and preview the pipeline. This time, you should see 7 errors reported by the Spark Evaluator stage. Click on the Spark Evaluator and you will see the error message reported against records with missing credit card numbers:
 
 ![error records](image_3.png)
@@ -408,6 +412,8 @@ Also remove the definition of `javaSparkContext` (we don't need it any more), an
         ccTypes.put(key, prefixes);
       }
     }
+
+The `CustomTransformer.java` file should now look like [this](https://gist.github.com/metadaddy/c74fe6e48ca23b7b79191a734b316c4b).
 
 Since `ccTypes` is still a map of strings to arrays of strings, we don't need to modify the `transform()` method at all. Repeat the build, copy, restart process but, before you preview the pipeline, click the Spark Evaluator, and select the **Spark** tab in the configuration panel. Under **Init Method Arguments**, click **Switch to bulk edit mode** then paste in the following JSON:
 
