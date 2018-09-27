@@ -10,8 +10,8 @@ Prerequisites
 
 Note: issues exist in some versions of Data Collector prior to 3.4.2 that prevent the Spark Evaluator from functioning correctly. Please ensure you are using Data Collector 3.4.2 or later.
 
-* [Download](https://streamsets.com/opensource/) and [install](https://streamsets.com/documentation/datacollector/latest/help/#Install_Config/InstallationAndConfig.html#concept_gbn_4lv_1r) StreamSets Data Collector (SDC). This tutorial uses Data Collector 3.4.2, but the instructions should apply to subsequent versions. Please [file an issue](https://github.com/streamsets/tutorials/issues/new) if this is not the case.
-* [Install a stage library](https://streamsets.com/documentation/datacollector/latest/help/datacollector/UserGuide/Installation/AddtionalStageLibs.html#concept_fb2_qmn_bz) that supports the Spark Evaluator. The Spark Evaluator is available in several CDH and MapR stage libraries. To verify the Spark version that a stage library includes, see the CDH or MapR documentation. For more information about the stage libraries that include the Spark Evaluator, see [Available Stage Libraries](https://streamsets.com/documentation/datacollector/latest/help/datacollector/UserGuide/Installation/AddtionalStageLibs.html#concept_evs_xkm_s5). Note that the Spark Evaluator does _not_ currently work with CDH 6.0.
+* [Download](https://streamsets.com/opensource/) and [install](https://streamsets.com/documentation/datacollector/latest/help/#Install_Config/InstallationAndConfig.html#concept_gbn_4lv_1r) StreamSets Data Collector. This tutorial uses Data Collector 3.4.2, but the instructions should apply to subsequent versions. Please [file an issue](https://github.com/streamsets/tutorials/issues/new) if this is not the case.
+* [Install a stage library](https://streamsets.com/documentation/datacollector/latest/help/datacollector/UserGuide/Installation/AddtionalStageLibs.html#concept_fb2_qmn_bz) that supports the Spark Evaluator. The Spark Evaluator is available in several CDH and MapR stage libraries; this tutorial uses CDH 5.15. To verify the Spark version that a stage library includes, see the CDH or MapR documentation. For more information about the stage libraries that include the Spark Evaluator, see [Available Stage Libraries](https://streamsets.com/documentation/datacollector/latest/help/datacollector/UserGuide/Installation/AddtionalStageLibs.html#concept_evs_xkm_s5). Note that the Spark Evaluator does _not_ currently work with CDH 6.0.
 * Oracle [Java Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) 1.8 or later is needed to compile Java code and build JAR files.
 * [Maven](https://maven.apache.org/download.cgi) 3.3.9 or higher is needed to manage the JAR file build process.
 
@@ -64,7 +64,7 @@ Here's a minimal implementation that simply returns its input as its output:
       }
     }
 
-Create a new directory for your Spark Transformer project, and save the above code there as `src/main/java/com/streamsets/spark/CustomTransformer.java`. You will also need a pom.xml file in the project directory itself. Note that you will need to set the `streamsets-datacollector-spark-api` version to match your version of Data Collector, and the Spark core library `artifactId` and `version` to match that used by the stage library you are using. In this tutorial, I'm using CDH 5.15; looking in the `$SDC_HOME/streamsets-libs/streamsets-datacollector-cdh_5_15-lib/lib/` directory, I can see that the Spark core jar file is `spark-core_2.11-2.1.0.cloudera1.jar`, which equates to an `artifactId` of `spark-core_2.11` with a version of `2.1.0.cloudera1`. If you are using a different stage library, you will need to change these values to match your Spark core jar file.
+Create a new directory for your Spark Transformer project, and save the above code there as `src/main/java/com/streamsets/spark/CustomTransformer.java`. You will also need a pom.xml file in the project directory itself. Note that you will need to set the `streamsets-datacollector-spark-api` version to match your version of Data Collector, and the Spark core library `artifactId` and `version` to match that used by the stage library you are using. In this tutorial, I'm using CDH 5.15; looking in the `$SDC_HOME/streamsets-libs/streamsets-datacollector-cdh_5_15-lib/lib/` directory, I can see that the Spark core jar file is `spark-core_2.11-2.1.0.cloudera1.jar`. We don't need to reference the Cloudera-specific version, so we set `artifactId` to `spark-core_2.11` with a version of `2.1.0`. If you are using a different stage library, you will need to change these values to match your Spark core jar file.
 
     <?xml version="1.0" encoding="UTF-8"?>
     <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -87,7 +87,7 @@ Create a new directory for your Spark Transformer project, and save the above co
         <dependency>
           <groupId>org.apache.spark</groupId>
           <artifactId>spark-core_2.11</artifactId>
-          <version>2.1.0.cloudera1</version>
+          <version>2.1.0</version>
         </dependency>
       </dependencies>
 
@@ -131,14 +131,7 @@ You should see a jar file in the `target` directory:
     classes                     maven-archiver                  spark-transformer-example-1.0-SNAPSHOT.jar
     generated-sources           maven-status
 
-Installing a Spark Transformer
-------------------------------
-
-Now that you have your JAR file, you need to make it available for SDC to load. In common with third party external libraries such as JDBC drivers, you can [use the Package Manager](https://streamsets.com/documentation/datacollector/latest/help/datacollector/UserGuide/Configuration/ExternalLibs.html#concept_amy_pzs_gz) to load the JAR file into the appropriate location. Ensure you select the appropriate stage library when you upload the JAR file:
-
-![preview pipeline](image_7.png)
-
-Restart SDC for the changes to take effect.
+Make a note of the location of the jar file, as you'll be installing it in the next step.
 
 Creating a Pipeline Using a Spark Transformer
 ---------------------------------------------
@@ -147,7 +140,7 @@ Since the skeleton Spark Transformer simply passes records through unchanged, yo
 
 1. Download the sample CSV file from [here](https://www.streamsets.com/documentation/datacollector/sample_data/tutorial/nyc_taxi_data.csv).
 
-2. In the SDC home screen, click the **Create New Pipeline** button, enter a suitable name and description and click **Save**. 
+2. In the Data Collector home screen, click the **Create New Pipeline** button, enter a suitable name and description and click **Save**. 
 
 3. In the Properties panel, click the **Error Records** tab; for the **Error Records** property, select **Write to File**.
 This writes error records to a file so you can deal with error records without having to stop the pipeline.
@@ -172,7 +165,7 @@ Use the defaults for properties that aren't listed:
   | Data Format  | **Delimited** |
   | Header Line | **With Header Line** |
 
-8. Click **Select Processor > Spark Evaluator**, or, in the stage library, click the **Spark Evaluator** processor, then in the **General** tab, set the stage library to **CDH 5.15.0**.
+8. Click **Select Processor > Spark Evaluator**, or, in the stage library, click the **Spark Evaluator** processor, then in the **General** tab, set the stage library to **CDH 5.15.0**, or whichever stage library you installed.
 
 9. Click the **Spark** tab and configure the following. 
 Use the defaults for properties that aren't listed:
@@ -181,6 +174,12 @@ Use the defaults for properties that aren't listed:
   | --- | --- |
   | Parallelism  | For best performance, set this to the number of CPU cores in your machine |
   | Spark Transformer Class | `com.streamsets.spark.CustomTransformer` |
+
+10. Click the **External Libraries** tab on the left and click the upload icon ![upload](upload.png). Click browse and select the jar file you created in the previous step:
+
+![install stage library](image_7.png)
+
+Note that your Spark Transformer is now available wherever you use the Spark Evaluator - not just in this pipeline.
 
 Your pipeline should look like this:
 
@@ -264,7 +263,7 @@ Now replace the `transform()` method with the following:
 
 Your code should look like [this](https://gist.github.com/metadaddy/0447075d0bfe5345ffedbd8d6c870ca0) when you're done.
 
-Finally, repeat the process of building the project, installing the new JAR file with Package Manager, and restarting SDC.
+Finally, repeat the process of building the project, installing the new JAR file, and restarting Data Collector.
 
 Preview the pipeline again and you will see that, this time, a new field has been added to each record, containing the credit card type:
 
@@ -392,7 +391,7 @@ Repeat the build, install, restart cycle, and preview the pipeline. This time, y
 Configuring the Spark Transformer
 ---------------------------------
 
-Now that our transformer is validating its input, there's one final enhancement we can make. Right now, the mapping of credit card type to prefix is stored in the Java code. This means that, if we want to add another prefix or type, we have to recompile the transformer jar and copy it to all SDC instances that use it. It would be much better to have the list of prefixes in the pipeline configuration.
+Now that our transformer is validating its input, there's one final enhancement we can make. Right now, the mapping of credit card type to prefix is stored in the Java code. This means that, if we want to add another prefix or type, we have to recompile the transformer jar and copy it to all Data Collector instances that use it. It would be much better to have the list of prefixes in the pipeline configuration.
 
 If you look at the Spark tab for the Spark Evaluator stage, you'll see the **Init Method Arguments** property. This is a list of strings that is passed to the transformer's `init()` method when the pipeline starts. We can populate this list with our mappings, and parse it in `init()`.
 
@@ -438,6 +437,6 @@ Preview the pipeline and you should see that the credit card type is correctly c
 Going Further
 -------------
 
-If you've done the [NYC Taxi Transactions tutorial](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Overview.html) in the SDC documentation, you might have realized that this transformer is a drop-in replacement for the Jython script in that pipeline. Try duplicating that pipeline and replacing the Jython Evaluator with a Spark Evaluator, configuring it as above. Since this pipeline uses Stream Selector to split card from cash transactions, you should not see any errors when previewing the first 10 records. If you run the pipeline on the entire input data set, however, you will see that some records have the 'CRD' payment type but no credit card number. The transformer is correctly flagging erroneous records.
+If you've done the [NYC Taxi Transactions tutorial](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Overview.html) in the Data Collector documentation, you might have realized that this transformer is a drop-in replacement for the Jython script in that pipeline. Try duplicating that pipeline and replacing the Jython Evaluator with a Spark Evaluator, configuring it as above. Since this pipeline uses Stream Selector to split card from cash transactions, you should not see any errors when previewing the first 10 records. If you run the pipeline on the entire input data set, however, you will see that some records have the 'CRD' payment type but no credit card number. The transformer is correctly flagging erroneous records.
 
 ![modified credit card type](image_6.png)
