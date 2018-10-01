@@ -8,7 +8,7 @@ Here's the scenario: we want to ingest shipment records from a table in a relati
 
 ![image alt text](RDBMS-SDC-Hive.png)
 
-This tutorial writes data using the [Avro](http://avro.apache.org/) data format. It is also possible to configure Drift Synchronization with [Parquet](http://parquet.apache.org/) - see the [Parquet Case Study](https://streamsets.com/documentation/datacollector/latest/help/index.html#Hive_Drift_Solution/HiveDriftSolution_title.html#concept_vl3_v2f_zz) for more details.
+This tutorial writes data using the [Avro](http://avro.apache.org/) data format. It is also possible to configure Drift Synchronization with [Parquet](http://parquet.apache.org/) - see the [Parquet Case Study](https://streamsets.com/documentation/datacollector/latest/help/datacollector/UserGuide/Hive_Drift_Solution/HiveDriftSolution_title.html#concept_vl3_v2f_zz) for more details.
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ You will also need a relational database, and you must have configured SDC to us
 
 ## Introducing StreamSets Drift Synchronization
 
-Drift Synchronization comprises three SDC stages: the [Hive Metadata](https://streamsets.com/documentation/datacollector/latest/help/Processors/HiveMetadata.html#concept_rz5_nft_zv) processor, the [Hive Metastore](https://streamsets.com/documentation/datacollector/latest/help/Destinations/HiveMetastore.html#concept_gcr_z2t_zv) destination and either of the [Hadoop FS](https://streamsets.com/documentation/datacollector/latest/help/Destinations/HadoopFS-destination.html#concept_awl_4km_zq) or [MapR FS](https://streamsets.com/documentation/datacollector/latest/help/Destinations/MapRFS.html#concept_spv_xlc_fv) destinations.
+Drift Synchronization comprises three SDC stages: the [Hive Metadata](https://streamsets.com/documentation/datacollector/latest/help/datacollector/UserGuide/Processors/HiveMetadata.html#concept_rz5_nft_zv) processor, the [Hive Metastore](https://streamsets.com/documentation/datacollector/latest/help/datacollector/UserGuide/Destinations/HiveMetastore.html#concept_gcr_z2t_zv) destination and either of the [Hadoop FS](https://streamsets.com/documentation/datacollector/latest/help/datacollector/UserGuide/Destinations/HadoopFS-destination.html#concept_awl_4km_zq) or [MapR FS](https://streamsets.com/documentation/datacollector/latest/help/datacollector/UserGuide/Destinations/MapRFS.html#concept_spv_xlc_fv) destinations.
 
 ![image alt text](image_0.png)
 
@@ -117,25 +117,29 @@ Now you can add the Hive Metadata processor, with its input linked to the JDBC C
 
 * **JDBC Driver Name**: for an Apache Hadoop environment, this will be `org.apache.hive.jdbc.HiveDriver`, otherwise you should specify the specific driver class for your distribution.
 
-* **Database Expression**: `default` - change this if you wish to use a different Hive database name.
+* **Hadoop Configuration Directory**: `hadoop-conf`
+
+**Table tab**:
+
+* **Database Expression**: `default` -- change this if you wish to use a different Hive database name.
 
 * **Table Name**: `${record:attribute('jdbc.tables')}`
 
 * **Partition Configuration**: hit the ‘-’ button to remove the dt entry. We will not be partitioning data in this tutorial.
 
-* **Hadoop Configuration Directory**: `hadoop-conf`
-
 Note the use of `${record:attribute('jdbc.tables')}` as the table name - this will pass the MySQL table name through the pipeline to Hive.
 
 Your pipeline should look like this:
 
-![image alt text](image_3.png)
+![image alt text](drifttutorial1.png)
+
+![image alt text](drifttutorial2.png)
 
 The Hive Metadata processor emits data records on its #1 output stream, and metadata on #2. 
 
 Next, create either a Hadoop FS or MapR FS destination depending on your environment, and connect the Hive Metadata processor’s #1 output stream to the new destination’s input stream, like this:
 
-![image alt text](image_4.png)
+![image alt text](drifttutorial3.png)
 
 Configure the destination like this:
 
@@ -151,8 +155,6 @@ Configure the destination like this:
 
 **Output Files tab**:
 
-* **Data Format**: Avro
-
 * **Directory in Header**: Enabled
 
 * **Max Records in File**: `1`
@@ -161,7 +163,13 @@ Configure the destination like this:
 
 * **Roll Attribute Name**: `roll`
 
-Note - the destination will continue writing to a file until the first of these five conditions is satisfied:
+**Data Format tab**:
+
+* **Data Format**: Avro
+
+* **Avro Schema Location**: In Record Header
+
+Note: the destination will continue writing to a file until the first of these five conditions is satisfied:
 
 * The number of records specified in ‘Max Records in File’ has been written (zero means there is no maximum)
 
@@ -173,13 +181,13 @@ Note - the destination will continue writing to a file until the first of these 
 
 * The pipeline is stopped
 
-When the Hive Metadata processor detects a schema change, it sets the roll header attribute to signal to the destination that the data file should be ‘rolled’ - that is, the current file closed and a new file opened.
+When the Hive Metadata processor detects a schema change, it sets the roll header attribute to signal to the destination that the data file should be ‘rolled’ -- that is, the current file closed and a new file opened.
 
-We set **Max Records in File** set to 1 so the destination closes the file immediately after writing every record, since we want to see data immediately. If we left the defaults in place, we might not see some data in Hive until an hour after it was written. This might be appropriate for a production deployment, but would make a very time-consuming tutorial!
+We set **Max Records in File** to 1 so the destination closes the file immediately after writing every record, since we want to see data immediately. If we left the defaults in place, we might not see some data in Hive until an hour after it was written. This might be appropriate for a production deployment, but would make a very time-consuming tutorial!
 
 To complete the pipeline, add a Hive Metastore destination, its input connected to the Hive Metadata processor’s #2 output, like this:
 
-![image alt text](image_5.png)
+![image alt text](drifttutorial4.png)
 
 Configure the Hive Metastore destination:
 
@@ -189,9 +197,11 @@ Configure the Hive Metastore destination:
 
 * **JDBC Driver Name**: set this also to the same value as it is in the Hive Metadata processor.
 
-* **Data Format**: Avro
-
 * **Hadoop Configuration Directory**: `hadoop-conf`
+
+**Advanced tab**:
+
+* **Stored as Avro**: Enabled
 
 Now your pipeline is fully configured and ready for action! Hit the validate button to check for any typos, then hit ‘preview’. You should be able to click the different stages and see the input and output records. Note - you will not currently see metadata records on the Hive Metadata processor’s #2 output, but you can see them on the Hive Metastore’s input.
 
