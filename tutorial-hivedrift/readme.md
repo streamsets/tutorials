@@ -167,7 +167,7 @@ Configure the destination like this:
 
 * **Data Format**: Avro
 
-* **Avro Schema Location**: In record Header
+* **Avro Schema Location**: In Record Header
 
 Note: the destination will continue writing to a file until the first of these five conditions is satisfied:
 
@@ -187,7 +187,7 @@ We set **Max Records in File** to 1 so the destination closes the file immediate
 
 To complete the pipeline, add a Hive Metastore destination, its input connected to the Hive Metadata processor’s #2 output, like this:
 
-![image alt text](image_5.png)
+![image alt text](drifttutorial4.png)
 
 Configure the Hive Metastore destination:
 
