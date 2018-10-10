@@ -54,7 +54,7 @@ Open a terminal and run the MySQL shell, logging in to your database. Paste the 
 
 ## Creating a Pipeline
 
-Now let's get some data flowing! In your browser, login to SDC and create a new pipeline. Add a JDBC Consumer origin and configure it:
+Now let's get some data flowing! In your browser, login to SDC and create a new pipeline. Add a JDBC Query Consumer origin and configure it:
 
 **JDBC tab**
 
@@ -100,9 +100,9 @@ For example:
     cd <your SDC resources directory>
     mkdir hadoop-conf
     cd hadoop-conf
-    ln -s /path/to/hadoop/config/core-site.xml
-    ln -s /path/to/hadoop/config/hdfs-site.xml
-    ln -s /path/to/hive/config/hive-site.xml
+    ln -s <path to hadoop config>/core-site.xml
+    ln -s <path to hadoop config>/hdfs-site.xml
+    ln -s <path to hive config>/hive-site.xml
     cd ..
     # Omit the following step if you did not create an sdc system user and group
     chown -R sdc:sdc hadoop-conf
