@@ -114,7 +114,7 @@ public class SampleDProcessor extends BaseFieldProcessor {
 
 ```
 
-**NOTE**: In production environment, it is recommended that you set ***label*** to a unique and easily identifiable value instead of something generic ("My Custom Field Processor" as illustrated in this example) and one that differs from [built-in protection methods](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/ProtectionPolicies/Procedures-ProtectionMethods.html#concept_ulv_gqk_4fb).
+**NOTE**: In production environment, it is recommended that you set ***label*** to a unique and easily identifiable value instead of something generic ("My Custom Field Processor" as illustrated in this example) and one that differs from [built-in protection methods](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/ProtectionPolicies/Procedures-ProtectionMethods.html#concept_hss_mgj_x2b).
 
 This is what the updated **SampleDProcessor.java** should look like:
 
