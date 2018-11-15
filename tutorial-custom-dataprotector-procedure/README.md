@@ -1,7 +1,9 @@
 Creating Custom Data Protector Procedure
 ==========================================
 
-This tutorial explains how to create, build and deploy your own custom data protector procedure that you can use as protection method to apply to record fields.
+[StreamSets Data Protector](https://streamsets.com/products/data-protector) provides a policy driven governance framework for the in-stream detection and protection of sensitive data. Out of the box it can detect over 150+ [PII data elements](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/ClassificationRules/StreamSetsClassifications.html#concept_qps_3yv_zdb), and protect them with a number of [protection algorithms](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/ProtectionPolicies/Procedures-ProtectionMethods.html#concept_hss_mgj_x2b).
+
+This tutorial walks you through extending the data protection algorithms by adding your own custom data protector procedure that you can use as protection method to apply to record fields.
 
 ### Prerequisites
 
@@ -111,6 +113,8 @@ public class SampleDProcessor extends BaseFieldProcessor {
 
 ```
 
+**NOTE**: In production environment, it is recommended that you set ***label*** to a unique and easily identifiable value instead of something generic ("My Custom Field Processor" as illustrated in this example) and one that differs from [built-in protection methods](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/ProtectionPolicies/Procedures-ProtectionMethods.html#concept_ulv_gqk_4fb).
+
 This is what the updated **SampleDProcessor.java** should look like:
 
 ![image alt text](images/intellij2.png)
@@ -164,7 +168,7 @@ You should see *custom-datacollector-field-processor* listed as shown below:
 
 ![image alt text](images/sch3.png)
 
-* For *Protection Method*, select "Custom Field Processor (Library: Sample Library 1.0.0)" that was installed in step 4
+* For *Protection Method*, select "My Custom Field Processor (Library: Sample Library 1.0.0)" that was installed in step 4
 
 ![image alt text](images/sch4.png)
 
