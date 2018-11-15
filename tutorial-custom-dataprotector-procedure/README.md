@@ -1,14 +1,14 @@
-Creating a Custom Data Protector Procedure
+Creating Custom Data Protector Procedure
 ==========================================
 
 This tutorial explains how to create, build and deploy your own custom data protector procedure that you can use as protection method to apply to record fields.
 
 ### Prerequisites
 
-* Instance of StreamSets Data Collector (SDC)
-* Instance of StreamSets Control Hub (SCH)
+* Instance of [StreamSets Data Collector (SDC)](https://streamsets.com/documentation/datacollector/latest/help/datacollector/UserGuide/Getting_Started/GettingStarted_Title.html#concept_htw_ghg_jq)
+* Instance of [StreamSets Control Hub (SCH)](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/GettingStarted/GettingStarted_title.html) with 
 
-Note: It is assumed that you have SCH and an authoring SDC up and running.
+Note: It is assumed that you have SCH and an authoring SDC up and running. In addition, you should have 
 
 ### Step 1 &mdash; Generate Custom Field Processor Project
 
@@ -18,9 +18,9 @@ In a terminal window, run the following Maven archetype:
 mvn archetype:generate -DarchetypeGroupId=com.streamsets -DarchetypeArtifactId=streamsets-datacollector-stage-lib-tutorial -DarchetypeVersion=3.5.2 -DinteractiveMode=true
 ```
 
-* For *'groupId':* enter ***com.streamsets***
-* For *'artifactId':* enter ***custom-datacollector-field-processor***
-* Leave *'version'* and *'package'* blank for default values
+* For *groupId:* enter ***com.streamsets***
+* For *artifactId:* enter ***custom-datacollector-field-processor***
+* Leave *version* and *package* blank for default values
 
 You should see the following output:
 
@@ -70,7 +70,9 @@ package: com.streamsets
 [INFO] ------------------------------------------------------------------------
 ```
 
-Maven will generate a template project from the archetype with the *artifactId* you provided as its name. This is what the folder structure should look like:
+Maven will generate a template project from archetype with the *artifactId* ***custom-datacollector-field-processor*** as its name.
+
+This is what the folder structure should look like:
 
 ![image alt text](finder1.png)
 
@@ -109,19 +111,19 @@ public class SampleDProcessor extends BaseFieldProcessor {
 
 ```
 
-This is what it should look like:
+This is what the updated **SampleDProcessor.java** code should look like:
 
 ![image alt text](intellij2.png)
 
-Now delete *SampleProcessor.java* and *Groups.java* &mdash; Note: these classes are not needed for creating custom field processor.
+Note: Delete *SampleProcessor.java* and *Groups.java* &mdash; these classes are not needed for creating custom field processor.
 
-This is what it should look like now:
+This is what the final project should look like:
 
 ![image alt text](intellij3.png)
 
 ### Step 3 &mdash; Build Custom Field Processor Project
 
-Build project by executing the following commmand from the project folder:
+Build project by executing the following commmand from the project root folder:
 
 ```sh
  mvn clean package -Pui,dist -DskipTests
@@ -138,8 +140,8 @@ If all goes well, *custom-datacollector-field-processor-1.0-SNAPSHOT.tar.gz* wil
 
 ![image alt text](finder2.png)
 
-* Restart SDC
-* Browse to **Package Manager** and click on All Libraries
+* Restart authoring SDC
+* Browse to **Package Manager** and click on **All Stage Libraries** on the left menu
 * Type 'Sample' in the search box and you should see *custom-datacollector-field-processor* as shown below:
 
 ![image alt text](sdc1.png)
@@ -150,12 +152,13 @@ If all goes well, *custom-datacollector-field-processor-1.0-SNAPSHOT.tar.gz* wil
 
 ![image alt text](sch1.png)
 
-* Select the newly created policy and click on **View Procedures** to create a new procedure as shown below:
+* Select the newly created policy and click on **VIEW PROCEDURES** to ***create a new procedure*** as shown below:
 
 ![image alt text](sch2.png)
 
+* For *Procedure Basis* enter "Category Pattern"
 * For *Classification Category Pattern* enter "US_SSN"
-* For *Authoring SDC* select SDC where you install custom field processor in step 4
+* For *Authoring SDC* select SDC where custom field processor was installed in step 4
 * For *Protection Method* select "Custom Field Processor (Library: Sample Library 1.0.0)" that was installed in step 4
 
 ![image alt text](sch3.png)
@@ -172,14 +175,13 @@ Let's create a simple pipeline to test our custom field processor.
 
 ![image alt text](sch6.png)
 
-* For *Authoring Data Collector* select SDC where you installed custom field processor in step 4
+* For *Authoring Data Collector* select SDC where custom field processor was installed in step 4
 
 ![image alt text](sch7.png)
 
-* In pipeline designer:
- * Add **Dev Raw Data Source** origin
- * Add **Trash** destination
- * Under ***Raw Data*** add "SSN": "123-45-6789"
+* Add **Dev Raw Data Source** origin
+* Add **Trash** destination
+* Under **Dev Raw Data Source** origin >> ***Raw Data*** add "SSN": "123-45-6789"
 
 ![image alt text](sch8.png)
 
