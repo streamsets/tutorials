@@ -34,6 +34,11 @@ The following tutorials demonstrate some StreamSets [Data Collector](http://gith
 
 The Data Collector documentation also includes an [extended tutorial](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Overview.html) that walks through basic Data Collector functionality, including creating, previewing and running a pipeline, and creating alerts.
 
+
+## Control Hub
+
+- [Creating Custom Data Protector Procedure](tutorial-custom-dataprotector-procedure/README.md) - Create, build and deploy your own custom data protector procedure that you can use as protection method to apply to record fields.
+
 # License
 
 StreamSets Data Collector and its tutorials are built on open source technologies; the tutorials and accompanying code are licensed with the [Apache License 2.0](LICENSE.txt).
