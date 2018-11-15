@@ -6,9 +6,9 @@ This tutorial explains how to create, build and deploy your own custom data prot
 ### Prerequisites
 
 * Instance of [StreamSets Data Collector (SDC)](https://streamsets.com/documentation/datacollector/latest/help/datacollector/UserGuide/Getting_Started/GettingStarted_Title.html#concept_htw_ghg_jq)
-* Instance of [StreamSets Control Hub (SCH)](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/GettingStarted/GettingStarted_title.html) with 
+* Instance of [StreamSets Control Hub (SCH)](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/GettingStarted/GettingStarted_title.html)
 
-Note: It is assumed that you have SCH and an authoring SDC up and running. In addition, you should have 
+Note: It is assumed that you have SCH and an authoring SDC up and running. In addition, you should have [Data Protector](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/DataProtector/DataProtector-Title.html) enabled in SCH.
 
 ### Step 1 &mdash; Generate Custom Field Processor Project
 
