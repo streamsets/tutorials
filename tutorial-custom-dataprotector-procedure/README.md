@@ -5,8 +5,8 @@ This tutorial explains how to create, build and deploy your own custom data prot
 
 ### Prerequisites
 
-* Instance of [StreamSets Data Collector (SDC)](https://streamsets.com/documentation/datacollector/latest/help/datacollector/UserGuide/Getting_Started/GettingStarted_Title.html#concept_htw_ghg_jq)
-* Instance of [StreamSets Control Hub (SCH)](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/GettingStarted/GettingStarted_title.html)
+* Instance of [StreamSets Data Collector (SDC) version 3.5.2 or greater](https://streamsets.com/documentation/datacollector/latest/help/datacollector/UserGuide/Getting_Started/GettingStarted_Title.html#concept_htw_ghg_jq)
+* Instance of [StreamSets Control Hub (SCH) version 3.7.0 or greater](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/GettingStarted/GettingStarted_title.html)
 
 Note: It is assumed that you have SCH and an authoring SDC up and running. In addition, you should have [Data Protector](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/DataProtector/DataProtector-Title.html) enabled in SCH.
 
@@ -14,13 +14,13 @@ Note: It is assumed that you have SCH and an authoring SDC up and running. In ad
 
 In a terminal window, run the following Maven archetype:
 
-```sh 
-mvn archetype:generate -DarchetypeGroupId=com.streamsets -DarchetypeArtifactId=streamsets-datacollector-stage-lib-tutorial -DarchetypeVersion=3.5.2 -DinteractiveMode=true
-```
-
 * For *groupId:* enter ***com.streamsets***
 * For *artifactId:* enter ***custom-datacollector-field-processor***
 * Leave *version* and *package* blank for default values
+
+```sh 
+mvn archetype:generate -DarchetypeGroupId=com.streamsets -DarchetypeArtifactId=streamsets-datacollector-stage-lib-tutorial -DarchetypeVersion=3.5.2 -DinteractiveMode=true
+```
 
 You should see the following output:
 
@@ -82,7 +82,7 @@ Using an IDE such as IntelliJ, open ***custom-datacollector-field-processor*** p
 
 ![image alt text](intellij1.png)
 
-Replace entire code in class **SampleDProcessor.java** with the following code:
+* Replace entire code in class **SampleDProcessor.java** with the following code:
 
 ```java
 package com.streamsets.stage.processor.sample;
@@ -111,11 +111,11 @@ public class SampleDProcessor extends BaseFieldProcessor {
 
 ```
 
-This is what the updated **SampleDProcessor.java** code should look like:
+This is what the updated **SampleDProcessor.java** should look like:
 
 ![image alt text](intellij2.png)
 
-Note: Delete *SampleProcessor.java* and *Groups.java* &mdash; these classes are not needed for creating custom field processor.
+* Delete *SampleProcessor.java* and *Groups.java* &mdash; these classes are not needed for creating custom field processor.
 
 This is what the final project should look like:
 
@@ -123,7 +123,7 @@ This is what the final project should look like:
 
 ### Step 3 &mdash; Build Custom Field Processor Project
 
-Build project by executing the following commmand from the project root folder:
+Build project by executing the following command from the project root folder:
 
 ```sh
  mvn clean package -Pui,dist -DskipTests
@@ -156,12 +156,13 @@ If all goes well, *custom-datacollector-field-processor-1.0-SNAPSHOT.tar.gz* wil
 
 ![image alt text](sch2.png)
 
-* For *Procedure Basis* enter "Category Pattern"
+* For *Procedure Basis* select "Category Pattern"
 * For *Classification Category Pattern* enter "US_SSN"
 * For *Authoring SDC* select SDC where custom field processor was installed in step 4
-* For *Protection Method* select "Custom Field Processor (Library: Sample Library 1.0.0)" that was installed in step 4
 
 ![image alt text](sch3.png)
+
+* For *Protection Method* select "Custom Field Processor (Library: Sample Library 1.0.0)" that was installed in step 4
 
 ![image alt text](sch4.png)
 
@@ -189,5 +190,6 @@ Let's create a simple pipeline to test our custom field processor.
 
 ![image alt text](sch9.png)
 
+### Success!
 
-
+If you encounter any problems, please [file an issue in the tutorials project](https://github.com/streamsets/tutorials/issues/new).
