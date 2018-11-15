@@ -6,7 +6,7 @@ This tutorial explains how to create, build and deploy your own custom data prot
 ### Prerequisites
 
 * Instance of [StreamSets Data Collector (SDC) version 3.5.2 or greater](https://streamsets.com/documentation/datacollector/latest/help/datacollector/UserGuide/Getting_Started/GettingStarted_Title.html#concept_htw_ghg_jq)
-* Instance of [StreamSets Control Hub (SCH) version 3.7.0 or greater](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/GettingStarted/GettingStarted_title.html)
+* Instance of [StreamSets Control Hub (SCH) version 3.6.0 or greater](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/GettingStarted/GettingStarted_title.html)
 
 Note: It is assumed that you have SCH and an authoring SDC up and running. In addition, you should have [Data Protector](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/DataProtector/DataProtector-Title.html) enabled in SCH.
 
@@ -14,8 +14,8 @@ Note: It is assumed that you have SCH and an authoring SDC up and running. In ad
 
 In a terminal window, run the following Maven archetype:
 
-* For *groupId* enter ***com.streamsets***
-* For *artifactId* enter ***custom-datacollector-field-processor***
+* For *groupId*, enter ***com.streamsets***
+* For *artifactId*, enter ***custom-datacollector-field-processor***
 * Leave *version* and *package* blank for default values
 
 ```sh 
@@ -82,7 +82,7 @@ Using an IDE such as IntelliJ, open ***custom-datacollector-field-processor*** p
 
 ![image alt text](images/intellij1.png)
 
-* Replace entire code snippet in class **SampleDProcessor.java** with the following code:
+* Replace *entire code snippet* in class **SampleDProcessor.java** with the following code:
 
 ```java
 package com.streamsets.stage.processor.sample;
@@ -136,19 +136,21 @@ If all goes well, **custom-datacollector-field-processor-1.0-SNAPSHOT.tar.gz** w
 
 ### Step 4 &mdash; Install Custom Field Processor in StreamSets Data Collector
 
-* Extract **custom-datacollector-field-processor-1.0-SNAPSHOT.tar.gz** (created in step 3) in **$SDC_HOME/user-libs** folder of the authoring as shown below:
+* Extract **custom-datacollector-field-processor-1.0-SNAPSHOT.tar.gz** (created in step 3) in **$SDC_HOME/user-libs** folder of the authoring SDC as shown below:
 
 ![image alt text](images/finder2.png)
 
 * Restart authoring SDC
 * Browse to **Package Manager** and click on **All Stage Libraries** on the left menu
-* Type 'Sample' in the search box and you should see *custom-datacollector-field-processor* as shown below:
+* Type 'Sample' in the search box
+
+You should see *custom-datacollector-field-processor* listed as shown below:
 
 ![image alt text](images/sdc1.png)
 
 ### Step 5 &mdash; Provision Custom Field Processor in StreamSets Control Hub
 
-* Click on **Protection Policies** menu on the left and create a new policy as shown below:
+* Click on **Protection Policies** menu on the left to create a new policy as shown below:
 
 ![image alt text](images/sch1.png)
 
@@ -156,13 +158,13 @@ If all goes well, **custom-datacollector-field-processor-1.0-SNAPSHOT.tar.gz** w
 
 ![image alt text](images/sch2.png)
 
-* For *Procedure Basis* select "Category Pattern"
-* For *Classification Category Pattern* enter "US_SSN"
-* For *Authoring SDC* select SDC where custom field processor was installed in step 4
+* For *Procedure Basis*, select "Category Pattern"
+* For *Classification Category Pattern*, enter "US_SSN"
+* For *Authoring SDC*, select SDC where custom field processor was installed in step 4
 
 ![image alt text](images/sch3.png)
 
-* For *Protection Method* select "Custom Field Processor (Library: Sample Library 1.0.0)" that was installed in step 4
+* For *Protection Method*, select "Custom Field Processor (Library: Sample Library 1.0.0)" that was installed in step 4
 
 ![image alt text](images/sch4.png)
 
@@ -182,11 +184,13 @@ Let's create a simple pipeline to test our custom field processor.
 
 * Add **Dev Raw Data Source** origin
 * Add **Trash** destination
-* Under **Dev Raw Data Source** origin >> ***Raw Data*** add "SSN": "123-45-6789"
+* Under **Dev Raw Data Source** origin >> **Raw Data** add new field *"SSN"* with its value set to *"123-45-6789"*
 
 ![image alt text](images/sch8.png)
 
-* Click on **Preview** and you should see the *SSN* field value protected as per our custom field processor which replaces target field values with "PROTECTED using My Custom Field Processor." (See line 35 in **SampleDProcessor.java**)
+* Click on **Preview**.
+
+You should see the *SSN* field value "protected" as per our custom field processor which replaces field values based on classification category pattern "US_SSN" (configured in step 5) with **"PROTECTED using My Custom Field Processor."** (See line 35 in **SampleDProcessor.java**)
 
 ![image alt text](images/sch9.png)
 
