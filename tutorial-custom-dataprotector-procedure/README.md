@@ -11,7 +11,7 @@ This tutorial walks you through adding your own custom data protection algorithm
 * Instance of [StreamSets Control Hub (SCH) version 3.6.0 or greater](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/GettingStarted/GettingStarted_title.html)
 * [Data Protector enabled in SCH](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/DataProtector/DataProtector-Enabling.html#concept_bj1_bsb_v2b)
 
-**NOTE**: It is assumed that you have SCH and an authoring SDC up and running. 
+**NOTE**: It is assumed that you have SCH and an authoring SDC up and running. If you don't have access to SCH, sign up for 30-day free trial by visiting https://streamsets.com/products/sch/control-hub-trial.
 
 ### Step 1 &mdash; Generate Custom Field Processor Project
 
@@ -204,6 +204,6 @@ You should see the *SSN* field value "protected" as per our custom field process
 
 ### Success!
 
-You should be able to apply what you’ve learned and create more sophisticated custom data protector procedures now.
+You should be able to apply what you’ve learned and create more sophisticated custom data protection algorithms now. If you don't have access to SCH, sign up for 30-day free trial by visiting https://streamsets.com/products/sch/control-hub-trial.
 
 If you encounter any problems with this tutorial, please [file an issue in the tutorials project](https://github.com/streamsets/tutorials/issues/new).
