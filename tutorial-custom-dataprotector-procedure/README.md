@@ -1,14 +1,17 @@
 Creating Custom Data Protector Procedure
 ==========================================
 
-This tutorial explains how to create, build and deploy your own custom data protector procedure that you can use as protection method to apply to record fields.
+[StreamSets Data Protector](https://streamsets.com/products/data-protector) provides a policy driven governance framework for the in-stream detection and protection of sensitive data. Out of the box it can detect over 150+ [PII data elements](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/ClassificationRules/StreamSetsClassifications.html#concept_qps_3yv_zdb), and protect them with a number of [protection algorithms](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/ProtectionPolicies/Procedures-ProtectionMethods.html#concept_hss_mgj_x2b).
+
+This tutorial walks you through adding your own custom data protection algorithm which you can use as protection method to apply to record fields.
 
 ### Prerequisites
 
 * Instance of [StreamSets Data Collector (SDC) version 3.5.2 or greater](https://streamsets.com/documentation/datacollector/latest/help/datacollector/UserGuide/Getting_Started/GettingStarted_Title.html#concept_htw_ghg_jq)
 * Instance of [StreamSets Control Hub (SCH) version 3.6.0 or greater](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/GettingStarted/GettingStarted_title.html)
+* [Data Protector enabled in SCH](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/DataProtector/DataProtector-Enabling.html#concept_bj1_bsb_v2b)
 
-Note: It is assumed that you have SCH and an authoring SDC up and running. In addition, you should have [Data Protector](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/DataProtector/DataProtector-Title.html) enabled in SCH.
+**NOTE**: It is assumed that you have SCH and an authoring SDC up and running. 
 
 ### Step 1 &mdash; Generate Custom Field Processor Project
 
@@ -111,6 +114,8 @@ public class SampleDProcessor extends BaseFieldProcessor {
 
 ```
 
+**NOTE**: In production environment, it is recommended that you set ***label*** to a unique and easily identifiable value instead of something generic ("My Custom Field Processor" as illustrated in this example) and one that differs from [built-in protection methods](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/ProtectionPolicies/Procedures-ProtectionMethods.html#concept_hss_mgj_x2b).
+
 This is what the updated **SampleDProcessor.java** should look like:
 
 ![image alt text](images/intellij2.png)
@@ -151,10 +156,13 @@ You should see *custom-datacollector-field-processor* listed as shown below:
 ### Step 5 &mdash; Provision Custom Field Processor in StreamSets Control Hub
 
 * Click on **Protection Policies** menu on the left to create a new policy as shown below:
+* For *Name*, enter "Custom Policy"
+* For *Enactment*, select "Read"
+* For *Sampling*, select "All records"
 
 ![image alt text](images/sch1.png)
 
-* Select the newly created policy and click on **VIEW PROCEDURES** to ***create a new procedure*** as shown below:
+* Select the newly created policy and click on **VIEW PROCEDURES** to create a new procedure as shown below:
 
 ![image alt text](images/sch2.png)
 
@@ -164,7 +172,7 @@ You should see *custom-datacollector-field-processor* listed as shown below:
 
 ![image alt text](images/sch3.png)
 
-* For *Protection Method*, select "Custom Field Processor (Library: Sample Library 1.0.0)" that was installed in step 4
+* For *Protection Method*, select "My Custom Field Processor (Library: Sample Library 1.0.0)" that was installed in step 4
 
 ![image alt text](images/sch4.png)
 
