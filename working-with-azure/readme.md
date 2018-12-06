@@ -14,23 +14,35 @@ Also check [StreamSets Documentation](https://streamsets.com/documentation/datac
 
 5. Create an [HDInsight Kafka cluster](https://docs.microsoft.com/en-us/azure/hdinsight/kafka/apache-kafka-get-started) in the same vNet as above. Use Azure Storage for the Kafka cluster. 
 
-6. Configure StreamSets Data Collector
-	a) Configure connection to HDInsight cluster by creating symlinks to the configuration files.
-		# ssh into the SDC node using the SSH Endpoint of your cluster:
+6. Configure StreamSets Data Collector to connect to HDInsight cluster
+
+	Configure connection to HDInsight cluster by creating symlinks to the configuration files.
+	
+	- ssh into the SDC node using the SSH Endpoint of your cluster:
+	
+		```
 		ssh sshuser@<ssh endpoint>
-		# Navigate to the StreamSets Resources Directory and create a directory to hold cluster configuration symlinks
+		```
+		
+	- Navigate to the StreamSets Resources Directory and create a directory to hold cluster configuration symlinks
+	
+		```
 		cd /var/lib/sdc-resources
 		sudo mkdir hadoop-conf
 		cd hadoop-conf
-		# Symlink all *.xml files from /etc/hadoop/conf and hive-site.xml from /etc/hive/conf:
+		```
+	
+	- Symlink all *.xml files from /etc/hadoop/conf and hive-site.xml from /etc/hive/conf:
+		```
 		sudo ln -s /etc/hadoop/conf/*.xml .
 		sudo ln -s /etc/hive/conf/hive-site.xml .
-
+		```
+		
 ![image alt text](img/sdc_ssh_login.png)
 
-	b) Install SQL Server JDBC Driver:
-		i)Depending on your SQL Server version, download the appropriate JDBC driver. E.g. for SQL Server 2017, download from [here](https://docs.microsoft.com/en-us/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?view=sql-server-2017)
-		ii) Install the downloaded SQL Server JDBC driver using the method described [here](https://streamsets.com/documentation/datacollector/latest/help/index.html#datacollector/UserGuide/Configuration/ExternalLibs.html#concept_amy_pzs_gz)
-
-7. Capture and note down the Kafka Broker URI and Zookeeper Configuration from Ambari:
+7. Download and install SQL Server JDBC Driver for StreamSets Data Collector
+	- Download: https://docs.microsoft.com/en-us/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?view=sql-server-2017
+	- Install: https://streamsets.com/documentation/datacollector/latest/help/index.html#datacollector/UserGuide/Configuration/ExternalLibs.html#concept_amy_pzs_gz
+	
+8. Capture and note down the Kafka Broker URI and Zookeeper Configuration from Ambari:
 ![image alt text](img/Ambari_Kafka.png)
