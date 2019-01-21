@@ -1,0 +1,997 @@
+commit 88f009346eb0c7937cc43b2c9d7ccdb689810f40
+Author: Rupal Shah <rupal@streamsets.com>
+Date:   Fri Oct 26 13:45:03 2018 -0700
+
+    Remove file
+
+commit d9deed39ecf0c7631111f0e3dad2b0abfcb8bf12
+Author: Rupal Shah <rupalshah@ip-192-168-1-123.us-west-2.compute.internal>
+Date:   Fri Jun 29 15:35:41 2018 -0700
+
+    Very first commit of the azure tutorial project
+
+commit 43c57c74d9584a108f54d6ff2d2bb13256568fea
+Merge: 7c5e337 a519cec
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Fri Jun 22 15:42:28 2018 -0700
+
+    Merge pull request #83 from vpoiesz/master
+    
+    A few tweaks to the tutorials
+
+commit a519cec3188750432f2ebfa227a596753f272321
+Author: Victor Poiesz <victor.poiesz@streamsets.com>
+Date:   Wed Jun 20 11:06:32 2018 -0700
+
+    tweak hivedrift tutorial to specify the JDBC *Query* Consumer (vs Multitable)
+
+commit b79dc2eeb1e3087dc8d39ed3b26d7c42f75fb75d
+Merge: 09f1767 7c5e337
+Author: Victor Poiesz <victor.poiesz@streamsets.com>
+Date:   Wed Jun 20 10:46:37 2018 -0700
+
+    Merge remote-tracking branch 'upstream/master'
+
+commit 09f17670d796c013407a8a1743eab7460e203568
+Author: Victor Poiesz <victor.poiesz@streamsets.com>
+Date:   Mon Jun 18 13:02:06 2018 -0700
+
+    Remove field converter stage from Kafka consumer tutorial. The avro file already has the credit card number stored as a string.
+
+commit c6706388ef7c59595a6a71a8ec3035ba64b8ef6c
+Author: Victor Poiesz <victor.poiesz@streamsets.com>
+Date:   Mon Jun 18 11:26:45 2018 -0700
+
+    Bump the Kafka version number and link to quickstart guide
+
+commit 7c5e3376067e1897b79f6a3fdffd79f394cff647
+Merge: 6744880 133d0f7
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Mon Jun 18 10:25:26 2018 -0700
+
+    Merge pull request #82 from vpoiesz/master
+    
+    Update the command for creating Elasticsearch index mappings in tutorial-1. Thanks, @vpoiesz
+
+commit 133d0f78985cf36f7a68ee6b899e4cd0095d97b9
+Author: Victor Poiesz <victor.poiesz@streamsets.com>
+Date:   Mon Jun 18 10:12:30 2018 -0700
+
+    Update the command for creating Elasticsearch index mappings in tutorial-1. Elasticsearch 6.0+ REST API now enforces strict content-type checking, so the command now includes the Content-Type header as application/json. See https://stackoverflow.com/questions/47544966/elasticsearch-content-type-header-application-x-www-form-urlencoded-is-not-s for more info.
+
+commit 674488013408673679944d0c87be8004e00cae11
+Merge: 323b95b 88c4ca7
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue May 22 07:28:27 2018 -0700
+
+    Merge pull request #77 from metadaddy/master
+    
+    Remove city from mapping
+
+commit 88c4ca7e2bf19e3449c603d5f07c04ae912567fe
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue May 22 07:27:25 2018 -0700
+
+    Remove city from mapping
+
+commit 323b95b5b8d3ef6858f28db07e60c419c9426f96
+Merge: d95f7f1 1accde3
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Mon May 21 19:02:46 2018 -0700
+
+    Merge pull request #76 from metadaddy/master
+    
+    Correct logs.json
+
+commit 1accde330dd23e77c0d16ded6bd509b94b468dd6
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Mon May 21 19:02:04 2018 -0700
+
+    Correct logs.json
+
+commit d95f7f1b1ff3976d66cda8154b1d67de0b5619cc
+Merge: 134484c 3a7511f
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Mon May 21 17:35:23 2018 -0700
+
+    Merge pull request #75 from metadaddy/master
+    
+    Fix link to intro
+
+commit 3a7511f9582512372200aa3acc818eb19e7a2187
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Mon May 21 17:34:49 2018 -0700
+
+    Fix link to intro
+
+commit 134484c39b773e61c533f9e2c2e9a6ea05212268
+Merge: bb45645 b27d7b4
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Mon May 21 17:32:52 2018 -0700
+
+    Merge pull request #74 from metadaddy/master
+    
+    Update intro, add note about data missing in Kibana
+
+commit b27d7b426fc0e02cd0d7ede63daae7bbacc953f3
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Mon May 21 17:32:15 2018 -0700
+
+    Update intro, add note about data missing in Kibana
+
+commit bb45645a2f427ee3ccb7266deffa49297b1f2503
+Merge: af5b1bc a59a6b8
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Mon May 21 17:20:37 2018 -0700
+
+    Merge pull request #56 from ArchakaSameera/patch-1
+    
+    Update log_shipping_to_elasticsearch_part2.md
+
+commit af5b1bc1817d35c09ad7535455b0740a149696c3
+Merge: 280ba11 62d75ba
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Mon May 21 17:16:43 2018 -0700
+
+    Merge pull request #73 from metadaddy/master
+    
+    Update ES tutorial to current version
+
+commit 62d75bafd3b6c8e96c885d1318a991958888156c
+Merge: ac4f051 280ba11
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Mon May 21 17:15:06 2018 -0700
+
+    Merge https://github.com/streamsets/tutorials
+
+commit ac4f05148b75acd610792aaa7f5697341613aeeb
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Mon May 21 17:11:35 2018 -0700
+
+    Updated screenshots etc for current version
+
+commit 280ba11d0ac8210d8ba6f27600792dfdae758931
+Merge: e6bdb97 1736578
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Thu Feb 15 08:55:07 2018 -0800
+
+    Merge pull request #71 from metadaddy/master
+    
+    Update datacollector download/build instructions
+
+commit 173657885a53fc4c823868e14aab120770d467fe
+Merge: 1550886 e6bdb97
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Thu Feb 15 08:53:55 2018 -0800
+
+    Fix merge conflict
+
+commit 155088666e121482b4df8174ec4d8501b72698aa
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Thu Feb 15 08:50:06 2018 -0800
+
+    Update datacollector download/build instructions
+    
+    Added Plugin API to custom destination tutorial, removed source
+    download/build from custom processor tutorial
+
+commit e6bdb97b4ea3b0afd26f35462243996a448152e6
+Merge: 6c32193 34e4c16
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Wed Feb 14 08:58:30 2018 -0800
+
+    Merge pull request #70 from metadaddy/master
+    
+    Updated with current doc links, instructions for using Package Manager
+
+commit 34e4c1653eaead434afa0fc8ea308bca90585558
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Wed Feb 14 08:57:24 2018 -0800
+
+    Updated with current doc links and instructions for using Package Manager
+
+commit 6c32193307eeb361a484e989ef1df363e18bd089
+Merge: df4fe6b c8461c5
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue Jan 23 18:58:03 2018 -0800
+
+    Merge pull request #66 from streamsets/iwrigley-add-plugin-api-info
+    
+    Updated readme.md build instructions
+
+commit c8461c5b7296d79e84da2c0f8836f6104d87f101
+Author: Ian Wrigley <ian@variousity.com>
+Date:   Tue Jan 23 12:48:44 2018 -0800
+
+    Updated readme.md build instructions
+    
+    Added `datacollector-plugin-api`to the build instructions.
+
+commit df4fe6bac4adb01f79da9913acde1f1ed31d19ba
+Merge: 1985120 bd43482
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue Jan 9 19:17:51 2018 -0800
+
+    Merge pull request #65 from metadaddy/master
+    
+    Update Maurin's company
+
+commit bd43482d8c7f9677f78e09da050f0597613b2884
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue Jan 9 19:16:39 2018 -0800
+
+    Update Maurin's company
+
+commit 19851203af1df767bcd7b3d239a2132ce6f3224c
+Merge: 649bc6d afca5f4
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Mon Sep 25 12:33:18 2017 -0700
+
+    Merge pull request #60 from timgrossmann/patch-1
+    
+    Updated Jython Evaluator Script
+
+commit afca5f4646f86987127d14fc6862561ec5fe3d68
+Author: Tim Großmann <t.grossmann1994@web.de>
+Date:   Fri Sep 22 12:19:23 2017 -0700
+
+    Updated Jython Evaluator Script
+    
+    Simply trying out the tutorial won't work and lead to an error mentioning "err" and "out" is not defined without really specifying the location which makes it pretty hard for someone just starting out to find the problem and fix it.
+    
+    '''python
+    #
+    #  output.write(record): writes a record to processor output
+    #
+    #  error.write(record, message): sends a record to error
+    #
+    '''
+
+commit 649bc6d63f9f8d216a8659bec6688b8a2550ced3
+Merge: e93f8d4 0438cfa
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Wed Sep 6 15:55:45 2017 -0700
+
+    Merge pull request #58 from metadaddy/master
+    
+    DOC-953. MapR Hadoop (core-site.xml & hdfs-site.xml) are not co-located under the location of hive-site.xml
+
+commit 0438cfa0279283e9d234607acf94ee4e9f6f8adf
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Wed Sep 6 15:53:46 2017 -0700
+
+    DOC-953. MapR Hadoop (core-site.xml & hdfs-site.xml) are not co-located under the location of hive-site.xml
+    
+    Instructed reader to create a directory under SDC resources and link the config files there.
+
+commit e93f8d43af81cc6fa216ce95648ae7383d32fc3e
+Merge: 8c4c0dd bbe8676
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Wed Sep 6 15:31:41 2017 -0700
+
+    Merge pull request #57 from metadaddy/master
+    
+    DOC-951. Hive Drift Solution supports Avro & Parquet
+
+commit bbe86764024f5e74ed10e1785f8cddad58b28e97
+Merge: 6a44b2e 8c4c0dd
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Wed Sep 6 15:29:57 2017 -0700
+
+    Merge branch 'master' of https://github.com/streamsets/tutorials
+
+commit 6a44b2ef7c951c58a5e6003ddab1fefda91b2efb
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Wed Sep 6 15:24:09 2017 -0700
+
+    DOC-951. Hive Drift Solution supports Avro & Parquet
+    
+    Removed references to Avro as the only data format available with Drift
+    Synchronization. Also updated all mentions of 'Hive Drift Solution' to
+    'Drift Synchronization'.
+
+commit a59a6b870f1bb9f4841acc646153ba92b30c253a
+Author: Archaka Sameera V Srinivas <sameersrinivas90@gmail.com>
+Date:   Fri Jul 21 15:09:20 2017 -0500
+
+    Update log_shipping_to_elasticsearch_part2.md
+    
+    Typo fixed.
+
+commit 8c4c0ddfac93ff37feb697c4ad51cd967b55e428
+Merge: f1b91d5 7be6da7
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Fri Jul 14 14:05:28 2017 -0700
+
+    Merge pull request #55 from iwrigley/iwrigley-patch-1
+    
+    Fixed the Hive Drift Solution link
+
+commit 7be6da7a3be567eab7b8dcc702703217e6a9cc9c
+Author: Ian Wrigley <ian@variousity.com>
+Date:   Fri Jul 14 13:22:06 2017 -0700
+
+    Fixed the Hive Drift Solution link
+
+commit f1b91d5e3a877aa1fda3bec89c3ba13576d85ea8
+Merge: 846887c fe91c8a
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Wed Apr 19 15:51:48 2017 -0700
+
+    Merge pull request #51 from metadaddy/master
+    
+    Tidying up and linking to the multithreaded origin tutorial
+
+commit fe91c8a2ea7f6eec5e30b52c784c1a32319ca6f7
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Wed Apr 19 15:51:04 2017 -0700
+
+    Tidying up and linking to the multithreaded origin tutorial
+
+commit 846887c2ab5c918bae411f1dbfe20647e4dfd964
+Merge: ed9bd6a 8a8ed2f
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Wed Apr 19 15:37:02 2017 -0700
+
+    Merge pull request #50 from virtualramblas/master
+    
+    Added the multithreaded origin tutorial.
+
+commit 8a8ed2f38f71e1d69f60793004c0a94260b45411
+Author: virtualramblas <guglielmo.iozzia@gmail.com>
+Date:   Wed Apr 19 00:01:46 2017 +0200
+
+    Added the multithreaded origin tutorial.
+
+commit ed9bd6acba39aea4e5ec4e980a48548cff7fccc0
+Author: Adam Kunicki <kunickiaj@gmail.com>
+Date:   Fri Apr 14 14:33:00 2017 -0700
+
+    Update readme.md
+    
+    Changed "apply a map" to "apply a function"
+
+commit 543decc92d4589c66a02027bead3cbf0b0012399
+Merge: 4fd7e6c fed2aa8
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Mon Feb 27 17:36:30 2017 -0800
+
+    Merge pull request #43 from metadaddy/master
+    
+    Cleaner Scala
+
+commit fed2aa8982ce20944e8ed204d17e60653388ca2b
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Mon Feb 27 17:35:34 2017 -0800
+
+    Cleaner Scala
+
+commit 4fd7e6cef23f12a95548e1b25fadc734729a6c4c
+Merge: 470e278 e55cebf
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Wed Feb 22 17:45:27 2017 -0800
+
+    Merge pull request #40 from metadaddy/master
+    
+    Scala Spark Transformer Tutorial
+
+commit e55cebfc8b11446a234c4f40325003bdd4f0621f
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Wed Feb 22 17:44:46 2017 -0800
+
+    Minor fixes
+
+commit c4c43cc9a9fc9065b9e92a462dbdd9315b38bc38
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue Feb 21 17:25:55 2017 -0800
+
+    Update Java Transformer tutorial
+
+commit b73243cb31dfef1df6dd6f3c69a4c98c4a583b5a
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue Feb 21 17:23:49 2017 -0800
+
+    Add Scala Transformer to contents
+
+commit f77e155a2e7b3af01a9d4c599999cee1c2169375
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue Feb 21 17:10:03 2017 -0800
+
+    Parentheses
+
+commit ebcfabbf45f5eb5672724f3cb89a5946f194838f
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue Feb 21 16:45:26 2017 -0800
+
+    Scala-ifying
+
+commit 7b55048465da0317760a0f60a0fd9a2f895ddd68
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue Feb 21 16:11:04 2017 -0800
+
+    Indentation
+
+commit da54ef1807923b5479460d1e20f13ec20cd88166
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue Feb 21 16:03:19 2017 -0800
+
+    Add link to Java tutorial
+
+commit 900810e8298409cd80ef64effccf77cdd74c80f8
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue Feb 21 16:00:14 2017 -0800
+
+    HTML?
+
+commit 33d07acab4e5cbd83c5373c23736a92dfe576102
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue Feb 21 15:58:21 2017 -0800
+
+    Scala Transformer tutorial
+
+commit 470e2784cfaf7c90a0d4b8bd65f0470239f95551
+Merge: 32a33c4 a94e43e
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Sat Feb 18 06:45:21 2017 -0800
+
+    Merge pull request #38 from metadaddy/master
+    
+    ADLS Tutorial
+
+commit a94e43ef53ff7a10cda9b41931993e509ccfca81
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Sat Feb 18 06:44:11 2017 -0800
+
+    Tweak
+
+commit 5112fb85ac2f3efcaee85b46898a6878784bfa0d
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Sat Feb 18 06:41:56 2017 -0800
+
+    Added some detail
+
+commit 7368f9a14bafe42a975976b94b03a3b14dac9b43
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Wed Feb 15 15:56:57 2017 -0800
+
+    Add ADLS tutorial to front page
+
+commit b918cdc0ae6a638ee5dcb2dd0a5db3a69e87af6b
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue Feb 14 17:06:48 2017 -0800
+
+    Corrections
+
+commit 691d3945a63d5e643c308c5c46ef0435c8c2a665
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue Feb 14 15:57:29 2017 -0800
+
+    First cut of ADLS Destination tutorial
+
+commit 32a33c4c64af686021a81274c7a906c6f533f810
+Merge: 1fed5a5 3bd8613
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Thu Jan 5 18:54:38 2017 -0600
+
+    Merge pull request #36 from streamsets/correct_jython_script
+    
+    Updated jython script to change out to output and err to error
+
+commit 3bd86132d2c71edd63ea248838855576e6eef5e1
+Author: Rupal Shah <rupal@streamsets.com>
+Date:   Thu Jan 5 16:06:22 2017 -0800
+
+    Updated jython script to change out to output and err to error
+
+commit 1fed5a5854e17f2acd6d73012913d6ca285afe8f
+Merge: 6692188 3f32a24
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Thu Dec 8 20:46:51 2016 -0800
+
+    Merge pull request #30 from metadaddy/master
+    
+    Corrected Hadoop FS stage name
+
+commit 3f32a24ba2fc1356562ec384e4f2d03696a231f4
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Thu Dec 8 20:46:05 2016 -0800
+
+    Corrected Hadoop FS stage name
+
+commit 66921886d29783a3124f66d4c8d27258113a7b4e
+Merge: f8ecd0e 9068755
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Thu Dec 8 10:53:04 2016 -0800
+
+    Merge pull request #29 from metadaddy/master
+    
+    Added LICENSE.TXT and guide for contributors
+
+commit 9068755cd937370dbcf8f9a8612c798a7652a515
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Thu Dec 8 10:51:48 2016 -0800
+
+    Corrected project name
+
+commit 616c1d88c41f115b8fc3fe1b52eb6af6030890be
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Thu Dec 8 10:50:37 2016 -0800
+
+    Added license and guide for contributors
+
+commit f8ecd0e7b03a6279a47aa158b86ebc365dca3de5
+Merge: fcc96b5 3c39e6a
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Thu Dec 8 10:41:29 2016 -0800
+
+    Merge pull request #28 from metadaddy/master
+    
+    Added Spark Transformer and Custom Origin tutorials to content page
+
+commit 3c39e6ada4656b82ccc1711d939baffa8a3e2387
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Thu Dec 8 10:40:59 2016 -0800
+
+    Added Spark Transformer and Custom Origin tutorials to content page
+
+commit fcc96b5017e947fc909c31069995fba4177f18c2
+Merge: 9b400e6 d0b505e
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Thu Dec 8 10:35:18 2016 -0800
+
+    Merge pull request #27 from metadaddy/master
+    
+    Spark Transformer and Custom Origin tutorials
+
+commit d0b505e314bf6d51793d5275cf828e9dfada290f
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Wed Dec 7 21:29:12 2016 -0800
+
+    Custom origin tutorial
+
+commit a6636288bec28b5836e05fba07346e3145f035c1
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Mon Dec 5 12:50:46 2016 -0800
+
+    Spark Transformer tutorial
+
+commit 9b400e66f340315b012a0ab274beb7b512ce8ee9
+Merge: 09f309c b09c910
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Tue Oct 18 10:51:11 2016 -0700
+
+    Merge pull request #22 from metadaddy/master
+    
+    New processor tutorial
+
+commit b09c910b974f8ed4f412be487ceb9f357aa210aa
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Sat Oct 15 21:23:46 2016 -0700
+
+    New processor tutorial
+
+commit 09f309caeab02e3d7f681a771333af329c38598d
+Merge: b1bf8a0 3581af7
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Tue Sep 27 17:37:26 2016 -0400
+
+    Merge pull request #21 from metadaddy/master
+    
+    Fix error object
+
+commit 3581af7a91ea4caa3add19481d1991556cabaf8a
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue Sep 27 14:33:07 2016 -0700
+
+    Fix error object
+
+commit b1bf8a0de443ce1308a2f9b8a021c355c060c720
+Merge: 9ca4ead 61980af
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Tue Sep 27 17:13:26 2016 -0400
+
+    Merge pull request #20 from metadaddy/master
+    
+    Fix output object
+
+commit 61980afe19560030d61b22cce53fa98616a9586a
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue Sep 27 14:05:44 2016 -0700
+
+    Fix output object
+
+commit 9ca4ead0f19cb1190215033ed657f9f816cd37a1
+Merge: 4662f76 6664069
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Wed Sep 7 14:09:11 2016 -0700
+
+    Merge pull request #19 from metadaddy/master
+    
+    Updated Hive Drift tutorial in response to feedback
+
+commit 6664069b9927d1c129411832c65329005c51edcb
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue Sep 6 18:19:46 2016 -0700
+
+    Updated Hive Drift tutorial in response to feedback. Added it to the tutorial content page.
+
+commit 4662f765ecf798a502eacd72dc4f5e960e283eb8
+Merge: 3324faa 6185ca0
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Sat Sep 3 12:21:20 2016 -0700
+
+    Merge pull request #18 from metadaddy/master
+    
+    Hive Drift Tutorial
+
+commit 6185ca0158825b8c0801b93c13b2464017d92c4e
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Fri Sep 2 17:24:39 2016 -0700
+
+    Rename markdown file
+
+commit 51ea3569a1f1fab053364f9cde7ca03275ee16b2
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Fri Sep 2 17:22:47 2016 -0700
+
+    Initial cut of Hive Drift tutorial
+
+commit 3324faaeaa87143c9fabf5e7f3d909846d70fdb5
+Merge: 4b50a94 4e93eb5
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Fri Jul 29 15:43:10 2016 -0700
+
+    Merge pull request #14 from metadaddy/master
+    
+    Add note on connecting via proxy. Fixes #13
+
+commit 4b50a94b36e452d3d43424e4af15524f66bea4fe
+Merge: 5879ad4 1f510cd
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Fri Jul 29 15:42:45 2016 -0700
+
+    Merge pull request #16 from streamsets/tutorial2
+    
+    Tutorial2
+
+commit 1f510cd74aebb1aa28c2ede8d613f184eb5c229b
+Author: Rupal Shah <rupal@streamsets.com>
+Date:   Fri Jul 29 14:07:32 2016 -0700
+
+    Removing sample.json and adding ccsample avro file
+
+commit bbaf2c5dfee656e453e19815fcc51a8f88a9cba5
+Author: Rupal Shah <rupal@streamsets.com>
+Date:   Fri Jul 29 13:41:17 2016 -0700
+
+    Adding the correct file for tutorial2. The current sample file jas JSON data whereas the tutorial mentions Avro everywhere
+
+commit 5879ad4464b939edf29abb72e497f094867727e8
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Tue Jul 19 08:23:09 2016 -0700
+
+    Sample data files for lesson2
+
+commit 8603575f5a09a25bae1c2e777ffae75bb79a1ffa
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Fri Apr 22 08:11:32 2016 -0700
+
+    Update directory_to_kafkaproducer.md
+
+commit e6f519d8fb3bf0cc83b78587f10c1e2d5931ccdc
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Fri Apr 22 08:11:09 2016 -0700
+
+    Update kafkaconsumer_to_multipledestinations.md
+
+commit 5783ae6e073cc526d4f87e6144ec36dd755c2fd8
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Fri Apr 22 08:10:29 2016 -0700
+
+    Update readme.md
+
+commit 4e93eb5ab4d406dc1e02edcf603487d93dc9b82d
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Mon Apr 11 09:49:17 2016 -0700
+
+    Add note on connecting via proxy. Fixes #13
+
+commit 4686f70a3a12bcbbd3c489d6fff5f0f027f2a987
+Merge: a1b60b1 a243a9e
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Wed Mar 23 11:10:27 2016 -0700
+
+    Merge pull request #12 from metadaddy/master
+    
+    Added a note regarding dummy access log data
+
+commit a243a9e03bc90f7aa984467c20abba844b25dbd2
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Wed Mar 23 10:52:43 2016 -0700
+
+    Extended note to show how to drill into errors.
+
+commit f5f367824c014c8903744535c8efd59ff903ca8f
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Wed Mar 23 10:30:19 2016 -0700
+
+    Fixed another formatting oops
+
+commit e33796ac6ed942f2405e62a8fe2ea3e8f88cf498
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Wed Mar 23 10:25:19 2016 -0700
+
+    Added a note on the dummy access log data. Fixes #11
+
+commit e1950b943d33e58d250fba439ba281017d8eb03c
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Wed Mar 23 10:18:08 2016 -0700
+
+    Fixed indented headings and a couple of typos
+
+commit a1b60b119cdfe0e12fd511053840817d4ed2a69d
+Merge: ad0e2d0 51cd4dd
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Wed Mar 23 07:19:59 2016 -0700
+
+    Merge pull request #10 from metadaddy/master
+    
+    Custom destination tutorial
+
+commit 51cd4dd5a29893f7f34c347396dc8ab27bd7d8f9
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue Mar 22 21:23:58 2016 -0700
+
+    Added language identifiers to code blocks
+
+commit 540fdf5153b71d2ef364f969f22a5a9f7a7d589c
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Tue Mar 22 19:32:40 2016 -0700
+
+    Custom destination tutorial
+
+commit ad0e2d083c83479ef0110e99f532f6f0354c25da
+Merge: 64e3462 e9b267f
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Mon Mar 14 14:55:45 2016 -0700
+
+    Merge pull request #9 from metadaddy/master
+    
+    Added City Lots tutorial
+
+commit e9b267f3fea33cf571cbe2fdfef07dbda94a77ce
+Author: Pat Patterson <metadaddy@gmail.com>
+Date:   Mon Mar 14 14:34:43 2016 -0700
+
+    Added City Lots tutorial
+
+commit 64e34622752f0c91e289213e3721193a2be7623b
+Merge: bb94bfb 6703390
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Thu Feb 25 14:37:48 2016 -0800
+
+    Merge pull request #5 from lchen89/patch-6
+    
+    Update readme.md
+
+commit bb94bfba41b4c3899fc97e883c9950ac43ff8703
+Merge: a08471e 488be2e
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Thu Feb 25 14:37:21 2016 -0800
+
+    Merge pull request #6 from lchen89/patch-5
+    
+    Update directory_to_kafkaproducer.md
+
+commit a08471ecba59bfac9ce79d394e1c9398ff3a00e2
+Merge: 3f8bc8d 443bb87
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Thu Feb 25 14:36:43 2016 -0800
+
+    Merge pull request #4 from lchen89/patch-4
+    
+    Update readme.md
+
+commit 3f8bc8dcfec7fbf51b3e9af0ee745f3b0a3b32c3
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Thu Feb 25 14:17:41 2016 -0800
+
+    Update log_shipping_to_elasticsearch_part1.md
+
+commit da67aa2d12bbad6cfe8131fb888bc5d800967926
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Thu Feb 25 14:17:07 2016 -0800
+
+    Update log_shipping_to_elasticsearch_part1.md
+
+commit 6703390f35e8070b0a37a95fa68092ae1e26142e
+Author: Loretta Chen <loretta@streamsets.com>
+Date:   Tue Feb 2 13:22:15 2016 -0800
+
+    Update readme.md
+
+commit 488be2e4396fc29ac619679bd27c443345712e38
+Author: Loretta Chen <loretta@streamsets.com>
+Date:   Tue Feb 2 13:18:15 2016 -0800
+
+    Update directory_to_kafkaproducer.md
+    
+    A few minor suggestions.
+
+commit 443bb879e52e046ffab35a909e1c68fc44e64311
+Author: Loretta Chen <loretta@streamsets.com>
+Date:   Mon Feb 1 10:26:44 2016 -0800
+
+    Update readme.md
+    
+    Minor edits, adding link to tutorial in the doc.
+
+commit 18091658001bb096847db1f3bc012760290eef5d
+Merge: 292c419 19411e4
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Fri Jan 29 13:04:30 2016 -0800
+
+    Merge pull request #3 from lchen89/patch-3
+    
+    Update log_shipping_to_elasticsearch_part2.md
+
+commit 19411e45c00d1342857006d3ebcc927ae7924ebf
+Author: Loretta Chen <loretta@streamsets.com>
+Date:   Fri Jan 29 12:28:44 2016 -0800
+
+    Update log_shipping_to_elasticsearch_part2.md
+    
+    Fixed Elastic<s>earch everywhere, added a sentence about enabling the pipeline help bar.
+    I wasn't sure about whether the rest of the doc Init Capped the Headings or not, so after you approve changes, I might make a final light cleanup pass for consistency? Sorry I have a terrible memory! (also I thought we had bolded tab names, but here they're ital?)
+    FYI, you have * around a Note, but it's not working because of code in the middle.
+
+commit 292c419f6dc2395b89591236ba395cc63a23d175
+Merge: bc1829c 507fc5f
+Author: Kirit Basu <kirit@streamsets.com>
+Date:   Thu Jan 28 13:29:40 2016 -0800
+
+    Merge pull request #1 from lchen89/patch-1
+    
+    Update readme.md
+
+commit 507fc5f542d5b736f40a697902aa9d6979827963
+Author: Loretta Chen <loretta@streamsets.com>
+Date:   Thu Jan 28 10:47:01 2016 -0800
+
+    Update readme.md
+    
+    Fixed camel case for Elasticsearch, replaced Elastic with Elasticsearch (Elastic is the company, Elasticsearch is the software), removed spaces before colons, removed "the" before Data Collector, source => origin, capitalization and periods for consistency.
+    Please make sure my changes didn't break links to files/video?
+    Left "lat/lon" attributes in case that's the name of the attributes. But if it's not, then it's nicer to say "latitude and longitude attributes" - ?
+
+commit bc1829c0cfea2ac0edcfa46f804464a91b7544bc
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Tue Jan 26 21:40:07 2016 -0800
+
+    added video links
+
+commit 51481ba459d2e35d8cfe7120833bc9cfe3201218
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Tue Jan 26 21:28:09 2016 -0800
+
+    updates to elastic
+
+commit a390aeae6b4297a2a91db6a1bc6a96533875e6f6
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Mon Jan 25 07:27:43 2016 -0800
+
+    cleanup
+
+commit 0e316dbd9f2cbc71c83f48bb8dc7eb5b9e168691
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Mon Jan 25 07:26:47 2016 -0800
+
+    cleanup
+
+commit f375e7752e8de38f6ef44cb5a3afbf1bf4a8fb15
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Fri Jan 22 10:38:49 2016 -0800
+
+    avrò format
+
+commit b6070961f5935af884dfbac9f982169de7004882
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Fri Jan 22 10:20:39 2016 -0800
+
+    link
+
+commit 6a00622e8c1985c61e31699b0a8d2052b0cef029
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Fri Jan 22 10:17:10 2016 -0800
+
+    omg path
+
+commit 88c89a729ef738b8aa3904165760987f8e9d871a
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Fri Jan 22 10:15:48 2016 -0800
+
+    image
+
+commit aadc2ba4656635c220f92833f3f433ea7d7cb2c1
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Fri Jan 22 10:13:04 2016 -0800
+
+    added images
+
+commit 2851f82d0e2c7c133f0cf797947ce21a26d3d22e
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Fri Jan 22 09:56:45 2016 -0800
+
+    kafka enablement
+
+commit 1b3a770525d5b947ddaca8eb317b3ac8ce0a3eb0
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Wed Jan 20 08:48:17 2016 -0800
+
+    added kafka tut
+
+commit 4359dabc8f4326ac5594c89ff1dd1592d1a3aabb
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Tue Jan 19 15:10:50 2016 -0800
+
+    Kafka Enablement
+
+commit 54eff494a47b07883b2e8eb44407481e78f5f3bc
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Sun Jan 17 19:28:44 2016 -0800
+
+    updates
+
+commit 05c0ef6c6cdfe5bec4e15cbc6a1f42aa991848d7
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Wed Dec 23 09:59:19 2015 -0800
+
+    part 2
+
+commit 415aef854b8c900966f8a806d9a088ac80dd8d2a
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Mon Dec 21 12:50:02 2015 -0800
+
+    .md
+
+commit c832972e002c4d198e56d8507a949badeda8c800
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Mon Dec 21 12:48:46 2015 -0800
+
+    part 2 - initial commit
+
+commit 92bfeb9ed61408b475a76df42e73c13c3adee91b
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Mon Dec 21 11:24:52 2015 -0800
+
+    broken links
+
+commit a3f2682d61e41702004fa4798d9716472db1c710
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Mon Dec 21 11:22:54 2015 -0800
+
+    fixed broken links
+
+commit a0fdb5c2764ce36ff16fe804d81dca0e09ce2f9c
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Mon Dec 21 10:55:05 2015 -0800
+
+    part1 cleanup
+
+commit b38797200a0ffc9611c62cbb3de28ebebcc1747a
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Mon Dec 21 10:39:29 2015 -0800
+
+    file paths
+
+commit 358985ed4520cea0111bc3b4782c025968b40843
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Mon Dec 21 10:37:15 2015 -0800
+
+    added readme
+
+commit 70e06ee880625285fa8a8140bd8bc2e6cc3ff669
+Author: Kirit Basu <kiritb@gmail.com>
+Date:   Mon Dec 21 10:16:31 2015 -0800
+
+    initial commit
