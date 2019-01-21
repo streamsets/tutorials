@@ -12,7 +12,7 @@ This vNet will allow us to enable communication between the clusters created in 
 4. Install [StreamSets Data Collector for HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apps-install-streamsets)
 Also check [StreamSets Documentation](https://streamsets.com/documentation/datacollector/latest/help/index.html#datacollector/UserGuide/Installation/CloudInstall.html#task_vnj_rl2_wdb) for more details on the installation process.
 
-5. Create an [HDInsight Kafka cluster](https://docs.microsoft.com/en-us/azure/hdinsight/kafka/apache-kafka-get-started) in the same vNet as above. Use Azure Storage for the Kafka cluster. 
+5. Create an [Apache Kafka on HDInsight cluster](https://docs.microsoft.com/en-us/azure/hdinsight/kafka/apache-kafka-get-started) in the same vNet as above. Use Azure Storage for the Kafka cluster. 
 
 6. Configure StreamSets Data Collector to connect to HDInsight cluster
 
