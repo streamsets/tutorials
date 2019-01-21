@@ -12,7 +12,7 @@ In this tutorial, you will learn how to leverage Azure services with StreamSets 
 
 ## Prerequisites
 
-## Creat the SQL Datawarehouse table
+## Creat the SQL Data Warehouse table
 
 Log in to the SQL Server client and paste the following SQL statement to create the table:
 
