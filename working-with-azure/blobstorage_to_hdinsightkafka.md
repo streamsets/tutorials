@@ -22,7 +22,7 @@ When working with HDInsight Kafka, we need to pre-create the Kafka topic. Ssh in
 
 Now let's get some data flowing! In your browser, login to StreamSets Data Collector (SDC) and create a new pipeline.
 
-Select Origin from the Drop down list: `Hadoop FS Standalone`
+Select Origin from the Drop down list: `Hadoop FS Standalone - HDP 2.6.2.1-1`
 ![image alt text](img/BlobToKafka/SelectSource_Hadoop.png)
 **Hadoop FS tab**
 
@@ -88,4 +88,5 @@ Use Kafka tools provided by Azure to verify data was written to the topic. More 
 ## Conclusion
 
 This tutorial shows how simple it is to stream data from any Directory on Blob Storage, structured on unstructured, into a Kafka topic that can feed multiple consumers downstream. 
-Follow the next tutorial to see how you can use StreamSets Data Collector to read data from the topic and feed it into a SQL Datawarehouse on Azure.
+
+Follow the next tutorial to see how you can use StreamSets Data Collector to read data from the topic and feed it into Azure SQL Data Warehouse.
