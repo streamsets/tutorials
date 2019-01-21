@@ -8,7 +8,7 @@
 
 ## Goal
 
-In this tutorial, you will learn how to leverage Azure services with StreamSets to read data from an HDInsight Kafka stream into ingest into Azure SQL Datawarehouse and a Hive table backed by Blob Storage.
+In this tutorial, you will learn how to leverage Azure services with StreamSets to read data from an Apache Kafka on HDInsight stream into ingest into Azure SQL Data Warehouse and a Hive table backed by Blob Storage.
 
 ## Prerequisites
 
