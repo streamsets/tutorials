@@ -6,7 +6,7 @@
 
 ## Goal
 
-In this tutorial, you will learn how to leverage Azure services with StreamSets to read data from Blob Storage and send data into HDInsight Kafka cluster.
+In this tutorial, you will learn how to leverage Azure services with StreamSets to read data from Blob Storage and send data into Apache Kafka on HDInsight cluster.
 
 ## Prerequisites
 
