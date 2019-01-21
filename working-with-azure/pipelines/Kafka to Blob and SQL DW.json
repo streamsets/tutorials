@@ -803,7 +803,7 @@
         "value" : null
       }, {
         "name" : "hdfsTargetConfigBean.hdfsUri",
-        "value" : "wasbs://testsdc@pranavkyo.blob.core.windows.net/testsdc"
+        "value" : "wasbs://testsdc@xxx.blob.core.windows.net/testsdc"
       }, {
         "name" : "hdfsTargetConfigBean.hdfsUser",
         "value" : null
@@ -816,10 +816,10 @@
       }, {
         "name" : "hdfsTargetConfigBean.hdfsConfigs",
         "value" : [ {
-          "key" : "fs.azure.account.key.pranavkyo.blob.core.windows.net",
-          "value" : "Q+COb5Rg0Aol8G5chOrkatM/jzaLMeqmhqJuxsFLxAnOAx77dYP39MIxwYhcKC9DILuWyzVNDZd3XPVS6MpK5A=="
+          "key" : "fs.azure.account.key.xxx.blob.core.windows.net",
+          "value" : "xxx"
         }, {
-          "key" : "fs.azure.account.keyprovider.pranavkyo.blob.core.windows.net",
+          "key" : "fs.azure.account.keyprovider.xxx.blob.core.windows.net",
           "value" : "org.apache.hadoop.fs.azure.SimpleKeyProvider"
         } ]
       }, {
