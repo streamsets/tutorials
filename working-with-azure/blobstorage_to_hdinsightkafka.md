@@ -1,4 +1,4 @@
-# Ingesting Data from Blob Storage into HDInsight Kafka
+# Ingesting Data from Blob Storage into Apache Kafka on HDInsight
 
 [Azure Blob Storage](https://azure.microsoft.com/en-us/services/storage/blobs/ "Azure Blob Storage") can handle all your unstructured data, scaling up or down as required. You no longer have to manage it, you only pay for what you use, and you save money over on-premises storage options.
 
