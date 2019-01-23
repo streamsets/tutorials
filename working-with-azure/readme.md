@@ -1,3 +1,10 @@
+# Working with StreamSets Data Collector and Microsoft Azure
+
+These tutorials explain how to use [StreamSets Data Collector](https://streamsets.com/products/sdc/) to integrate [Azure Blob Storage](https://azure.microsoft.com/en-us/services/storage/blobs/), [Apache Kafka on HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/), [Azure SQL Data Warehouse](https://azure.microsoft.com/en-us/services/sql-data-warehouse/) and Apache Hive backed by Azure Blob Storage:
+
+* [Ingesting Data from Blob Storage into Apache Kafka on HDInsight](blobstorage_to_hdinsightkafka.md)
+* [Ingesting Data from Apache Kafka on HDInsight into Azure SQL Data Warehouse and Apache Hive backed by Azure Blob Storage](hdinsightkafka_to_sqldw_and_blobstorage.md)
+
 ### Pre-requisites
 
 In order to work through these tutorials, ensure you already have the following setup ready, otherwise follow the instructions described below:
@@ -37,12 +44,13 @@ Also check [StreamSets Documentation](https://streamsets.com/documentation/datac
 		sudo ln -s /etc/hadoop/conf/*.xml .
 		sudo ln -s /etc/hive/conf/hive-site.xml .
 		```
-		
-![image alt text](img/sdc_ssh_login.png)
+
+    ![image alt text](img/sdc_ssh_login.png)
 
 7. Download and install SQL Server JDBC Driver for StreamSets Data Collector
 	- Download: https://docs.microsoft.com/en-us/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?view=sql-server-2017
 	- Install: https://streamsets.com/documentation/datacollector/latest/help/index.html#datacollector/UserGuide/Configuration/ExternalLibs.html#concept_amy_pzs_gz
 	
 8. Capture and note down the Kafka Broker URI and Zookeeper Configuration from Ambari:
-![image alt text](img/Ambari_Kafka.png)
+
+    ![image alt text](img/Ambari_Kafka.png)
