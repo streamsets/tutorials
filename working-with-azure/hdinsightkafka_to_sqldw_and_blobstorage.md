@@ -8,11 +8,13 @@
 
 ## Goal
 
-In this tutorial, you will learn how to leverage Azure services with StreamSets to read data from an Apache Kafka on HDInsight stream into ingest into Azure SQL Data Warehouse and a Hive table backed by Blob Storage.
+The [previous tutorial](blobstorage_to_hdinsightkafka.md) showed how to use StreamSets Data Collector to read data from Blob Storage and send it to Apache Kafka on HDInsight cluster. In this tutorial, you will learn how to leverage Azure services with StreamSets to read data from an Apache Kafka on HDInsight stream into ingest into Azure SQL Data Warehouse and a Hive table backed by Blob Storage.
 
 ## Prerequisites
 
-## Creat the SQL Data Warehouse table
+[Install and configure StreamSets Data Collector and the necessary Azure services](readme.md).
+
+## Create the SQL Data Warehouse table
 
 Log in to the SQL Server client and paste the following SQL statement to create the table:
 
@@ -184,4 +186,4 @@ If all is well, it’s time to run the pipeline! Hit the run button ![image alt 
 
 ## Conclusion
 
-This tutorial shows how simple it is to stream data from any Kafka into multiple destinations with Azure Services. For Realtime trickle feeds, you can directly send data into SQL Datawarehouse and for Archival, you can send data into Hive.
+This tutorial shows how simple it is to stream data from any Kafka into multiple destinations with Azure Services. For Realtime trickle feeds, you can directly send data into Azure SQL Data Warehouse and for Archival, you can send data into Hive.

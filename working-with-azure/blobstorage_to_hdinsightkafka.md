@@ -10,6 +10,8 @@ In this tutorial, you will learn how to leverage Azure services with StreamSets 
 
 ## Prerequisites
 
+[Install and configure StreamSets Data Collector and the necessary Azure services](readme.md).
+
 You can download sample data for this tutorial from the following location: https://www.streamsets.com/documentation/datacollector/sample_data/tutorial/nyc_taxi_data.csv and copy into your Blob Storage.
 
 ## Creating the Kafka Topic
@@ -89,4 +91,4 @@ Use Kafka tools provided by Azure to verify data was written to the topic. More 
 
 This tutorial shows how simple it is to stream data from any Directory on Blob Storage, structured on unstructured, into a Kafka topic that can feed multiple consumers downstream. 
 
-Follow the next tutorial to see how you can use StreamSets Data Collector to read data from the topic and feed it into Azure SQL Data Warehouse.
+[Follow the next tutorial](hdinsightkafka_to_sqldw_and_blobstorage.md) to see how you can use StreamSets Data Collector to read data from the topic and feed it into Azure SQL Data Warehouse.
