@@ -12,6 +12,8 @@ The following tutorials demonstrate some StreamSets [Data Collector](http://gith
 
 - [Ingesting Local Data into Azure Data Lake Store](tutorial-adls-destination/readme.md) - Read records from a local CSV-formatted file, mask out PII (credit card numbers) and send them to a JSON-formatted file in Azure Data Lake Store.
 
+- [Working with StreamSets Data Collector and Microsoft Azure](working-with-azure/readme.md) - Integrate [Azure Blob Storage](https://azure.microsoft.com/en-us/services/storage/blobs/), [Apache Kafka on HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/), [Azure SQL Data Warehouse](https://azure.microsoft.com/en-us/services/sql-data-warehouse/) and Apache Hive backed by Azure Blob Storage.
+
 ## Writing Custom Pipeline Stages
 
 - [Creating a Custom StreamSets Origin](tutorial-origin/readme.md) - Build a simple custom origin that reads a Git repository's commit log and produces the corresponding records.
