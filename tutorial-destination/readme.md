@@ -257,7 +257,7 @@ We could add a processor to the pipeline to add the `/someField` field that the 
 
 ### Creating a RequestBin Destination
 
-[RequestBin](http://requestb.in/) "gives you a URL that will collect requests made to it and lets you inspect them in a human-friendly way." It’s a very handy tool to debug [webhooks](https://en.wikipedia.org/wiki/Webhook), and we can use it here to simulate a REST API endpoint. We’ll build our destination’s functionality in stages, so you can see how the pieces fit together:
+[RequestBin](https://requestbin.com/) "gives you a URL that will collect requests made to it and lets you inspect them in a human-friendly way." It’s a very handy tool to debug [webhooks](https://en.wikipedia.org/wiki/Webhook), and we can use it here to simulate a REST API endpoint. We’ll build our destination’s functionality in stages, so you can see how the pieces fit together:
 
 1. Write information to the SDC log
 2. Create a buffer of records per batch, in CSV format
@@ -590,20 +590,20 @@ You would also need to add `proxyHost` and `proxyPort` to the destination's conf
 There is one final task to perform before we can send records to RequestBin. The default security policy for custom stages is quite restrictive. In particular, if you try to run this code, you will see the error:
 
 ```
-java.security.AccessControlException: access denied ("java.net.SocketPermission" "requestb.in" "resolve")
+java.security.AccessControlException: access denied ("java.net.SocketPermission" "requestbin.com" "resolve")
 ```
 
-We need to edit SDC’s security policy to allow the destination to resolve and connect to requestb.in. Open `~/streamsets-datacollector-1.2.2.0/etc/sdc-security.policy` in your favorite editor and add a new section:
+We need to edit SDC’s security policy to allow the destination to resolve and connect to `requestbin.com`. Open `~/streamsets-datacollector-1.2.2.0/etc/sdc-security.policy` in your favorite editor and add a new section:
 
 ```
 grant codebase "file://${sdc.dist.dir}/user-libs/samplestage/-" {
-  permission java.net.SocketPermission "requestb.in", "connect, resolve";
+  permission java.net.SocketPermission "requestbin.com", "connect, resolve";
 };
 ```
 
-If you're connecting via a proxy, you should add your proxy's hostname in place of `requestb.in`.
+If you're connecting via a proxy, you should add your proxy's hostname in place of `requestbin.com`.
 
-Now go to [RequestBin](http://requestb.in/) and create a new bin, if you have not already done so. After a build/extract/restart, paste your bin URL into the destination config:
+Now go to [RequestBin](https://requestbin.com/) and create a new bin, if you have not already done so. After a build/extract/restart, paste your bin URL into the destination config:
 
 ![image alt text](image_9.png)
 
