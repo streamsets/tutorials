@@ -41,6 +41,10 @@ The Data Collector documentation also includes an [extended tutorial](https://st
 
 - [Creating Custom Data Protector Procedure](tutorial-custom-dataprotector-procedure/README.md) - Create, build and deploy your own custom data protector procedure that you can use as protection method to apply to record fields.
 
+## Transformer
+
+- [Creating a Custom Processor for StreamSets Transformer](https://github.com/metadaddy/transformer-sample-processor/blob/master/README.md) - Create a simple custom processor, using Java and Scala, that will compute the type of a credit card from its number, and configure Transformer to use it.
+
 # License
 
 StreamSets Data Collector and its tutorials are built on open source technologies; the tutorials and accompanying code are licensed with the [Apache License 2.0](LICENSE.txt).
