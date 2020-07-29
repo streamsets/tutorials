@@ -49,7 +49,7 @@ The Data Collector documentation also includes an [extended tutorial](https://st
 
 ## Kubernetes-based Deployment
 
-- [Example Configuration for Kubernetes-based Deployment of StreamSets Data Collector](tutorial-kubernetes-deployment/readme.md)
+- [Kubernetes-based Deployment](tutorial-kubernetes-deployment/readme.md) - Example Configuration for Kubernetes-based Deployment of StreamSets Data Collector
 
 # License
 
