@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sdc-stage-libs-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+    - ReadOnlyMany
+  storageClassName: sdc-stage-libs-sc
+  resources:
+    requests:
+      storage: 5Gi

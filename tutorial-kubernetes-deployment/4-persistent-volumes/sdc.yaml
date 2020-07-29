@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sdc
+spec:
+  selector:
+    matchLabels:
+      app: sdc
+  template:
+    metadata:
+      labels:
+        app: sdc
+    spec:
+      containers:
+      - name: sdc
+        image: streamsets/datacollector:latest
+        ports:
+        - containerPort: 18630
+        env:
+        - name: SDC_JAVA_OPTS
+          value: "-Xmx2g -Xms2g"
+        volumeMounts:
+          - name: sdc-stage-libs
+            mountPath: /opt/streamsets-datacollector-3.16.1/streamsets-libs
+      volumes:
+      - name: sdc-stage-libs
+        persistentVolumeClaim:
+          claimName: sdc-stage-libs-pvc

@@ -1,0 +1,30 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sdc
+  labels:
+    app: sdc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sdc
+  template:
+    metadata:
+      labels:
+        app: sdc
+    spec:
+      containers:
+      - name: sdc
+        image: streamsets/datacollector:latest 
+        ports:
+        - containerPort: 18630
+        volumeMounts:
+        - name: sdc-properties
+          mountPath: /etc/sdc/sdc.properties
+          subPath: sdc.properties
+      volumes:
+      - name: sdc-properties
+        configMap:
+          name: sdc-properties
