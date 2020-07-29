@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sdc-stage-libs-list
+data:
+  sdc-stage-libs: |
+    streamsets-datacollector-aws-lib
+    streamsets-datacollector-basic-lib
+    streamsets-datacollector-bigtable-lib
+    streamsets-datacollector-dataformats-lib
+    streamsets-datacollector-dev-lib
+    streamsets-datacollector-google-cloud-lib
+    streamsets-datacollector-groovy_2_4-lib
+    streamsets-datacollector-jdbc-lib
+    streamsets-datacollector-jms-lib
+    streamsets-datacollector-jython_2_7-lib
+    streamsets-datacollector-stats-lib
+    streamsets-datacollector-windows-lib
+  sdc-enterprise-stage-libs: |
+    streamsets-datacollector-databricks-lib-1.0.0  
+    streamsets-datacollector-snowflake-lib-1.4.0
+    streamsets-datacollector-oracle-lib-1.2.0
+    streamsets-datacollector-sql-server-bdc-lib-1.0.1

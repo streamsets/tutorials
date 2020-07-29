@@ -47,6 +47,10 @@ The Data Collector documentation also includes an [extended tutorial](https://st
 
 - [Creating a Custom Scala Project For StreamSets Transformer](https://github.com/iamontheinet/StreamSets/tree/master/Transformer_Custom_Scala_Project) - This tutorial explains how to create a custom Scala project and import the compiled jar into StreamSets Transformer.
 
+## Kubernetes-based Deployment
+
+- [Kubernetes-based Deployment](tutorial-kubernetes-deployment/README.md) - Example configurations for Kubernetes-based deployments of StreamSets Data Collector
+
 # License
 
 StreamSets Data Collector and its tutorials are built on open source technologies; the tutorials and accompanying code are licensed with the [Apache License 2.0](LICENSE.txt).

@@ -1,0 +1,65 @@
+apiVersion: 1
+kind: List
+items:
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: sdc
+    labels:
+      app: sdc
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: sdc
+    template:
+      metadata:
+        labels:
+          app: sdc
+      spec:
+        containers:
+        - name: sdc
+          image: streamsets/datacollector:latest
+          ports:
+          - containerPort: 18630
+          env:
+          - name: SDC_JAVA_OPTS
+            value: "-Xmx4g -Xms4g"
+          - name: SDC_CONF_SDC_BASE_HTTP_URL
+            value: https://saturn.onefoursix.com
+          - name: SDC_CONF_HTTP_ENABLE_FORWARDED_REQUESTS
+            value: true
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: sdc
+    labels:
+      app: sdc
+  spec:
+    type: NodePort
+    ports:
+    - name: http
+      port: 18635
+      targetPort: 18630
+      protocol: TCP
+    selector:
+      app: sdc
+- apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+    name: sdc
+    annotations:
+      kubernetes.io/ingress.class: nginx
+  spec:
+    tls:
+    - hosts:
+      - saturn.onefoursix.com
+      secretName: streamsets-tls
+    rules:
+    - host:
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: sdc
+            servicePort: 18635

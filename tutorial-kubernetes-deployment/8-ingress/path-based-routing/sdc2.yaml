@@ -1,0 +1,70 @@
+apiVersion: 1
+kind: List
+items:
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: sdc2
+    namespace: ns1
+    labels:
+      app: sdc2
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: sdc2
+    template:
+      metadata:
+        labels:
+          app: sdc2
+      spec:
+        containers:
+        - name: sdc2
+          image: streamsets/datacollector:latest
+          ports:
+          - containerPort: 18630
+          env:
+          - name: SDC_JAVA_OPTS
+            value: "-Xmx4g -Xms4g"
+          - name: SDC_CONF_SDC_BASE_HTTP_URL
+            value: https://saturn.onefoursix.com/sdc2/
+          - name: SDC_CONF_HTTP_ENABLE_FORWARDED_REQUESTS
+            value: true
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: sdc2
+    namespace: ns1
+    labels:
+      app: sdc2
+  spec:
+    type: NodePort
+    ports:
+    - name: http
+      port: 18636
+      targetPort: 18630
+      protocol: TCP
+    selector:
+      app: sdc2
+- apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+    name: sdc2
+    namespace: ns1
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/ssl-redirect: \"false\"
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+  spec:
+    tls:
+    - hosts:
+      - saturn.onefoursix.com
+      secretName: streamsets-tls
+    rules:
+    - host: saturn.onefoursix.com
+      http:
+        paths:
+        - path: /sdc2(/|$)(.*)
+          backend:
+            serviceName: sdc2
+            servicePort: 18636

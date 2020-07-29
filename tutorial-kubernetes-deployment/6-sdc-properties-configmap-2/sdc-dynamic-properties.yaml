@@ -1,0 +1,9 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sdc-dynamic-properties
+data:
+  sdc-dynamic.properties: |
+    sdc.base.http.url=https:<YOUR URL>[:<YOUR PORT>]
+    production.maxBatchSize=50000

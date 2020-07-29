@@ -1,0 +1,45 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sdc
+  labels:
+    app: sdc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sdc
+  template:
+    metadata:
+      labels:
+        app: sdc
+    spec:
+      containers:
+      - name: sdc
+        image: streamsets/datacollector:latest
+        ports:
+        - containerPort: 18630
+        env:
+        - name: SDC_JAVA_OPTS
+          value: "-Xmx4g -Xms4g"
+        volumeMounts:
+        - name: sdc-static-properties
+          mountPath: /etc/sdc/sdc.properties
+          subPath: sdc.properties
+        - name: sdc-dynamic-properties
+          mountPath: /etc/sdc/sdc-dynamic.properties
+          subPath: sdc-dynamic.properties
+      volumes:
+      - name: sdc-static-properties
+        configMap:
+          name: sdc-static-properties
+          items:
+          - key: sdc.properties
+            path: sdc.properties
+      - name: sdc-dynamic-properties
+        configMap:
+          name: sdc-dynamic-properties
+          items:
+          - key: sdc-dynamic.properties
+            path: sdc-dynamic.properties

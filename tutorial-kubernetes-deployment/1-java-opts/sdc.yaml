@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: datacollector-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: datacollector-deployment
+  template:
+    metadata:
+      labels:
+        app: datacollector-deployment
+    spec:
+      containers:
+      - name: datacollector
+        image: streamsets/datacollector:latest
+        ports:
+        - containerPort: 18630
+        env:
+        - name: SDC_JAVA_OPTS
+          value: "-Xmx4g -Xms4g"

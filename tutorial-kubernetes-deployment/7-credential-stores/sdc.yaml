@@ -1,0 +1,33 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sdc
+  labels:
+    app: sdc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sdc
+  template:
+    metadata:
+      labels:
+        app: sdc
+    spec:
+      containers:
+      - name: sdc
+        image: <your SDC image>
+        ports:
+        - containerPort: 18630
+        env:
+        - name: SDC_JAVA_OPTS
+          value: "-Xmx4g -Xms4g"
+        volumeMounts:
+        - name: azure-key-vault-credential-store
+          mountPath: /etc/sdc/credential-stores.properties
+          subPath: credential-stores.properties
+      volumes:
+      - name: azure-key-vault-credential-store
+        secret:
+          secretName: azure-key-vault-credential-store
