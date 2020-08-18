@@ -1,22 +1,27 @@
 Interaction with StreamSets Control Hub jobs
 ============================================
 
-This set contains tutorials for [StreamSets Control Hub](https://streamsets.com/products/dataops-platform/control-hub/) jobs. 
+This set contains tutorials for [StreamSets Control Hub jobs](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/Jobs/Jobs_title.html).
+
+A job defines the pipeline to run and the execution engine that runs the pipeline: Data Collector, Data Collector Edge, or Transformer. Jobs are the execution of the dataflow.
 
 ### Prerequisites
-Before starting on any of the tutorials, make sure to complete [Prerequisites for the jobs tutorial](preparation-for-tutorial). 
+Before starting on any of the following tutorials, make sure to complete [Prerequisites for the jobs tutorial](preparation-for-tutorial/README.md).
 
 ### Tutorials for Jobs
 
-1. [Sample ways to fetch one or more jobs](ways-to-fetch-jobs)
+1. [Sample ways to fetch one or more jobs](ways-to-fetch-jobs/README.md) - Sample ways to fetch one or more jobs.
 
-1. [Start a job and monitor that specifc job](start-monitor-a-specific-job) 
+1. [Start a job and monitor that specific job](start-monitor-a-specific-job/README.md) - Start a job and monitor that specific job using metrics and time series metrics.
 
-1. [Update data_collector_labels for jobs](update-data-collector-labels)
+1. [Move jobs from dev to prod using data_collector_labels](update-data-collector-labels/README.md) - Move jobs from dev to prod by updating data_collector label.
 
-1. [Generate a report for a specific job](generate-a-report)
 
-1. [See logs for a data-collector where a job is running](data-collector-logs)
+1. [Generate a report for a specific job](generate-a-report/README.md) - Generate a report for a specific job and then; fetch and download it.
+
+1. [See logs for a data-collector where a job is running](data-collector-logs/README.md) - Get the DataCollector where a job is running and then see its logs.
+
+
 
 ### Conclusion
 

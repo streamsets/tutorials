@@ -1,12 +1,14 @@
-Update data-collector-labels for jobs
-=====================================
+Promote jobs to production by updating data-collector-labels for jobs
+=====================================================================
 
-This tutorial shows how to move jobs from one label to another.
+This tutorial shows how to move [StreamSets Control Hub jobs](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/Jobs/Jobs_title.html) jobs from dev to production by updating from one label to another.
+
+A job defines the pipeline to run and the execution engine that runs the pipeline: Data Collector, Data Collector Edge, or Transformer. Jobs are the execution of the dataflow.
 
 When there are many jobs that need this update, SDK for Python makes it easy to update them with just a few lines of code.
 
 ### Prerequisites
-Make sure to complete [Prerequisites for the jobs tutorial](../preparation-for-tutorial). 
+Make sure to complete [Prerequisites for the jobs tutorial](../preparation-for-tutorial/README.md).
 
 ### Tutorial environment details
 While creating this tutorial following was used:

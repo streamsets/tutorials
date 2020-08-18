@@ -1,10 +1,12 @@
 Start and monitor a job
 =======================
 
-This tutorial covers how to start a job and monitor that specific job.  
+This tutorial covers how to start a [StreamSets Control Hub job](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/Jobs/Jobs_title.html) and monitor that specific job.
+
+A job defines the pipeline to run and the execution engine that runs the pipeline: Data Collector, Data Collector Edge, or Transformer. Jobs are the execution of the dataflow.
 
 ### Prerequisites
-Make sure to complete [Prerequisites for the jobs tutorial](preparation-for-tutorial). 
+Make sure to complete [Prerequisites for the jobs tutorial](../preparation-for-tutorial).
 
 ### Tutorial environment details
 While creating this tutorial following was used:
@@ -13,7 +15,7 @@ While creating this tutorial following was used:
 * All StreamSets Data Collector with version 3.17.0
 
 ### Outline
-In [Prerequisites for the jobs tutorial](preparation-for-tutorial), one job was created with name 'Job for Kirti-HelloWorld'. 
+In [Prerequisites for the jobs tutorial](../preparation-for-tutorial), one job was created with name 'Job for Kirti-HelloWorld'.
 This tutorial shows to start that job and then monitor it using metrics, status and time series metrics for that specific job.
 And also how can log for the data_collector where the job was started 
 

@@ -1,10 +1,10 @@
 View logs for the data collector where a job was run
 ====================================================
 
-This tutorial covers how to get the DataCollector where a job is running and then see its logs.  
+This tutorial covers how to get the [StreamSets DataCollector](https://streamsets.com/products/dataops-platform/data-collector/) where a job is running and then see its logs. 
 
 ### Prerequisites
-Make sure to complete [Prerequisites for the jobs tutorial](preparation-for-tutorial). 
+Make sure to complete [Prerequisites for the jobs tutorial](../preparation-for-tutorial/README.md).
 
 ### Tutorial environment details
 While creating this tutorial following was used:
@@ -13,7 +13,7 @@ While creating this tutorial following was used:
 * All StreamSets Data Collector with version 3.17.0
 
 ### Outline
-In [Prerequisites for the jobs tutorial](preparation-for-tutorial), one job was created with name 'Job for Kirti-HelloWorld'. 
+In [Prerequisites for the jobs tutorial](../preparation-for-tutorial/README.md), one job was created with name 'Job for Kirti-HelloWorld'.
 This tutorial shows the following:
 1. Start the job and capture the data_collector where job was started
 1. See logs for that data_collector
