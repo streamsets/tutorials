@@ -52,6 +52,9 @@ The Data Collector documentation also includes an [extended tutorial](https://st
 - [Kubernetes-based Deployment](tutorial-kubernetes-deployment/README.md) - Example configurations for Kubernetes-based deployments of StreamSets Data Collector
 
 ## StreamSets SDK for Python
+#### Common
+- [Find SDK methods and fields of an object available](sdk-tutorials/find-methods-fields/README.md) - Object examples can be instances of a pipeline or SCH job or a stage under the pipeline.
+
 #### Control Hub 
 -  [Getting started with StreamSets SDK for Python](sdk-tutorials/sch/tutorial-getting-started/README.md) - Design and publish a pipeline. Then create, start, and stop a job using [StreamSets SDK for Python](https://streamsets.com/documentation/sdk/latest/index.html). 
 
@@ -63,6 +66,15 @@ The Data Collector documentation also includes an [extended tutorial](https://st
     - [Generate a report for a specific job](sdk-tutorials/sch/tutorial-jobs/generate-a-report/README.md) - Generate a report for a specific job and then; fetch and download it.
     - [See logs for a data-collector where a job is running](sdk-tutorials/sch/tutorial-jobs/data-collector-logs/README.md) - Get the DataCollector where a job is running and then see its logs.
    
+-  [Pipelines related tutorials](sdk-tutorials/sch/tutorial-pipelines/README.md)
+
+    - [Common pipeline methods](sdk-tutorials/sch/tutorial-pipelines/common-pipeline-methods/README.md) - Common operations for [StreamSets Control Hub pipelines](https://streamsets.com/documentation/controlhub/latest/help/datacollector/UserGuide/Pipeline_Design/What_isa_Pipeline.html)
+                                                                                                        like update, duplicate , import, export.
+
+    - [Loop over pipelines and stages and make an edit to stages](sdk-tutorials/sch/tutorial-pipelines/edit-pipelines-and-stages/README.md) - When there are many pipelines and stages that need an update, SDK for Python makes it easy to update them with just a few lines of code.
+
+    - [Create CI CD pipeline used in demo](sdk-tutorials/sch/tutorial-pipelines/create-ci-cd-demo-pipeline/README.md) - This covers the steps to create CI CD pipeline as used in the [SCH CI CD demo](https://github.com/dimaspivak/sch_ci_cd_poc). The steps include how to add stages like JDBC, some processors and Kineticsearch; and how to set stage configurations.  Also shows, the use of runtime parameters.
+
 
 # License
 
