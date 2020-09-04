@@ -1,6 +1,6 @@
 # StreamSets Data Collector Tutorials
 
-The following tutorials demonstrate some StreamSets [Data Collector](http://github.com/streamsets/datacollector/) features. Clone this repository to your machine to follow along and get familiar with using Data Collector.
+The following tutorials demonstrate some StreamSets [Data Collector](http://github.com/streamsets/datacollector/) features. Clone this repository to your machine to follow along and to [build data pipelines](https://streamsets.com/products/dataops-platform/data-collector/download/) using Data Collector.
 
 ## Basic Tutorials
 
