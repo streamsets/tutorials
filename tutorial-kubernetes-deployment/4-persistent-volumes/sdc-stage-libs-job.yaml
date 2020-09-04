@@ -20,13 +20,13 @@ spec:
             wget ${BASE_URL}/${SDC_VERSION}/tarball/${s}-${SDC_VERSION}.tgz; 
             tar -xvf ${s}-${SDC_VERSION}.tgz -C /tmp;
           done
-          && cp -R /tmp/streamsets-datacollector-${SDC_VERSION}/streamsets-libs/* /streamsets-libs
+          && cp -R /tmp/streamsets-datacollector-${SDC_VERSION}/streamsets-libs/streamsets-* /streamsets-libs
           && for s in `cat /tmp/sdc-enterprise-stage-libs`; 
           do 
             wget ${BASE_URL}/latest/tarball/enterprise/${s}.tgz; 
             tar -xvf ${s}.tgz -C /tmp;
           done
-          && cp -R /tmp/streamsets-libs/* /streamsets-libs
+          && cp -R /tmp/streamsets-libs/streamsets-* /streamsets-libs
           && echo 'Here is a listing of the /streamsets-libs dir'
           && ls -l /streamsets-libs
         volumeMounts:
