@@ -27,6 +27,7 @@ spec:
             tar -xvf ${s}.tgz -C /tmp;
           done
           && cp -R /tmp/streamsets-libs/streamsets-* /streamsets-libs
+          && rm -rf /streamsets-libs/lost+found
           && echo 'Here is a listing of the /streamsets-libs dir'
           && ls -l /streamsets-libs
         volumeMounts:
