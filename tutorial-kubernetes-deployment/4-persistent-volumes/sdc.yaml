@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: sdc
-        image: streamsets/datacollector:latest
+        image: streamsets/datacollector:3.16.1
         ports:
         - containerPort: 18630
         env:
@@ -22,6 +22,7 @@ spec:
         volumeMounts:
           - name: sdc-stage-libs
             mountPath: /opt/streamsets-datacollector-3.16.1/streamsets-libs
+            readOnly: "true"
       volumes:
       - name: sdc-stage-libs
         persistentVolumeClaim:
