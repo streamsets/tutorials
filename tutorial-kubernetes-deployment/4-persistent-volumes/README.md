@@ -1,11 +1,16 @@
 ### Loading SDC Stage Libraries from a Persistent Volume
  
-This approach uses a  [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) to share a set of SDC Stage Libraries with multiple SDC Pods. The stage libs are loaded by SDC Pods at deployment time so there is no need to package them in a custom SDC image in advance (as in the [Custom Docker Image](../2-custom-docker-image) example).
+This approach uses a  [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) to share a set of SDC Stage Libraries across multiple SDC Pods. The stage libs are mounted by SDC Pods at deployment time so there is no need to package them in a custom SDC image in advance (as is done in the [Custom Docker Image](../2-custom-docker-image) example).
 
-The Persistent Volume is dynamically provisioned by a [Persistent Volume Claim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#lifecycle-of-a-volume-and-claim) and populated by a [Job](https://kubernetes.io/docs/concepts/workloads/controllers/job/) (using <code>[ReadWriteOnce](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)</code> access mode).  The Job downloads a set of stage libs based on a list stored in a ConfigMap. The stage libs on the Persistent Volume are then shared with multiple SDC Pods using <code>ReadOnlyMany</code> access mode.
+There are several Persistent Volume [types](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes) to choose from, with various capabilities.  For this example, I'll deploy SDC on [AKS](https://azure.microsoft.com/en-us/services/kubernetes-service/) using an [Azure File Volume](https://kubernetes.io/docs/concepts/storage/volumes/#azurefile), which makes it easy to share SDC stage libs across multiple nodes and Pods. 
+
+Choose your PV type carefully, as not all PV types can share files across more than one node.  See the docs [here](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) for a list of Access Modes for each PV type.  For example, an [AWSElasticBlockStore](https://kubernetes.io/docs/concepts/storage/volumes/#awselasticblockstore) can only be shared across Pods on the same node. And Google provides an example [here](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/readonlymany-disks) of how to write to a [GCEPersistentDisk](https://kubernetes.io/docs/concepts/storage/volumes/#gcepersistentdisk) using <code>ReadWriteOnce</code> access mode and then how to unmount the disk and mount it again with <code>ReadOnlyMany</code> access mode so that multiple Pods and nodes can access the disk's data.
 
 
-There are several Persistent Volume [types](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes) to choose from, with various capabilities.  For this example, I'll use an [Azure File Volume](https://kubernetes.io/docs/concepts/storage/volumes/#azurefile) for use with an AKS cluster. The specific Persistent Volume type is set in a [Storage Class](https://kubernetes.io/docs/concepts/storage/storage-classes/); all other resources are portable across environments.
+In this example, a Persistent Volume will be dynamically provisioned by a [Persistent Volume Claim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#lifecycle-of-a-volume-and-claim) and populated by a [Job](https://kubernetes.io/docs/concepts/workloads/controllers/job/).  The Job will download a set of stage libs based on a list stored in a ConfigMap. The stage libs on the Persistent Volume will then be shared with multiple SDC Pods.
+
+
+
 
 #### Step 1: Create a ConfigMap with a list of stage libs to download
 
@@ -63,7 +68,7 @@ Create the StorageClass by executing the command:
       
 #### Step 3: Create a Persistent Volume Claim
 
-Create a Persistent Volume Claim (PVC) with both <code>ReadWriteOnce</code> and  <code>ReadOnlyMany</code> access modes that requests 5GB of storage and refers to the StorageClass defined above:
+Create a Persistent Volume Claim (PVC) that requests 5GB of storage and refers to the StorageClass defined above. I'll use <code>ReadWriteOnce</code> access mode as there is only one writer (the Job) but an Azure File Share is readable across multiple nodes):
 
     apiVersion: v1
     kind: PersistentVolumeClaim
@@ -72,7 +77,6 @@ Create a Persistent Volume Claim (PVC) with both <code>ReadWriteOnce</code> and 
     spec:
       accessModes:
         - ReadWriteOnce
-        - ReadOnlyMany
       storageClassName: sdc-stage-libs-sc
       resources:
         requests:
@@ -87,15 +91,13 @@ Inspect the PVC and wait until its status is <code>Bound</code>.  For example he
 
     $ kubectl get pvc
     NAME                 STATUS   VOLUME                                     CAPACITY   ACCESS MODES
-    sdc-stage-libs-pvc   Bound    pvc-721b28aa-6e56-49c6-8f3b-86935941b37e   5Gi        RWO,ROX
+    sdc-stage-libs-pvc   Bound    pvc-a2d1f7d6-6b6b-4ec7-8b8b-defa0422894c   5Gi        RWO
 
 
 #### Step 4: Run a Job to download the SDC Stage Libraries to the Persistent Volume 
 Create a [Job](https://kubernetes.io/docs/concepts/workloads/controllers/job/) to populate the Persistent Volume.
 
 An example Job is defined [here](sdc-stage-libs-job.yaml). It spins up a [BusyBox](https://www.busybox.net/about.html) container that uses shell commands to download and extract the stage libs, and writes them to the directory <code>/streamsets-libs</code> in the Persistent Volume.  
-
-As this Job launches the first Pod to use the PVC, it takes advantage of the <code>ReadWriteOnce</code> access mode and writes to the PV. 
 
 Run the Job by executing the command:
 <code>$ kubectl apply -f sdc-stage-libs-job.yaml</code>
@@ -112,7 +114,7 @@ Make sure the Job completes successfully:
     
 When the Job completes, the Persistent Volume will be populated with the specified SDC stage libs.    
 
-#### Step 4: Create an SDC Deployment with a VolumeMount for the SDC Stage Libraries
+#### Step 4: Create an SDC Deployment with a Read-Only VolumeMount for the SDC Stage Libraries
 
 Create a Control Hub-based SDC Deployment that mounts the Persistent Volume using the PVC, using a manifest like this:
 
@@ -140,6 +142,7 @@ Create a Control Hub-based SDC Deployment that mounts the Persistent Volume usin
             volumeMounts:
               - name: sdc-stage-libs
                 mountPath: /opt/streamsets-datacollector-3.16.1/streamsets-libs
+                readOnly: "true"
           volumes:
           - name: sdc-stage-libs
             persistentVolumeClaim:

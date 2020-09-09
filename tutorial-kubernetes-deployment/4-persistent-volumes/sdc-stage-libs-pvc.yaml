@@ -5,7 +5,6 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-    - ReadOnlyMany
   storageClassName: sdc-stage-libs-sc
   resources:
     requests:
