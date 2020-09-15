@@ -36,6 +36,9 @@ The following tutorials demonstrate features of StreamSets Data Collector, Strea
 
 The Data Collector documentation also includes an [extended tutorial](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Overview.html) that walks through basic Data Collector functionality, including creating, previewing and running a pipeline, and creating alerts.
 
+## StreamSets Data Collector -- Kubernetes-based Deployment
+
+- [Kubernetes-based Deployment](tutorial-kubernetes-deployment/README.md) - Example configurations for Kubernetes-based deployments of StreamSets Data Collector.
 
 ## StreamSets Control Hub
 
@@ -46,10 +49,6 @@ The Data Collector documentation also includes an [extended tutorial](https://st
 - [Creating a Custom Processor for StreamSets Transformer](https://github.com/metadaddy/transformer-sample-processor/blob/master/README.md) - Create a simple custom processor, using Java and Scala, that will compute the type of a credit card from its number, and configure Transformer to use it.
 
 - [Creating a Custom Scala Project For StreamSets Transformer](https://github.com/iamontheinet/StreamSets/tree/master/Transformer_Custom_Scala_Project) - This tutorial explains how to create a custom Scala project and import the compiled jar into StreamSets Transformer.
-
-## Kubernetes-based Deployment
-
-- [Kubernetes-based Deployment](tutorial-kubernetes-deployment/README.md) - Example configurations for Kubernetes-based deployments of StreamSets Data Collector
 
 ## StreamSets SDK for Python
 
