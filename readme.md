@@ -1,8 +1,8 @@
-# StreamSets Data Collector Tutorials
+# StreamSets DataOps Platform Tutorials
 
-The following tutorials demonstrate some StreamSets [Data Collector](http://github.com/streamsets/datacollector/) features. Clone this repository to your machine to follow along and to [build data pipelines](https://streamsets.com/products/dataops-platform/data-collector/download/) using Data Collector.
+The following tutorials demonstrate features of StreamSets Data Collector, StreamSets Transformer, StreamSets Control Hub and StreamSets SDK For Python.
 
-## Basic Tutorials
+## StreamSets Data Collector -- Basic Tutorials
 
 - [Log Shipping to Elasticsearch](tutorial-1/readme.md) - Read weblog files from a local filesystem directory, decorate some of the fields (e.g. GeoIP Lookup), and write them to Elasticsearch.
 
@@ -14,7 +14,7 @@ The following tutorials demonstrate some StreamSets [Data Collector](http://gith
 
 - [Working with StreamSets Data Collector and Microsoft Azure](working-with-azure/readme.md) - Integrate [Azure Blob Storage](https://azure.microsoft.com/en-us/services/storage/blobs/), [Apache Kafka on HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/), [Azure SQL Data Warehouse](https://azure.microsoft.com/en-us/services/sql-data-warehouse/) and Apache Hive backed by Azure Blob Storage.
 
-## Writing Custom Pipeline Stages
+## StreamSets Data Collector -- Writing Custom Pipeline Stages
 
 - [Creating a Custom StreamSets Origin](tutorial-origin/readme.md) - Build a simple custom origin that reads a Git repository's commit log and produces the corresponding records.
 
@@ -24,7 +24,7 @@ The following tutorials demonstrate some StreamSets [Data Collector](http://gith
 
 - [Creating a Custom StreamSets Destination](tutorial-destination/readme.md) - Build a simple custom destination that writes batches of records to a webhook.
 
-## Advanced Features
+## StreamSets Data Collector -- Advanced Features
 
 - [Ingesting Drifting Data into Hive and Impala](tutorial-hivedrift/readme.md) - Build a pipeline that handles schema changes in MySQL, creating and altering Hive tables accordingly.
 
@@ -37,11 +37,11 @@ The following tutorials demonstrate some StreamSets [Data Collector](http://gith
 The Data Collector documentation also includes an [extended tutorial](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Overview.html) that walks through basic Data Collector functionality, including creating, previewing and running a pipeline, and creating alerts.
 
 
-## Control Hub
+## StreamSets Control Hub
 
 - [Creating Custom Data Protector Procedure](tutorial-custom-dataprotector-procedure/README.md) - Create, build and deploy your own custom data protector procedure that you can use as protection method to apply to record fields.
 
-## Transformer
+## StreamSets Transformer
 
 - [Creating a Custom Processor for StreamSets Transformer](https://github.com/metadaddy/transformer-sample-processor/blob/master/README.md) - Create a simple custom processor, using Java and Scala, that will compute the type of a credit card from its number, and configure Transformer to use it.
 
@@ -52,6 +52,7 @@ The Data Collector documentation also includes an [extended tutorial](https://st
 - [Kubernetes-based Deployment](tutorial-kubernetes-deployment/README.md) - Example configurations for Kubernetes-based deployments of StreamSets Data Collector
 
 ## StreamSets SDK for Python
+
 #### Common
 - [Find SDK methods and fields of an object available](sdk-tutorials/find-methods-fields/README.md) - Object examples can be instances of a pipeline or SCH job or a stage under the pipeline.
 
