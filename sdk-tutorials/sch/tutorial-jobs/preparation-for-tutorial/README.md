@@ -1,7 +1,7 @@
 Prerequisites - for SCH Jobs related tutorials
 ==============================================
 
-This covers the steps needed to complete before starting on any other jobs ralted tutorials in this set.  
+This covers the steps needed to complete before starting on any other [StreamSets Control Hub job](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/Jobs/Jobs_title.html) related tutorials in this set.
 
 ### Prerequisites
 * [Python 3.4+](https://docs.python.org/3/using/index.html) and pip3 installed
@@ -19,11 +19,11 @@ While creating this tutorial following was used:
 * All StreamSets Data Collector with version 3.17.0
 
 ### Outline
-In this preparation, 2 jobs will be created with following names:
+In this preparation, 2 jobs are created with following names:
 1. Job for Kirti-HelloWorld
 1. Job for Kirti-DevRawDataSource
 
-This page deatils on how to create them using SDK for Python.
+This page details on how to create them using SDK for Python.
 Optionally, you can create them using UI in the browser too. Just follow all the details needed for the jobs.
 
 ### Workflow

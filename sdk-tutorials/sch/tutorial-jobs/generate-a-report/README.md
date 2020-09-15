@@ -1,10 +1,12 @@
-Generate a report
-=================
+Generate a Data Delivery Report
+===============================
 
-This tutorial covers how to generate a report for a specific job and then; fetch and download it.  
+This tutorial covers how to generate a [StreamSets Control Hub Data Delivery Report](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/Reports/DeliveryReports_title.html#concept_xkf_v34_ndb) for a specific job and then; fetch and download it.
+
+Data delivery reports provide data processing metrics for a given job or topology. For example, you can use reports to view the number of records that were processed by a job or topology the previous day.
 
 ### Prerequisites
-Make sure to complete [Prerequisites for the jobs tutorial](preparation-for-tutorial). 
+Make sure to complete [Prerequisites for the jobs tutorial](../preparation-for-tutorial).
 
 ### Tutorial environment details
 While creating this tutorial following was used:
@@ -13,7 +15,7 @@ While creating this tutorial following was used:
 * All StreamSets Data Collector with version 3.17.0
 
 ### Outline
-In [Prerequisites for the jobs tutorial](preparation-for-tutorial), one job was created with name 'Job for Kirti-HelloWorld'. 
+In [Prerequisites for the jobs tutorial](../preparation-for-tutorial/README.md), one job was created with name 'Job for Kirti-HelloWorld'.
 This tutorial shows the following:
 1. Create a report definition
 1. Generate a report

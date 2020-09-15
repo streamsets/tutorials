@@ -1,10 +1,12 @@
 Some sample ways to fetch one or more jobs
 ==========================================
 
-This tutorial shows few ways to fetch one or more jobs. 
+This tutorial shows few ways to fetch one or more [StreamSets Control Hub jobs](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/Jobs/Jobs_title.html).
+
+A job defines the pipeline to run and the execution engine that runs the pipeline: Data Collector, Data Collector Edge, or Transformer. Jobs are the execution of the dataflow.
 
 ### Prerequisites
-Make sure to complete [Prerequisites for the jobs tutorial](preparation-for-tutorial). 
+Make sure to complete [Prerequisites for the jobs tutorial](../preparation-for-tutorial).
 
 ### Tutorial environment details
 While creating this tutorial following was used:
@@ -40,7 +42,7 @@ control_hub = ControlHub(server_url='http://sch.streamsets.com',
  
 ### 1 &mdash; Get all jobs
 
-If you have lot of jobs, this might be halting the system and so do not use this methid to choose jobs.
+If you have lot of jobs, this might be halting the system and so do not use this method to choose jobs.
   
 ```python
 print('All jobs')

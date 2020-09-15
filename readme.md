@@ -59,11 +59,16 @@ The Data Collector documentation also includes an [extended tutorial](https://st
 -  [Getting started with StreamSets SDK for Python](sdk-tutorials/sch/tutorial-getting-started/README.md) - Design and publish a pipeline. Then create, start, and stop a job using [StreamSets SDK for Python](https://streamsets.com/documentation/sdk/latest/index.html). 
 
 
--  [Jobs related tutorials](sdk-tutorials/sch/tutorial-getting-started/README.md)
+-  [Jobs related tutorials](sdk-tutorials/sch/tutorial-jobs/README.md)
+
     - [Sample ways to fetch one or more jobs](sdk-tutorials/sch/tutorial-jobs/ways-to-fetch-jobs/README.md) - Sample ways to fetch one or more jobs.
-    - [Start a job and monitor that specifc job](sdk-tutorials/sch/tutorial-jobs/start-monitor-a-specific-job/README.md) - Start a job and monitor that specific job using metrics and time series metrics.
-    - [Update data_collector_labels for jobs](sdk-tutorials/sch/tutorial-jobs/update-data-collector-labels/README.md) - Move jobs from one data_collector label to another.
+
+    - [Start a job and monitor that specific job](sdk-tutorials/sch/tutorial-jobs/start-monitor-a-specific-job/README.md) - Start a job and monitor that specific job using metrics and time series metrics.
+
+    - [Move jobs from dev to prod using data_collector_labels](sdk-tutorials/sch/tutorial-jobs/update-data-collector-labels/README.md) - Move jobs from dev to prod by updating data_collector label.
+
     - [Generate a report for a specific job](sdk-tutorials/sch/tutorial-jobs/generate-a-report/README.md) - Generate a report for a specific job and then; fetch and download it.
+
     - [See logs for a data-collector where a job is running](sdk-tutorials/sch/tutorial-jobs/data-collector-logs/README.md) - Get the DataCollector where a job is running and then see its logs.
    
 -  [Pipelines related tutorials](sdk-tutorials/sch/tutorial-pipelines/README.md)
