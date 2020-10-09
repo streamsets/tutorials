@@ -7,6 +7,15 @@ However, due to the current behavior of the SDC image's <code>docker-entrypoint.
 
 In the meantime, if mixed-case SDC properties need to be set, they can either be set in an <code>sdc.properties</code> file packaged in a custom SDC image, as in the [Custom Docker Image example](2-custom-docker-image), or loaded from a configmap as shown in  the examples [here](5-sdc-properties-configmap-1) and [here](6-sdc-properties-configmap-2).
 
-It's also worth noting that values for environment variables with the prefix <code>SDC_CONF_</code> are written to the <code>sdc.properties</code> file by the SDC container's <code>docker-entrypoint.sh</code> script, which forces the SDC container to have read/write access to the <code>sdc.properties</code> file, which may not be the case if <code>sdc.properties</code> is mounted with read-only access.
+It's also worth noting that values for environment variables with the prefix <code>SDC_CONF_</code> are written to the <code>sdc.properties</code> file by the SDC container's <code>docker-entrypoint.sh</code> script, which forces the SDC container to have read/write access to the <code>sdc.properties</code> file, which may not be the case if <code>sdc.properties</code> is mounted with read-only access. The same issue can also occur if the SDC deployment manifest sets these two environment variables:
 
-Best practice for now is to mount <code>sdc.properties</code> from a configmap and to avoid using <code>SDC_CONF\__</code> environment variables.
+    - name: HOST
+      valueFrom:
+        fieldRef:
+          fieldPath: status.podIP
+    - name: PORT0
+      value: "18630"
+
+Those two environment variables are not needed and should be removed from the SDC deployment manifest. 
+
+Best practice is to mount <code>sdc.properties</code> from a configmap and to avoid using <code>SDC_CONF\__</code>, <code>HOST</code>, or <code>PORT0</code> environment variables within SDC deployment manifests.
