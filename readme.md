@@ -24,6 +24,8 @@ The following tutorials demonstrate features of StreamSets Data Collector, Strea
 
 - [Creating a Custom StreamSets Destination](tutorial-destination/readme.md) - Build a simple custom destination that writes batches of records to a webhook.
 
+We have a DataCollector API Java Docs to share in case of need, please [reach out to us](https://streamsets.com/about-us/contact-us/) if you need them.
+
 ## StreamSets Data Collector -- Advanced Features
 
 - [Ingesting Drifting Data into Hive and Impala](tutorial-hivedrift/readme.md) - Build a pipeline that handles schema changes in MySQL, creating and altering Hive tables accordingly.
