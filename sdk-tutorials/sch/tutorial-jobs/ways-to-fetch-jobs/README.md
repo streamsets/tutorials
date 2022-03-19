@@ -95,7 +95,7 @@ if first_job_first_tag_id:
 ```      
 
 ### Follow-up
-To get to know more details about SDK for Python, check the [SDK documentation](https://streamsets.com/documentation/sdk/latest/index.html).
+To get to know more details about SDK for Python, check the [SDK documentation](https://docs.streamsets.com/sdk/latest/index.html).
 
 If you encounter any problems with this tutorial, please [file an issue in the tutorials project](https://github.com/streamsets/tutorials/issues/new).
  

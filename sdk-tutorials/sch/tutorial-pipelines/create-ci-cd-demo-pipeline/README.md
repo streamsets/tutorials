@@ -9,7 +9,7 @@ Towards the end, it shows a couple of pointers on
 
 ### Prerequisites
 * [Python 3.4+](https://docs.python.org/3/using/index.html) and pip3 installed
-* StreamSets for SDK [Installed and activated](https://streamsets.com/documentation/sdk/latest/installation.html) 
+* StreamSets for SDK [Installed and activated](https://docs.streamsets.com/sdk/latest/installation.html) 
 * [Access to StreamSets Control Hub](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/OrganizationSecurity/OrgSecurity_Overview.html#concept_q5z_jkl_wy) with an user account in your  organization 
 * At least one [StreamSets Data Collector](https://streamsets.com/products/dataops-platform/data-collector/) instance registered with the above StreamSets Control Hub instance
  
@@ -246,7 +246,7 @@ Just follow the pointers provided in the tutorial
 - [Find SDK methods and fields of an object available](../../../find-methods-fields/README.md) - Object examples can be instances of a pipeline or SCH job or a stage under the pipeline. 
 
 ### Follow-up
-To get to know more details about SDK for Python, check the [SDK documentation](https://streamsets.com/documentation/sdk/latest/index.html).
+To get to know more details about SDK for Python, check the [SDK documentation](https://docs.streamsets.com/sdk/latest/index.html).
 
 If you encounter any problems with this tutorial, please [file an issue in the tutorials project](https://github.com/streamsets/tutorials/issues/new).
   

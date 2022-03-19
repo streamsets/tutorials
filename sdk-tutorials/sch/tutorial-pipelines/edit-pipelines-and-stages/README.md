@@ -1,7 +1,7 @@
 Edit multiple SCH pipelines and their stages   
 ============================================
 
-This tutorial covers how to edit multiple [StreamSets Control Hub pipelines](https://streamsets.com/documentation/controlhub/latest/help/datacollector/UserGuide/Pipeline_Design/What_isa_Pipeline.html) and the stages under them using [SDK for Python](https://streamsets.com/documentation/sdk/latest/index.html).  
+This tutorial covers how to edit multiple [StreamSets Control Hub pipelines](https://streamsets.com/documentation/controlhub/latest/help/datacollector/UserGuide/Pipeline_Design/What_isa_Pipeline.html) and the stages under them using [SDK for Python](https://docs.streamsets.com/sdk/latest/index.html).  
   
 A pipeline describes the flow of data from the origin system to destination systems and defines how to transform the data along the way.
 
@@ -103,7 +103,7 @@ stage name =  com_streamsets_pipeline_stage_destination_devnull_NullDTarget
 ```
 
 ### Step 5 &mdash; Find names of stage configurations
-SDK documentation has a section with details for this [Configuring stages](https://streamsets.com/documentation/sdk/latest/usage.html#configuring-stages)
+SDK documentation has a section with details for this [Configuring stages](https://docs.streamsets.com/sdk/latest/usage/sdc/configuring_stages.html)
  
 so e.g.  
 ```python
@@ -154,7 +154,7 @@ control_hub.delete_pipelines(duplicated_pipelines)
 ```
 
 ### Follow-up
-To get to know more details about SDK for Python, check the [SDK documentation](https://streamsets.com/documentation/sdk/latest/index.html).
+To get to know more details about SDK for Python, check the [SDK documentation](https://docs.streamsets.com/sdk/latest/index.html).
 
 If you encounter any problems with this tutorial, please [file an issue in the tutorials project](https://github.com/streamsets/tutorials/issues/new).
  

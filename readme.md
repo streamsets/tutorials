@@ -58,7 +58,7 @@ The Data Collector documentation also includes an [extended tutorial](https://st
 - [Find SDK methods and fields of an object available](sdk-tutorials/find-methods-fields/README.md) - Object examples can be instances of a pipeline or SCH job or a stage under the pipeline.
 
 #### Control Hub 
--  [Getting started with StreamSets SDK for Python](sdk-tutorials/sch/tutorial-getting-started/README.md) - Design and publish a pipeline. Then create, start, and stop a job using [StreamSets SDK for Python](https://streamsets.com/documentation/sdk/latest/index.html). 
+-  [Getting started with StreamSets SDK for Python](sdk-tutorials/sch/tutorial-getting-started/README.md) - Design and publish a pipeline. Then create, start, and stop a job using [StreamSets SDK for Python](https://docs.streamsets.com/sdk/latest/index.html). 
 
 
 -  [Jobs related tutorials](sdk-tutorials/sch/tutorial-jobs/README.md)

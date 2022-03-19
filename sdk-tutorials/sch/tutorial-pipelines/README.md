@@ -18,6 +18,6 @@ Before starting on any of the tutorials in this set, make sure to complete [Prer
 
 ### Conclusion
 
-To get to know more details about SDK for Python, check the [SDK documentation](https://streamsets.com/documentation/sdk/latest/index.html).
+To get to know more details about SDK for Python, check the [SDK documentation](https://docs.streamsets.com/sdk/latest/index.html).
 
 If you don't have access to SCH, sign up for 30-day free trial by visiting https://streamsets.com/products/sch/control-hub-trial.

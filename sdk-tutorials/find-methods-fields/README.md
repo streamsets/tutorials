@@ -7,7 +7,7 @@ Object examples can be instances of a pipeline or SCH job or a stage under the p
 
 Though this tutorial shows examples with [StreamSets Control Hub pipeline](https://streamsets.com/documentation/controlhub/latest/help/datacollector/UserGuide/Pipeline_Design/What_isa_Pipeline.html) and a stage under it, the process is the same for any other object available via SDK for Python.
 
-SDK documentation has a section with details for this [Configuring stages](https://streamsets.com/documentation/sdk/latest/usage.html#configuring-stages)
+SDK documentation has a section with details for this [Configuring stages](https://docs.streamsets.com/sdk/latest/usage/sdc/configuring_stages.html)
 
 ### Prerequisites
 Make sure to complete [Prerequisites for the SCH pipelines tutorial](../sch/tutorial-pipelines/preparation-for-tutorial/README.md). 
@@ -161,7 +161,7 @@ add_label(*labels) method of streamsets.sdk.sch_models.Pipeline instance
 
 
 ### Step 7 &mdash; See methods and fields available for a stage
-SDK documentation has a great section with details for this [Configuring stages](https://streamsets.com/documentation/sdk/latest/usage.html#configuring-stages)
+SDK documentation has a great section with details for this [Configuring stages](https://docs.streamsets.com/sdk/latest/usage/sdc/configuring_stages.html)
 
 Exactly the same ways are available:
 1. dir()
@@ -230,7 +230,7 @@ set_attributes(**attributes) method of streamsets.sdk.sdc_models.com_streamsets_
 ```
 
 ### Follow-up
-To get to know more details about SDK for Python, check the [SDK documentation](https://streamsets.com/documentation/sdk/latest/index.html).
+To get to know more details about SDK for Python, check the [SDK documentation](https://docs.streamsets.com/sdk/latest/index.html).
 
 If you encounter any problems with this tutorial, please [file an issue in the tutorials project](https://github.com/streamsets/tutorials/issues/new).
  
