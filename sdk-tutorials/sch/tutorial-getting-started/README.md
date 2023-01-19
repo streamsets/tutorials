@@ -2,11 +2,11 @@ StreamSets Control Hub: Getting Started with SDK for Python
 ===========================================================
 
 This tutorial covers the most basic yet very powerful workflow for [StreamSets Control Hub](https://streamsets.com/products/dataops-platform/control-hub/). The workflow shows how to design and 
-publish a pipeline followed by how to create, start, and stop a job using [SDK for Python](https://streamsets.com/documentation/sdk/latest/index.html). 
+publish a pipeline followed by how to create, start, and stop a job using [SDK for Python](https://docs.streamsets.com/sdk/latest/index.html). 
 
 ### Prerequisites
 * [Python 3.4+](https://docs.python.org/3/using/index.html) and pip3 installed
-* StreamSets for SDK [Installed and activated](https://streamsets.com/documentation/sdk/latest/installation.html) 
+* StreamSets for SDK [Installed and activated](https://docs.streamsets.com/sdk/latest/installation.html) 
 * [Access to StreamSets Control Hub](https://streamsets.com/documentation/controlhub/latest/help/controlhub/UserGuide/OrganizationSecurity/OrgSecurity_Overview.html#concept_q5z_jkl_wy) with an user account in your  organization 
 * At least one [StreamSets Data Collector](https://streamsets.com/products/dataops-platform/data-collector/) instance registered with the above StreamSets Control Hub instance
  
@@ -114,7 +114,7 @@ control_hub.delete_job(job)
 ```
 
 ### Conclusion
-The workflow showed basics about pipeline and job using [StreamSets SDK for Python](https://streamsets.com/documentation/sdk/latest/index.html). 
+The workflow showed basics about pipeline and job using [StreamSets SDK for Python](https://docs.streamsets.com/sdk/latest/index.html). 
 Now you are ready to start the journey to create more sophisticated workflows.
 
 If you encounter any problems with this tutorial, please [file an issue in the tutorials project](https://github.com/streamsets/tutorials/issues/new).

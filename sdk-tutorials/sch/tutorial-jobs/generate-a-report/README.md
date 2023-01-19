@@ -48,7 +48,7 @@ control_hub = ControlHub(server_url='http://sch.streamsets.com',
  
 ### Step 2 &mdash; Create a report definition
 
-Following code shows how to create a report definition for the job with name 'Job for Kirti-HelloWorld' using [StreamSets SDK for Python](https://streamsets.com/documentation/sdk/latest/index.html).
+Following code shows how to create a report definition for the job with name 'Job for Kirti-HelloWorld' using [StreamSets SDK for Python](https://docs.streamsets.com/sdk/latest/index.html).
 Optionally you can create the same using UI on the browser.
   
 ```python
@@ -103,7 +103,7 @@ with open('report.pdf', 'wb') as report_file:
 ```
 
 ### Follow-up
-To get to know more details about SDK for Python, check the [SDK documentation](https://streamsets.com/documentation/sdk/latest/index.html).
+To get to know more details about SDK for Python, check the [SDK documentation](https://docs.streamsets.com/sdk/latest/index.html).
 
 If you encounter any problems with this tutorial, please [file an issue in the tutorials project](https://github.com/streamsets/tutorials/issues/new).
  
