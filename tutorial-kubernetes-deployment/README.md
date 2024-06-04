@@ -1,5 +1,7 @@
 ## Kubernetes Deployment
 
+# Note - this tutorial is primarily for use with legacy Control Hub 3.x.  Users of StreamSets Platform now enjoy [top-level Kubernetes deployment support](https://docs.streamsets.com/portal/platform-controlhub/controlhub/UserGuide/Deployments/Kubernetes.html#concept_ec3_cqg_hvb) and no longer need to manually configure the majority of aspects covered by this Tutorial. 
+
 This tutorial provides examples and guidance for deploying custom configurations of [StreamSets Data Collector](https://streamsets.com/products/dataops-platform/data-collector) on Kubernetes using [Control Hub](https://streamsets.com/products/dataops-platform/control-hub). Please see [the note about Environment Variables](NoteOnEnvVars.md).
 
 ### Prerequisites
